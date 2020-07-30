@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="util">
+      <UniqueIdentifier>{9fefdf81-759a-4b1a-af3b-2a3be4e38a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="output">
+      <UniqueIdentifier>{b921105d-6e52-4f77-9365-ea7a426f456e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="output\webpage">
+      <UniqueIdentifier>{0f0adbcb-5cea-4a39-b9e5-9c6af245471b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{7852776e-a700-4712-acce-d582249d28e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lists">
+      <UniqueIdentifier>{249f42fa-aed7-4b8d-8cc0-51fd5d680a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lists\support">
+      <UniqueIdentifier>{b90870ab-afda-4d40-a955-7372f82ded01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fakes">
+      <UniqueIdentifier>{26888aa0-4465-4a3d-96d7-ec8a7924e548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{dbefcfa7-bd6a-4761-8f04-480618be7c09}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util\CommandLineValidatorTest.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\RefItemTest.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\UntarStreamTest.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="output\ImageTagTest.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\ObjNotFoundTest.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\URLLinkTest.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\webpage\HtmlReferenceListImplTest.cpp">
+      <Filter>output\webpage</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARDayStructHelperTest.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARParseFieldTest.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\OpenWindowReportDataTest.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARListHelpersTest.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\support\SchemaDbQueryBuilderTest.cpp">
+      <Filter>lists\support</Filter>
+    </ClCompile>
+    <ClCompile Include="test\fakes\FakeARServerObject.cpp">
+      <Filter>fakes</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocTextReferencesTest.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="AppConfigReaderTest.cpp" />
+    <ClCompile Include="ARInsideTest.cpp" />
+    <ClCompile Include="FileSystemUtilTest.cpp" />
+    <ClCompile Include="RapidJSONTests.cpp" />
+    <ClCompile Include="test\TinyXmlTests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="util\UntarStreamTest.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="test\fakes\FakeARServerObject.h">
+      <Filter>fakes</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocTextReferencesTest.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="ARInsideTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FileSystemUtilTest.h.in" />
+  </ItemGroup>
+</Project>

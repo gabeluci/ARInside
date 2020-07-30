@@ -1,0 +1,1271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{9cc61dc0-a363-4b23-96b3-8e29799f9cda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{884dceeb-34b3-4423-89ec-2de840235996}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc\actions">
+      <UniqueIdentifier>{3fe2027d-2398-4939-9322-5236c4060a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="output">
+      <UniqueIdentifier>{da15a71d-b1fd-49c0-9f21-571dd84f1492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="output\webpage">
+      <UniqueIdentifier>{efbef64e-0542-465a-88a3-4ff29ffad17d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{abc08076-f2e2-4dad-83dd-bae1f784498f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{1f495b29-e4bb-4489-a95a-d81b6359445b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lists">
+      <UniqueIdentifier>{365bb3cd-50ba-4690-8f92-d1c99254b3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lists\support">
+      <UniqueIdentifier>{c104225c-79e4-467a-8b78-85d4512582f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scan">
+      <UniqueIdentifier>{78dd4fc7-6a16-46fe-b886-9cacbca2ee74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty">
+      <UniqueIdentifier>{91fed27d-bcd9-4f5f-8503-055a27029b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\jquery">
+      <UniqueIdentifier>{2b9f6b77-6018-4e21-8673-4f744415ae9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\jquery\images">
+      <UniqueIdentifier>{810b08c3-cf50-4ad5-8026-59c9054644a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\rapidjson">
+      <UniqueIdentifier>{011a8cdc-f010-46a9-b432-8bbaddf8dfb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\tclap">
+      <UniqueIdentifier>{f788fca5-0f42-490d-834f-f459b9766268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\tinyxml">
+      <UniqueIdentifier>{eed630ba-3c70-4ccc-83da-654a8bfb9e71}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AppConfigReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ARInside.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystemUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gzstream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARActiveLink.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARAssignHelper.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARCharMenu.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARContainer.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARDayStructHelper.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\AREnum.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\AREscalation.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARField.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARFilter.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARGlobalField.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARGroup.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARHandle.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARImage.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARObject.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARParseField.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARProplistHelper.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARQualification.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARRole.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARSchema.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARServerInfo.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARServerObject.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARSetFieldHelper.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ARStatusList.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARUser.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARValue.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ARVui.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ChangeHistoryEntry.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\OpenWindowReportData.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\OpenWindowSampleData.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocActionSetFieldsHelper.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocAlActionStruct.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocAlDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocAlGuideDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocAllMatchingIdsTable.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocAnalyzer.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocApplicationDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocBase.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocBasicField.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocCharMenuDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocContainerHelper.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocCurrencyField.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocCustomWorkflow.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocEscalationDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocFieldDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocFilterActionStruct.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocFilterDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocFilterGuideDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocGroupDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocImageDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocImageOverview.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocMain.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocOverlayHelper.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocPacklistDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocRoleDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocSchemaDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocStatusHistoryField.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocSummaryInfo.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocTextReferences.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocUserDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\DocValidator.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocVuiDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\DocWebserviceDetails.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="Doc\MessageItem.cpp">
+      <Filter>doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\actions\DocAlMessageAction.cpp">
+      <Filter>doc\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\actions\DocOpenWindowAction.cpp">
+      <Filter>doc\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\AlTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\ContainerTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\CsvPage.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\EscalTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\FileNaming.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\FilterTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\GroupTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\IFileStructure.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\ImageTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\ImageTag.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\LetterFilterControl.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\MenuTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\NavigationPage.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\ObjectTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\ObjNotFound.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\RoleTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\RootPath.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\SchemaTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\TabControl.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\Table.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\TableCell.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\TableColumn.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\TableRow.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\UList.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\UListItem.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\URLLink.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\UserTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\WebControl.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\WebPage.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="Output\WebUtil.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\WorkflowReferenceTable.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="output\webpage\HtmlReferenceList.cpp">
+      <Filter>output\webpage</Filter>
+    </ClCompile>
+    <ClCompile Include="output\webpage\HtmlReferenceListImpl.cpp">
+      <Filter>output\webpage</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\AppTimer.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\BlackListItem.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\CommandLineValidator.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Context.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Memory.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\RefItem.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\ResourceFileLocatorAndExtractor.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\UntarStream.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Util.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARActiveLinkList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARContainerList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\AREscalationList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARFieldList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARFilterList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARGroupList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARImageList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARListHelpers.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARMenuList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARRoleList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARSchemaList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARServerInfoList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARUserList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\ARVUIList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\BlackList.cpp">
+      <Filter>lists</Filter>
+    </ClCompile>
+    <ClCompile Include="lists\support\SchemaDbQueryBuilder.cpp">
+      <Filter>lists\support</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanActiveLinks.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanContainers.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanEscalations.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanFields.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanFilters.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanImages.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanMain.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanMenus.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="scan\ScanSchema.cpp">
+      <Filter>scan</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\tinyxml\tinystr.cpp">
+      <Filter>thirdparty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\tinyxml\tinyxml.cpp">
+      <Filter>thirdparty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\tinyxml\tinyxmlerror.cpp">
+      <Filter>thirdparty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\tinyxml\tinyxmlparser.cpp">
+      <Filter>thirdparty\tinyxml</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppConfigReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ARApi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ARInside.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystemUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gzstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARActiveLink.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARAssignHelper.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARCharMenu.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARContainer.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ARDayStructHelper.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AREnum.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AREscalation.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARField.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARFilter.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARGlobalField.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARGroup.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ARHandle.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ARImage.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARObject.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ARParseField.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARProplistHelper.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARQualification.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARRole.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARSchema.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARServerInfo.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARServerObject.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ARSetFieldHelper.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ARStatusList.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARUser.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARValue.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ARVui.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ChangeHistoryEntry.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\OpenWindowReportData.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\OpenWindowSampleData.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocActionSetFieldsHelper.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocAlActionStruct.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocAlDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocAlGuideDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocAllMatchingIdsTable.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocAnalyzer.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocApplicationDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocBase.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocBasicField.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocCharMenuDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocContainerHelper.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocCurrencyField.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocCustomWorkflow.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocEscalationDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocFieldDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocFilterActionStruct.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocFilterDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocFilterGuideDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocGroupDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocImageDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocImageOverview.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocMain.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocOverlayHelper.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocPacklistDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocRoleDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocSchemaDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocStatusHistoryField.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocSummaryInfo.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\DocTextReferences.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocUserDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocValidator.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocVuiDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\DocWebserviceDetails.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="Doc\MessageItem.h">
+      <Filter>doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\actions\DocAlMessageAction.h">
+      <Filter>doc\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\actions\DocOpenWindowAction.h">
+      <Filter>doc\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\AlTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\ContainerTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\CsvPage.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\EscalTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\FileNaming.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\FilterTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\GroupTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\IFileStructure.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\ImageTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\ImageTag.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\LetterFilterControl.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\MenuTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\NavigationPage.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\ObjectTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\ObjNotFound.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\RoleTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\RootPath.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\SchemaTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\TabControl.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\Table.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\TableCell.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\TableColumn.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\TableRow.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\UList.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\UListItem.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\URLLink.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\UserTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\WebControl.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\WebPage.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="Output\WebUtil.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\WorkflowReferenceTable.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\webpage\HtmlReferenceList.h">
+      <Filter>output\webpage</Filter>
+    </ClInclude>
+    <ClInclude Include="output\webpage\HtmlReferenceListImpl.h">
+      <Filter>output\webpage</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\AppTimer.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\BlackListItem.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\CommandLineValidator.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Context.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Memory.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\RefItem.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ResourceFileLocatorAndExtractor.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Uncopyable.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\UntarStream.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Util.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARActiveLinkList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARContainerList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\AREscalationList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARFieldList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARFilterList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARGroupList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARImageList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARListHelpers.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARMenuList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARRoleList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARSchemaList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARServerInfoList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARUserList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\ARVUIList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\BlackList.h">
+      <Filter>lists</Filter>
+    </ClInclude>
+    <ClInclude Include="lists\support\SchemaDbQueryBuilder.h">
+      <Filter>lists\support</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanActiveLinks.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanContainers.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanEscalations.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanFields.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanFilters.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanImages.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanMain.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanMenus.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="scan\ScanSchema.h">
+      <Filter>scan</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\allocators.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\document.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\encodedstream.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\encodings.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\filereadstream.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\filestream.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\filewritestream.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\genericreadstream.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\genericwritestream.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\internal\pow10.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\prettywriter.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\rapidjson.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\reader.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\internal\stack.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\internal\strfunc.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\stringbuffer.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\rapidjson\writer.h">
+      <Filter>thirdparty\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\Arg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\ArgException.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\ArgTraits.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\CmdLine.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\CmdLineInterface.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\CmdLineOutput.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\Constraint.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\DocBookOutput.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\HelpVisitor.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\IgnoreRestVisitor.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\MultiArg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\MultiSwitchArg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\OptionalUnlabeledTracker.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\StandardTraits.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\StdOutput.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\SwitchArg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\UnlabeledMultiArg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\UnlabeledValueArg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\ValueArg.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\ValuesConstraint.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\VersionVisitor.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\Visitor.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\XorHandler.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tclap\ZshCompletionOutput.h">
+      <Filter>thirdparty\tclap</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tinyxml\tinystr.h">
+      <Filter>thirdparty\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\tinyxml\tinyxml.h">
+      <Filter>thirdparty\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystemUtilTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\image.gif">
+      <Filter>res</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_flat_0_aaaaaa_40x100.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_flat_75_ffffff_40x100.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_55_fbf9ee_1x400.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_65_ffffff_1x400.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_75_dadada_1x400.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_75_e6e6e6_1x400.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_95_fef1ec_1x400.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-icons_222222_256x240.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-icons_2e83ff_256x240.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-icons_454545_256x240.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-icons_888888_256x240.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+    <Image Include="thirdparty\jquery\images\ui-icons_cd0a0a_256x240.png">
+      <Filter>thirdparty\jquery\images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\actlinkList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\arshelper.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\containerList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\escalationList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\filterList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\groupList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\imageList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\menuList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\object_list.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\roleList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\schema_page.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="res\schemaList.js">
+      <Filter>res</Filter>
+    </None>
+    <None Include="thirdparty\jquery\jquery-ui-custom.css">
+      <Filter>thirdparty\jquery</Filter>
+    </None>
+    <None Include="thirdparty\jquery\jquery-ui-custom.min.css">
+      <Filter>thirdparty\jquery</Filter>
+    </None>
+    <None Include="thirdparty\jquery\jquery-ui.js">
+      <Filter>thirdparty\jquery</Filter>
+    </None>
+    <None Include="thirdparty\jquery\jquery.address.min.js">
+      <Filter>thirdparty\jquery</Filter>
+    </None>
+    <None Include="thirdparty\jquery\jquery.js">
+      <Filter>thirdparty\jquery</Filter>
+    </None>
+    <None Include="thirdparty\jquery\jquery.timers.js">
+      <Filter>thirdparty\jquery</Filter>
+    </None>
+    <None Include="thirdparty\tclap\LICENSE">
+      <Filter>thirdparty\tclap</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ARInside.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Res\active_link.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\al_guide.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\application.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\ars_edit.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\chapter.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\disabled.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\doc.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\down.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\edit.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\empty_list.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\escalation.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\filter.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\filter_guide.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\folder.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\group.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\hidden.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\info.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\menu.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\next.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\packing_list.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\prev.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\schema.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\script.js">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\search.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\server.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\sort_asc.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\sort_desc.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\sortscript.js">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\style.css">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\tabscript.js">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\up.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\user.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\visible.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\webservice.gif">
+      <Filter>res</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

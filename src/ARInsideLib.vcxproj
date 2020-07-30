@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}</ProjectGuid>
+    <RootNamespace>ARInside</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.30028.132</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>IF EXIST $(ProjectDir)\.svn\ SubWCRev.exe "$(SolutionDir)\." "$(ProjectDir)svnrev_template.h" "$(ProjectDir)svnrev.h"</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\thirdparty\tclap;.\thirdparty\arapi\include;.\;.\thirdparty\zlib\include;thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;AR_STRICT_ANSI;ARINSIDE_ENABLE_ZLIB_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>IF EXIST $(ProjectDir)\.svn\ SubWCRev.exe "$(SolutionDir)\." "$(ProjectDir)svnrev_template.h" "$(ProjectDir)svnrev.h"</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\thirdparty\tclap;.\thirdparty\arapi\include;.\;.\thirdparty\zlib\include;thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;AR_STRICT_ANSI;ARINSIDE_ENABLE_ZLIB_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>IF EXIST $(ProjectDir)\.svn\ SubWCRev.exe "$(SolutionDir)\." "$(ProjectDir)svnrev_template.h" "$(ProjectDir)svnrev.h"</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>.\thirdparty\tclap;.\thirdparty\arapi\include;.\;.\thirdparty\zlib\include;thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;AR_STRICT_ANSI;ARINSIDE_ENABLE_ZLIB_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>IF EXIST $(ProjectDir)\.svn\ SubWCRev.exe "$(SolutionDir)\." "$(ProjectDir)svnrev_template.h" "$(ProjectDir)svnrev.h"</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>.\thirdparty\tclap;.\thirdparty\arapi\include;.\;.\thirdparty\zlib\include;thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;AR_STRICT_ANSI;ARINSIDE_ENABLE_ZLIB_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AppConfig.cpp" />
+    <ClCompile Include="AppConfigReader.cpp" />
+    <ClCompile Include="ARInside.cpp" />
+    <ClCompile Include="ConfigFile.cpp" />
+    <ClCompile Include="Core\ARActiveLink.cpp" />
+    <ClCompile Include="Core\ARAssignHelper.cpp" />
+    <ClCompile Include="Core\ARCharMenu.cpp" />
+    <ClCompile Include="Core\ARContainer.cpp" />
+    <ClCompile Include="core\ARDayStructHelper.cpp" />
+    <ClCompile Include="core\AREnum.cpp" />
+    <ClCompile Include="Core\AREscalation.cpp" />
+    <ClCompile Include="Core\ARField.cpp" />
+    <ClCompile Include="Core\ARFilter.cpp" />
+    <ClCompile Include="Core\ARGlobalField.cpp" />
+    <ClCompile Include="Core\ARGroup.cpp" />
+    <ClCompile Include="core\ARHandle.cpp" />
+    <ClCompile Include="core\ARImage.cpp" />
+    <ClCompile Include="Core\ARObject.cpp" />
+    <ClCompile Include="core\ARParseField.cpp" />
+    <ClCompile Include="Core\ARProplistHelper.cpp" />
+    <ClCompile Include="Core\ARQualification.cpp" />
+    <ClCompile Include="Core\ARRole.cpp" />
+    <ClCompile Include="Core\ARSchema.cpp" />
+    <ClCompile Include="Core\ARServerInfo.cpp" />
+    <ClCompile Include="Core\ARServerObject.cpp" />
+    <ClCompile Include="core\ARSetFieldHelper.cpp" />
+    <ClCompile Include="core\ARStatusList.cpp" />
+    <ClCompile Include="Core\ARUser.cpp" />
+    <ClCompile Include="Core\ARValue.cpp" />
+    <ClCompile Include="Core\ARVui.cpp" />
+    <ClCompile Include="Core\ChangeHistoryEntry.cpp" />
+    <ClCompile Include="core\OpenWindowReportData.cpp" />
+    <ClCompile Include="core\OpenWindowSampleData.cpp" />
+    <ClCompile Include="doc\actions\DocAlMessageAction.cpp" />
+    <ClCompile Include="doc\actions\DocOpenWindowAction.cpp" />
+    <ClCompile Include="Doc\DocActionSetFieldsHelper.cpp" />
+    <ClCompile Include="Doc\DocAlActionStruct.cpp" />
+    <ClCompile Include="Doc\DocAlDetails.cpp" />
+    <ClCompile Include="Doc\DocAlGuideDetails.cpp" />
+    <ClCompile Include="doc\DocAllMatchingIdsTable.cpp" />
+    <ClCompile Include="Doc\DocAnalyzer.cpp" />
+    <ClCompile Include="Doc\DocApplicationDetails.cpp" />
+    <ClCompile Include="Doc\DocBase.cpp" />
+    <ClCompile Include="doc\DocBasicField.cpp" />
+    <ClCompile Include="Doc\DocCharMenuDetails.cpp" />
+    <ClCompile Include="Doc\DocContainerHelper.cpp" />
+    <ClCompile Include="doc\DocCurrencyField.cpp" />
+    <ClCompile Include="doc\DocCustomWorkflow.cpp" />
+    <ClCompile Include="Doc\DocEscalationDetails.cpp" />
+    <ClCompile Include="Doc\DocFieldDetails.cpp" />
+    <ClCompile Include="Doc\DocFilterActionStruct.cpp" />
+    <ClCompile Include="Doc\DocFilterDetails.cpp" />
+    <ClCompile Include="Doc\DocFilterGuideDetails.cpp" />
+    <ClCompile Include="Doc\DocGroupDetails.cpp" />
+    <ClCompile Include="doc\DocImageDetails.cpp" />
+    <ClCompile Include="doc\DocImageOverview.cpp" />
+    <ClCompile Include="Doc\DocMain.cpp" />
+    <ClCompile Include="doc\DocOverlayHelper.cpp" />
+    <ClCompile Include="Doc\DocPacklistDetails.cpp" />
+    <ClCompile Include="Doc\DocRoleDetails.cpp" />
+    <ClCompile Include="Doc\DocSchemaDetails.cpp" />
+    <ClCompile Include="doc\DocStatusHistoryField.cpp" />
+    <ClCompile Include="doc\DocSummaryInfo.cpp" />
+    <ClCompile Include="doc\DocTextReferences.cpp" />
+    <ClCompile Include="Doc\DocUserDetails.cpp" />
+    <ClCompile Include="doc\DocValidator.cpp" />
+    <ClCompile Include="Doc\DocVuiDetails.cpp" />
+    <ClCompile Include="Doc\DocWebserviceDetails.cpp" />
+    <ClCompile Include="Doc\MessageItem.cpp" />
+    <ClCompile Include="FileSystemUtil.cpp" />
+    <ClCompile Include="gzstream.cpp" />
+    <ClCompile Include="lists\ARActiveLinkList.cpp" />
+    <ClCompile Include="lists\ARContainerList.cpp" />
+    <ClCompile Include="lists\AREscalationList.cpp" />
+    <ClCompile Include="lists\ARFieldList.cpp" />
+    <ClCompile Include="lists\ARFilterList.cpp" />
+    <ClCompile Include="lists\ARGroupList.cpp" />
+    <ClCompile Include="lists\ARImageList.cpp" />
+    <ClCompile Include="lists\ARListHelpers.cpp" />
+    <ClCompile Include="lists\ARMenuList.cpp" />
+    <ClCompile Include="lists\ARRoleList.cpp" />
+    <ClCompile Include="lists\ARSchemaList.cpp" />
+    <ClCompile Include="lists\ARServerInfoList.cpp" />
+    <ClCompile Include="lists\ARUserList.cpp" />
+    <ClCompile Include="lists\ARVUIList.cpp" />
+    <ClCompile Include="lists\BlackList.cpp" />
+    <ClCompile Include="lists\support\SchemaDbQueryBuilder.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Output\AlTable.cpp" />
+    <ClCompile Include="Output\ContainerTable.cpp" />
+    <ClCompile Include="output\CsvPage.cpp" />
+    <ClCompile Include="Output\EscalTable.cpp" />
+    <ClCompile Include="output\FileNaming.cpp" />
+    <ClCompile Include="Output\FilterTable.cpp" />
+    <ClCompile Include="Output\GroupTable.cpp" />
+    <ClCompile Include="output\IFileStructure.cpp" />
+    <ClCompile Include="output\ImageTable.cpp" />
+    <ClCompile Include="output\ImageTag.cpp" />
+    <ClCompile Include="output\LetterFilterControl.cpp" />
+    <ClCompile Include="Output\MenuTable.cpp" />
+    <ClCompile Include="output\NavigationPage.cpp" />
+    <ClCompile Include="Output\ObjectTable.cpp" />
+    <ClCompile Include="output\ObjNotFound.cpp" />
+    <ClCompile Include="Output\RoleTable.cpp" />
+    <ClCompile Include="output\RootPath.cpp" />
+    <ClCompile Include="Output\SchemaTable.cpp" />
+    <ClCompile Include="output\TabControl.cpp" />
+    <ClCompile Include="Output\Table.cpp" />
+    <ClCompile Include="Output\TableCell.cpp" />
+    <ClCompile Include="Output\TableColumn.cpp" />
+    <ClCompile Include="Output\TableRow.cpp" />
+    <ClCompile Include="Output\UList.cpp" />
+    <ClCompile Include="Output\UListItem.cpp" />
+    <ClCompile Include="output\URLLink.cpp" />
+    <ClCompile Include="Output\UserTable.cpp" />
+    <ClCompile Include="Output\WebControl.cpp" />
+    <ClCompile Include="Output\WebPage.cpp" />
+    <ClCompile Include="output\webpage\HtmlReferenceList.cpp" />
+    <ClCompile Include="output\webpage\HtmlReferenceListImpl.cpp" />
+    <ClCompile Include="Output\WebUtil.cpp" />
+    <ClCompile Include="output\WorkflowReferenceTable.cpp" />
+    <ClCompile Include="scan\ScanActiveLinks.cpp" />
+    <ClCompile Include="scan\ScanContainers.cpp" />
+    <ClCompile Include="scan\ScanEscalations.cpp" />
+    <ClCompile Include="scan\ScanFields.cpp" />
+    <ClCompile Include="scan\ScanFilters.cpp" />
+    <ClCompile Include="scan\ScanImages.cpp" />
+    <ClCompile Include="scan\ScanMain.cpp" />
+    <ClCompile Include="scan\ScanMenus.cpp" />
+    <ClCompile Include="scan\ScanSchema.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="thirdparty\tinyxml\tinystr.cpp" />
+    <ClCompile Include="thirdparty\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="thirdparty\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="thirdparty\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="Util\AppTimer.cpp" />
+    <ClCompile Include="Util\BlackListItem.cpp" />
+    <ClCompile Include="util\CommandLineValidator.cpp" />
+    <ClCompile Include="util\Context.cpp" />
+    <ClCompile Include="util\Memory.cpp" />
+    <ClCompile Include="util\RefItem.cpp" />
+    <ClCompile Include="util\ResourceFileLocatorAndExtractor.cpp" />
+    <ClCompile Include="util\UntarStream.cpp" />
+    <ClCompile Include="Util\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppConfig.h" />
+    <ClInclude Include="AppConfigReader.h" />
+    <ClInclude Include="AppException.h" />
+    <ClInclude Include="ARApi.h" />
+    <ClInclude Include="ARInside.h" />
+    <ClInclude Include="ConfigFile.h" />
+    <ClInclude Include="Core\ARActiveLink.h" />
+    <ClInclude Include="Core\ARAssignHelper.h" />
+    <ClInclude Include="Core\ARCharMenu.h" />
+    <ClInclude Include="Core\ARContainer.h" />
+    <ClInclude Include="core\ARDayStructHelper.h" />
+    <ClInclude Include="Core\AREnum.h" />
+    <ClInclude Include="Core\AREscalation.h" />
+    <ClInclude Include="Core\ARField.h" />
+    <ClInclude Include="Core\ARFilter.h" />
+    <ClInclude Include="Core\ARGlobalField.h" />
+    <ClInclude Include="Core\ARGroup.h" />
+    <ClInclude Include="core\ARHandle.h" />
+    <ClInclude Include="core\ARImage.h" />
+    <ClInclude Include="Core\ARObject.h" />
+    <ClInclude Include="core\ARParseField.h" />
+    <ClInclude Include="Core\ARProplistHelper.h" />
+    <ClInclude Include="Core\ARQualification.h" />
+    <ClInclude Include="Core\ARRole.h" />
+    <ClInclude Include="Core\ARSchema.h" />
+    <ClInclude Include="Core\ARServerInfo.h" />
+    <ClInclude Include="Core\ARServerObject.h" />
+    <ClInclude Include="core\ARSetFieldHelper.h" />
+    <ClInclude Include="core\ARStatusList.h" />
+    <ClInclude Include="Core\ARUser.h" />
+    <ClInclude Include="Core\ARValue.h" />
+    <ClInclude Include="Core\ARVui.h" />
+    <ClInclude Include="Core\ChangeHistoryEntry.h" />
+    <ClInclude Include="core\OpenWindowReportData.h" />
+    <ClInclude Include="core\OpenWindowSampleData.h" />
+    <ClInclude Include="doc\actions\DocAlMessageAction.h" />
+    <ClInclude Include="doc\actions\DocOpenWindowAction.h" />
+    <ClInclude Include="Doc\DocActionSetFieldsHelper.h" />
+    <ClInclude Include="Doc\DocAlActionStruct.h" />
+    <ClInclude Include="Doc\DocAlDetails.h" />
+    <ClInclude Include="Doc\DocAlGuideDetails.h" />
+    <ClInclude Include="doc\DocAllMatchingIdsTable.h" />
+    <ClInclude Include="Doc\DocAnalyzer.h" />
+    <ClInclude Include="Doc\DocApplicationDetails.h" />
+    <ClInclude Include="Doc\DocBase.h" />
+    <ClInclude Include="doc\DocBasicField.h" />
+    <ClInclude Include="Doc\DocCharMenuDetails.h" />
+    <ClInclude Include="Doc\DocContainerHelper.h" />
+    <ClInclude Include="doc\DocCurrencyField.h" />
+    <ClInclude Include="doc\DocCustomWorkflow.h" />
+    <ClInclude Include="Doc\DocEscalationDetails.h" />
+    <ClInclude Include="Doc\DocFieldDetails.h" />
+    <ClInclude Include="Doc\DocFilterActionStruct.h" />
+    <ClInclude Include="Doc\DocFilterDetails.h" />
+    <ClInclude Include="Doc\DocFilterGuideDetails.h" />
+    <ClInclude Include="Doc\DocGroupDetails.h" />
+    <ClInclude Include="doc\DocImageDetails.h" />
+    <ClInclude Include="doc\DocImageOverview.h" />
+    <ClInclude Include="Doc\DocMain.h" />
+    <ClInclude Include="doc\DocOverlayHelper.h" />
+    <ClInclude Include="Doc\DocPacklistDetails.h" />
+    <ClInclude Include="Doc\DocRoleDetails.h" />
+    <ClInclude Include="Doc\DocSchemaDetails.h" />
+    <ClInclude Include="doc\DocStatusHistoryField.h" />
+    <ClInclude Include="doc\DocSummaryInfo.h" />
+    <ClInclude Include="doc\DocTextReferences.h" />
+    <ClInclude Include="Doc\DocUserDetails.h" />
+    <ClInclude Include="Doc\DocValidator.h" />
+    <ClInclude Include="Doc\DocVuiDetails.h" />
+    <ClInclude Include="Doc\DocWebserviceDetails.h" />
+    <ClInclude Include="Doc\MessageItem.h" />
+    <ClInclude Include="FileSystemUtil.h" />
+    <ClInclude Include="FileSystemUtilTest.h" />
+    <ClInclude Include="gzstream.h" />
+    <ClInclude Include="lists\ARActiveLinkList.h" />
+    <ClInclude Include="lists\ARContainerList.h" />
+    <ClInclude Include="lists\AREscalationList.h" />
+    <ClInclude Include="lists\ARFieldList.h" />
+    <ClInclude Include="lists\ARFilterList.h" />
+    <ClInclude Include="lists\ARGroupList.h" />
+    <ClInclude Include="lists\ARImageList.h" />
+    <ClInclude Include="lists\ARListHelpers.h" />
+    <ClInclude Include="lists\ARMenuList.h" />
+    <ClInclude Include="lists\ARRoleList.h" />
+    <ClInclude Include="lists\ARSchemaList.h" />
+    <ClInclude Include="lists\ARServerInfoList.h" />
+    <ClInclude Include="lists\ARUserList.h" />
+    <ClInclude Include="lists\ARVUIList.h" />
+    <ClInclude Include="lists\BlackList.h" />
+    <ClInclude Include="lists\support\SchemaDbQueryBuilder.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Output\AlTable.h" />
+    <ClInclude Include="Output\ContainerTable.h" />
+    <ClInclude Include="output\CsvPage.h" />
+    <ClInclude Include="Output\EscalTable.h" />
+    <ClInclude Include="output\FileNaming.h" />
+    <ClInclude Include="Output\FilterTable.h" />
+    <ClInclude Include="Output\GroupTable.h" />
+    <ClInclude Include="output\IFileStructure.h" />
+    <ClInclude Include="output\ImageTable.h" />
+    <ClInclude Include="output\ImageTag.h" />
+    <ClInclude Include="output\LetterFilterControl.h" />
+    <ClInclude Include="Output\MenuTable.h" />
+    <ClInclude Include="output\NavigationPage.h" />
+    <ClInclude Include="Output\ObjectTable.h" />
+    <ClInclude Include="output\ObjNotFound.h" />
+    <ClInclude Include="Output\RoleTable.h" />
+    <ClInclude Include="output\RootPath.h" />
+    <ClInclude Include="Output\SchemaTable.h" />
+    <ClInclude Include="output\TabControl.h" />
+    <ClInclude Include="Output\Table.h" />
+    <ClInclude Include="Output\TableCell.h" />
+    <ClInclude Include="Output\TableColumn.h" />
+    <ClInclude Include="Output\TableRow.h" />
+    <ClInclude Include="Output\UList.h" />
+    <ClInclude Include="Output\UListItem.h" />
+    <ClInclude Include="output\URLLink.h" />
+    <ClInclude Include="Output\UserTable.h" />
+    <ClInclude Include="Output\WebControl.h" />
+    <ClInclude Include="Output\WebPage.h" />
+    <ClInclude Include="output\webpage\HtmlReferenceList.h" />
+    <ClInclude Include="output\webpage\HtmlReferenceListImpl.h" />
+    <ClInclude Include="Output\WebUtil.h" />
+    <ClInclude Include="output\WorkflowReferenceTable.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="scan\ScanActiveLinks.h" />
+    <ClInclude Include="scan\ScanContainers.h" />
+    <ClInclude Include="scan\ScanEscalations.h" />
+    <ClInclude Include="scan\ScanFields.h" />
+    <ClInclude Include="scan\ScanFilters.h" />
+    <ClInclude Include="scan\ScanImages.h" />
+    <ClInclude Include="scan\ScanMain.h" />
+    <ClInclude Include="scan\ScanMenus.h" />
+    <ClInclude Include="scan\ScanSchema.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="thirdparty\rapidjson\allocators.h" />
+    <ClInclude Include="thirdparty\rapidjson\document.h" />
+    <ClInclude Include="thirdparty\rapidjson\encodedstream.h" />
+    <ClInclude Include="thirdparty\rapidjson\encodings.h" />
+    <ClInclude Include="thirdparty\rapidjson\filereadstream.h" />
+    <ClInclude Include="thirdparty\rapidjson\filestream.h" />
+    <ClInclude Include="thirdparty\rapidjson\filewritestream.h" />
+    <ClInclude Include="thirdparty\rapidjson\genericreadstream.h" />
+    <ClInclude Include="thirdparty\rapidjson\genericwritestream.h" />
+    <ClInclude Include="thirdparty\rapidjson\internal\pow10.h" />
+    <ClInclude Include="thirdparty\rapidjson\internal\stack.h" />
+    <ClInclude Include="thirdparty\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="thirdparty\rapidjson\prettywriter.h" />
+    <ClInclude Include="thirdparty\rapidjson\rapidjson.h" />
+    <ClInclude Include="thirdparty\rapidjson\reader.h" />
+    <ClInclude Include="thirdparty\rapidjson\stringbuffer.h" />
+    <ClInclude Include="thirdparty\rapidjson\writer.h" />
+    <ClInclude Include="thirdparty\tclap\Arg.h" />
+    <ClInclude Include="thirdparty\tclap\ArgException.h" />
+    <ClInclude Include="thirdparty\tclap\ArgTraits.h" />
+    <ClInclude Include="thirdparty\tclap\CmdLine.h" />
+    <ClInclude Include="thirdparty\tclap\CmdLineInterface.h" />
+    <ClInclude Include="thirdparty\tclap\CmdLineOutput.h" />
+    <ClInclude Include="thirdparty\tclap\Constraint.h" />
+    <ClInclude Include="thirdparty\tclap\DocBookOutput.h" />
+    <ClInclude Include="thirdparty\tclap\HelpVisitor.h" />
+    <ClInclude Include="thirdparty\tclap\IgnoreRestVisitor.h" />
+    <ClInclude Include="thirdparty\tclap\MultiArg.h" />
+    <ClInclude Include="thirdparty\tclap\MultiSwitchArg.h" />
+    <ClInclude Include="thirdparty\tclap\OptionalUnlabeledTracker.h" />
+    <ClInclude Include="thirdparty\tclap\StandardTraits.h" />
+    <ClInclude Include="thirdparty\tclap\StdOutput.h" />
+    <ClInclude Include="thirdparty\tclap\SwitchArg.h" />
+    <ClInclude Include="thirdparty\tclap\UnlabeledMultiArg.h" />
+    <ClInclude Include="thirdparty\tclap\UnlabeledValueArg.h" />
+    <ClInclude Include="thirdparty\tclap\ValueArg.h" />
+    <ClInclude Include="thirdparty\tclap\ValuesConstraint.h" />
+    <ClInclude Include="thirdparty\tclap\VersionVisitor.h" />
+    <ClInclude Include="thirdparty\tclap\Visitor.h" />
+    <ClInclude Include="thirdparty\tclap\XorHandler.h" />
+    <ClInclude Include="thirdparty\tclap\ZshCompletionOutput.h" />
+    <ClInclude Include="thirdparty\tinyxml\tinystr.h" />
+    <ClInclude Include="thirdparty\tinyxml\tinyxml.h" />
+    <ClInclude Include="Util\AppTimer.h" />
+    <ClInclude Include="Util\BlackListItem.h" />
+    <ClInclude Include="util\CommandLineValidator.h" />
+    <ClInclude Include="util\Context.h" />
+    <ClInclude Include="util\Memory.h" />
+    <ClInclude Include="util\RefItem.h" />
+    <ClInclude Include="util\ResourceFileLocatorAndExtractor.h" />
+    <ClInclude Include="util\Uncopyable.h" />
+    <ClInclude Include="util\UntarStream.h" />
+    <ClInclude Include="Util\Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\active_link.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\al_guide.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\application.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\ars_edit.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\chapter.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\disabled.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\doc.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\down.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\edit.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\empty_list.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\escalation.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\filter.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\filter_guide.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\folder.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\group.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\hidden.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <Image Include="res\image.gif" />
+    <CustomBuild Include="res\info.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\menu.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\next.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\packing_list.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\prev.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\schema.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\search.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\server.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\sort_asc.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\sort_desc.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\up.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\user.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\visible.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\webservice.gif">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <Image Include="thirdparty\jquery\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Image Include="thirdparty\jquery\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Image Include="thirdparty\jquery\images\ui-icons_222222_256x240.png" />
+    <Image Include="thirdparty\jquery\images\ui-icons_2e83ff_256x240.png" />
+    <Image Include="thirdparty\jquery\images\ui-icons_454545_256x240.png" />
+    <Image Include="thirdparty\jquery\images\ui-icons_888888_256x240.png" />
+    <Image Include="thirdparty\jquery\images\ui-icons_cd0a0a_256x240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\actlinkList.js" />
+    <None Include="res\arshelper.js" />
+    <None Include="res\containerList.js" />
+    <None Include="res\escalationList.js" />
+    <None Include="res\filterList.js" />
+    <None Include="res\groupList.js" />
+    <None Include="res\imageList.js" />
+    <None Include="res\menuList.js" />
+    <None Include="res\object_list.js" />
+    <None Include="res\roleList.js" />
+    <None Include="res\schemaList.js" />
+    <None Include="res\schema_page.js" />
+    <CustomBuild Include="res\script.js">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\sortscript.js">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\style.css">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="res\tabscript.js">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <None Include="thirdparty\jquery\jquery-ui-custom.css" />
+    <None Include="thirdparty\jquery\jquery-ui-custom.min.css" />
+    <None Include="thirdparty\jquery\jquery-ui.js" />
+    <None Include="thirdparty\jquery\jquery.address.min.js" />
+    <None Include="thirdparty\jquery\jquery.js" />
+    <None Include="thirdparty\jquery\jquery.timers.js" />
+    <None Include="thirdparty\tclap\LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ARInside.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
