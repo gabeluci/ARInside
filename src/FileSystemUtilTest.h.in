@@ -1,0 +1,15 @@
+#pragma once
+
+///////////////////////////////////////////////////////////////////////////////
+/* If you don't use CMAKE to compile this source code on windows, just make a /
+ * copy of this file and rename it to "FileSystemUtilTest.h", replace the     /
+ * CMAKE_CURRENT_BINARY_DIR string below with the correct path.              */
+///////////////////////////////////////////////////////////////////////////////
+
+#ifdef CMAKE_INTDIR
+#define ARINSIDE_VS_TARGET_DIR "\\" CMAKE_INTDIR
+#else
+#define ARINSIDE_VS_TARGET_DIR ""
+#endif
+
+#define DIRECTORY_OF_TEST_BINARY "@CMAKE_CURRENT_BINARY_DIR@" ARINSIDE_VS_TARGET_DIR

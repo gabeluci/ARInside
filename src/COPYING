@@ -1,0 +1,67 @@
+ARInside -- Copyright (C) 2010-2012 Stefan Nerlich, LJ Longwing, John Luthgers
+==============================================================================
+This program is free software; you can redistribute it and/or modify it under 
+the terms of the GNU General Public License as published by the Free Software 
+Foundation Version 2.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You can find the full license in the "gpl-2_0.txt" file 
+or at http://www.gnu.org/licenses/gpl-2.0.html
+
+Additional packages
+===================
+There are a few open source utils used in ARInside. These utils come with their
+own license.
+
+== tinyXML ==
+Homepage: http://www.sourceforge.net/projects/tinyxml
+Subdir  : ./tinyxml
+License : ZLib (see ./tinyxml/LICENSE)
+
+TinyXml is a simple, small, minimal, C++ XML parser that can be easily 
+integrated into other programs.
+
+== TCLAP ==
+Homepage: http://tclap.sourceforge.net/
+Subdir  : ./tclap
+License : MIT (see ./tclap/LICENSE)
+
+TCLAP is a small, flexible library that provides a simple interface for 
+defining and accessing command line arguments.
+
+== zlib ==
+Homepage: http://www.zlib.net
+License:  http://www.zlib.net/zlib_license.html
+
+The zlib compression library provides in-memory compression and decompression
+functions, including integrity checks of the uncompressed data.
+
+== Gzstream Library ==
+Homepage: http://www.cs.unc.edu/Research/compgeom/gzstream/
+License:  LGPL (see ./gzstream.cpp)
+
+Gzstream is a small C++ library, basically just a wrapper, that provides the
+functionality of the zlib C-library in a C++ iostream.
+
+== rapidjson ==
+Homepage: http://code.google.com/p/rapidjson/
+License:  MIT (see thirdparty/rapidjson/license.txt)
+
+rapidjson is a fast JSON parser/generator for C++ with both SAX/DOM style API
+
+== googletest ==
+Homepage: https://code.google.com/p/googletest/
+License:  New BSD License (http://opensource.org/licenses/BSD-3-Clause)
+
+googletest is framework for writing C++ tests on a variety of platforms.
+
+== JQuery & JQueryUI ==
+Homepage: https://jquery.org/  ||  http://jqueryui.com/
+License:  MIT (https://jquery.org/license/)
+
+jQuery is a fast, small, and feature-rich JavaScript library. jQuery UI is a 
+curated set of user interface interactions, effects, widgets, and themes built
+on top of the jQuery JavaScript Library.

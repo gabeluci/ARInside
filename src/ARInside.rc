@@ -1,0 +1,95 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 7, 1
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+
+ID_ACTIVE_LINK          RCDATA                  "res/active_link.gif"
+ID_STYLE_CSS            RCDATA                  "res/style.css"
+ID_SCRIPT               RCDATA                  "res/script.js"
+ID_TABSCRIPT            RCDATA                  "res/tabscript.js"
+ID_SORTSCRIPT           RCDATA                  "res/sortscript.js"
+ID_SERVER               RCDATA                  "res/server.gif"
+ID_AL_GUIDE             RCDATA                  "res/al_guide.gif"
+ID_APPLICATION          RCDATA                  "res/application.gif"
+ID_ARS_EDIT             RCDATA                  "res/ars_edit.gif"
+ID_DISABLED             RCDATA                  "res/disabled.gif"
+ID_DOC                  RCDATA                  "res/doc.gif"
+ID_DOWN                 RCDATA                  "res/down.gif"
+ID_USER                 RCDATA                  "res/user.gif"
+ID_EMPTY_LIST           RCDATA                  "res/empty_list.gif"
+ID_ESCALATION           RCDATA                  "res/escalation.gif"
+ID_FILTER               RCDATA                  "res/filter.gif"
+ID_FILTER_GUIDE         RCDATA                  "res/filter_guide.gif"
+ID_FOLDER               RCDATA                  "res/folder.gif"
+ID_GROUP                RCDATA                  "res/group.gif"
+ID_CHAPTER              RCDATA                  "res/chapter.gif"
+ID_MENU                 RCDATA                  "res/menu.gif"
+ID_NEXT                 RCDATA                  "res/next.gif"
+ID_PACKING_LIST         RCDATA                  "res/packing_list.gif"
+ID_PREV                 RCDATA                  "res/prev.gif"
+ID_SCHEMA               RCDATA                  "res/schema.gif"
+ID_SEARCH               RCDATA                  "res/search.gif"
+ID_UP                   RCDATA                  "res/up.gif"
+ID_WEBSERVICE           RCDATA                  "res/webservice.gif"
+ID_SORT_DESC            RCDATA                  "res/sort_desc.gif"
+ID_SORT_ASC             RCDATA                  "res/sort_asc.gif"
+ID_VISIBLE              RCDATA                  "res/visible.gif"
+ID_EDIT                 RCDATA                  "res/edit.gif"
+ID_HIDDEN               RCDATA                  "res/hidden.gif"
+ID_INFO                 RCDATA                  "res/info.gif"
+ID_IMAGE                RCDATA                  "res/image.gif"
+ID_SCHEMAPAGE_JS        RCDATA                  "res/schema_page.js"
+ID_JQUERY_JS            RCDATA                  "thirdparty/jquery/jquery.js"
+ID_JQUERY_UI_JS         RCDATA                  "thirdparty/jquery/jquery-ui.js"
+ID_JQUERY_UI_CUSTOM_CSS RCDATA                  "thirdparty/jquery/jquery-ui-custom.min.css"
+ID_JQUERY_ADDRESS_JS    RCDATA                  "thirdparty/jquery/jquery.address.min.js"
+ID_JQUERY_TIMER_JS      RCDATA                  "thirdparty/jquery/jquery.timers.js"
+ID_JQUERY_UI_IMAGE_BGGLASS_E6     RCDATA        "thirdparty/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png"
+ID_JQUERY_UI_IMAGE_BGGLASS_FF     RCDATA        "thirdparty/jquery/images/ui-bg_glass_65_ffffff_1x400.png"
+ID_ARSHELPER_JS         RCDATA                  "res/arshelper.js"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // English (U.S.) resources
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+–
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

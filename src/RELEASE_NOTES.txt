@@ -1,0 +1,354 @@
+Here are the Changes between versions and the legend
+
+N - Note
+E - Enhancement
+D - Defect fixed
+
+2014-10-01
+[3.1.2]
+E - added some more details for fields and vuis in verbose logging
+E - added chunk-loading for user, groups and roles in case the row cout is limited by Max-Entries-Per-Query
+
+D - TR/DB field-prefix was missing in qualifications (#138)
+D - small fix in verbose logging (regarding activelink count)
+D - the GZCompression option in the settings.ini file wasn't working none-windows platforms (#140)
+D - an exception was thrown if the command passed to the processForm method did have only one parameter (#142)
+D - fixed a crash in case a webservice isn't attached to any form
+D - fixed a crash if a field in a join form is pointing to a deleted field in one of the join-members (#143)
+
+
+2014-09-01
+[3.1.1]
+E - new filter control on the schema page workflow-tab
+E - added full support for currency fields (#132)
+E - advanced workflow using $SCHEMA$ is now documented using the attached schemas instead of
+    the sample data form (#134)
+E - added keyword support the to service action sample data
+E - added support for the "Inline Form" option of open-window actions
+E - audit and archive forms aren't documented as regular forms any more (#130) and could be easily
+    identified on the all-forms page
+E - audit log forms show references to the source form(s) in the audit section
+E - added icons for different schema types and for overlay and custom objects
+
+D - fixed a crash while running ARInside on a 5.x server (#133)
+D - fixed a crash during role documentation (#131)
+D - in some cases the qualifications were documented incorrectly (regarding used delimiter, e.g. 
+    'field' or $field$)
+D - fixed a crash in the directory detection of program's executable
+
+N - on the schema page, actlink- and filter-guides aren't shown on the reference tab any more. They
+    are listed on the workflow tab. 
+
+2014-03-30
+[3.1.0]
+E - Redesign of the whole schema-page (added tab-control to organize the different informations)
+E - added database view-names and schemaid to the schema-page (#58, #59)
+E - added support for 8.0 and 8.1 keywords and functions
+E - added a new filter-control to the field list on the schema-page 
+E - moved information which were stored in different pages directly into the schema-page 
+    (removed the additional navigation items on schema-pages)
+E - added accordion control to the general-tab of the schema-page holding all the different details
+E - added default vui information to the schema page
+E - added form tag support (8.0 feature)
+E - schema references are now distinguished between data read, data writen
+E - added service-calls references to the schema page (#97)
+E - added full support for filterApi calls (input-mapping, output-mapping and references are created)
+E - set-field actions show "Data Source" like in devstudio
+E - added filtering support to all the overview/list-pages (actlinks, filters, escalations, menus,
+    alguides, fltguides, applications, packing-lists, groups, roles, users, images); filtering is
+    limited to 100 results and next chunk of results could be fetched by user
+E - added tar/gzip support and moved the static-resources out of the executable
+E - delete-workflow is listed on the schema page (see references tab)
+E - references between containers are now shown, so you could see if a actlink-guide, filter-guide
+    application or packing list is part of another packing list (#16 & #98)
+
+D - fixed an error with setfields-all-matching-ids in case it is used in combination with sample-data
+D - fixed an error in sample data resolving, if the sample data is read from current server (uses @)
+D - fixed a crash if webservice was attached to a missing form (or form is blacklisted)
+D - push-field actions with all-matching-id mapping, the source and target forms were switched
+
+2012-06-06
+[3.0.3]
+E - Support for overlay feature (#102)
+E - New ini-setting to disable overlay support
+E - Improved support for 7.6.04 servers (keywords, display-props, server-infos)
+E - Added again slow object loading as a fallback
+E - New --slow command line argument to disable fast object loading completely
+E - keywords used in default-values of fields are documented now (#116)
+E - New page showing all notification texts
+E - New page showing overlay- and custom-objects
+
+D - in notification actions first field from "select-field-list" wasn't documented (#113)
+D - objectOwner in a webservice was not linking to the forms page (#115)
+D - some value assignments to view-fields were not documented at all
+D - object-list sorting is case-insensitiv again (#105)
+D - function-value assigned to enum field could lead to crash (#108)
+D - references to fields in OpenWindow's Close-Mapping show "Else-Action 1048" (#109)
+D - "PushFields to *this* form" section is missing escalations (#103)
+
+
+2011-03-01
+[3.0.2]
+E - Apache/zlib-Support added to generate compressed documentation
+E - improved readability of assignments (e.g. push fields, set fields)
+E - added container references to menus (#69)
+E - moved form-subpage-navigation from right side to the left (#73)
+E - visuals of letter-indexes improved (link only to pages with at least one object)
+E - now field overview lists show more details for join, view and vendor forms
+E - field-detail-pages of join, view and vendor forms show details about its base field/form
+E - 7.6.03 and 7.6.04 support added (not finished yet)
+E - support for table-columns of type 'Display' and 'Data' added
+E - field-detail-pages for table fields lists table-columns in a sortable column
+E - added support for more display properties and their values (7.5 / 7.6.03 / 7.6.04)
+E - new APITimeout option to avoid timeout-error during object-loading (#96)
+E - Support for field-patterns added
+E - complete redesign of the internal object referencing
+E - lots of performance improvements
+E - added webservice-references to schema-pages
+E - The Escalations-ByAction-page supports service action
+E - added page that lists all error handlers (#95)
+E - added separate "Attached Workflow" section to fields (e.g. to show workflow attached to buttons)
+E - removed duplicate workflow-references (e.g. if a field is used in multiple setfield-actions in the same workflow object)
+E - workflow-references table of a global field show workflow of other schemas with the same global-field-id now
+E - support for 64-bit platforms added
+E - experimental support for AIX platform added
+
+D - join member forms doesn't link to the join form (#91)
+D - column-field references showed wrong source table (#92)
+D - search-, sql- and dictonary-menus show their definitions per used form (e.g. search qualification) to display the correct field references (fixes #43)
+D - all links to any role pointed to the page of group-id 0
+D - link to the form on the forms "Indexes"-page was pointing to the all-forms-list
+D - function LENGTHC was documented as LENGTH
+D - fixed a bug in documentation of notify action, that was leading to missing field references on the wrong form
+D - coordinates are now documented completely, instead of just the top-left position
+D - fixed missing field bug in goto-action
+D - fixed some incorrect links on image-pages and on the missing-fields validator
+D - some values were directly written to the html-page without escaping
+D - fields in openwindow-actions were not resolved correctly
+D - invalid actions removed from escalations-byaction-page
+D - global fields feature was broken in version 3.0.1
+
+2010-09-01
+[3.0.1]
+E - All command line options except ini (-i) are now optional (all settings are configurable within the ini file)
+E - New command line option "-o" to specify the output directory
+E - All objects are now loaded with the ARGetMultiple-functions to improve performance
+E - Internal object and memory usage optimized
+E - You can now blacklist images
+E - Now the filename/URL of the pages is generated by the object name instead of a consecutive number
+    (you can use the OldNaming setting to enabled the old file naming) 
+E - Added linux & SunOS platform support
+E - Program stops if TargetFolder points to the root directory [#64]
+
+D - No attachment fields were listed for attachment pool [#82]
+D - Server informations were displayed incorrectly (wrong value for wrong server info)
+D - Rare crash while decoding qualifier fixed [#78]
+D - fixed: Loading of groups using server version 6.3
+D - fixed: crashing during "Checking filter references" using server version 6.3
+D - fixed: crash while documenting schema details using server version 6.3 (was caused by audit documentation)
+D - fixed: objects with leading space(s) weren't listed currectly (crashed in some cases)
+
+2010-03-01
+[3.0.0]
+N - This is the first OpenSource release of ARInside
+
+E - Added support to parse 'Special Runprocess Commands' for form and field information
+E - Modified output of application to be brief, moved most output to the -v command line parameter
+E - Modified Selection Label display to properly display enumerated values
+E - Added granularity to containers inside containers, it now tells you what type of container it is (AL Guide, Packing List, etc)
+E - Field references in Indexes now link to the index page for the form
+E - Added full support for Date and TimeOfDay fields
+E - Optimized speed of the get server info from the server
+E - Added 'Status History' references where appropriate
+E - Added 'Error Handler' support and references
+E - Added Escalation Pool to the information displayed about an Escalation
+E - Added a new 'RunNotes' section to settings.ini to allow for run documentation
+E - Enhanced performance of setfield actions
+E - Added 'Hover' and 'Template' support
+E - Added 'Tooltip' message support
+E - Added 'Service' execute on support for Filters
+E - Added 'Service' action support for Active Links and Filters
+E - Added additional 7.1 and 7.5 AL Execute on conditions
+E - Upgraded API from 7.0.1 to 7.5
+E - Added support for form settings of 'Entry Point', 'Archive', and 'Audit'
+E - Added enhanced options added with 7.1 release
+E - Added full support for Open Window actions of type Report 
+E - Added Sample Data support where available
+E - The Validator contains now a page which lists missing menus 
+E - Added support for the new Image object in ARS 7.5
+E - Added Large Memory Support (uses up to 3GB now)
+E - Simplified qualification parsing to only add parens when required
+E - Added 'Group Category' and 'Computed Definition' to the group details
+
+D - when an Exclude list was specified, the exclude list itself was processed wasting time
+D - If Field ID was > 10 characters the app crashed
+D - Selection Fields with custom numbering weren't referencing in worflow references properly
+D - Menus specified in exclude list were still processed
+D - Visibility of fields in 'Change Field' actions wasn't processed properly
+D - 'Wait' and 'Goto' AL Actions weren't properly documented
+D - Default value of Integer was showing (null) when it should have been 0
+D - Not all Server Info and field properties were being displayed properly
+D - 'Run Time' was not being calculated properly
+D - Corrected () placement in setfield if statements
+D - SQL Menu Labels were not displaying properly
+D - SQL Set Field actions from another server were displaying current server
+D - Active Links interval settings were not displayed properly
+D - Fixed invalid HTML-links between Schema/VUI and the user (Last Modified By)
+D - Some uninitialized memory could cause cashes
+
+2007-07-27
+[Version 2.07.4]
+E - Internal update
+
+2007-07-27
+[Version 2.07.3]
+E - Internal update
+
+2007-07-09
+[Version 2.07.2]
+E - Added StatusHistory documentation in qualification and push fields assignememt
+E - Updated NULL value field assignement
+
+2007-07-05
+[Version 2.07.1]
+E - Added tab-separated csv data information to field documentation to load data into external applications
+E - Included a new list of server objects with no permission groups (Administrator only access)
+
+2007-06-23
+[Version 2.07.0]
+E - Additional error and plausibility validation
+
+2007-06-22
+[Version 2.06.7]
+E - Additional error checking
+E - Added reference information for ActiveLink and Filter SetFields and PushFields 'All matching IDs' action
+
+2007-06-20
+[Version 2.06.6]
+E - Improved application logging functionality
+
+2007-06-19
+[Version 2.06.5]
+D - Fixed a bug in Filter SetFields action struct using Filter API
+
+2007-04-26
+[Version 2.06.4]
+E - Added a new CmdUtility to the project to start ARInside from Windows form application (includes source)
+
+2007-04-26
+[Version 2.06.3]
+N - Moved C++ project solution to VS 2005 and updated group list helper class
+N - Added application installer
+
+2007-04-23
+[Version 2.06.1]
+E - In addition to workflow information for each field i added a new workflow documentation for each form that lists all related al's, filters and escalations
+
+D - Validator documentation not saved - fixed
+
+2007-04-20
+[Version 2.04.8]
+E - Added Role support (Requires updated configuration file)
+E - Improved Application and Container documentation
+E - Permission documentation for all server objects updated
+
+2007-1-29
+[Version 2.02.1]
+E - Limited ActiveLink OpenWindowAction to required window modes
+D - Fixed CurrentField in SearchMenu qualification
+
+2007-1-24
+[Version 2.02.0]
+D - Fixed a bug in the SetFields Action (Filters/ActiveLinks/Escalations)
+
+2007-1-19
+[Version 2.01.8]
+E - Updated ActiveLink SetFields from Process
+
+D - Fixed ActiveLink SetFields from WebService
+
+2007-1-18
+[Version 2.01.0]
+E - AR_DATA_TYPE_NULL added to field assignment enumeration
+E - Added ExecuteOn to escalation object list
+E - Added permission informations based on field permissions to form documentation (Form -> Formname -> Permissions)
+E - Added a list of Forms/Fields a group can access
+
+D - Fixed an error in the ActiveLink OpenWindow action that caused duplicate fields to appear in the validator
+
+2007-1-17
+[Version 1.08.7]
+N - Updated documentation
+
+E - Added informations to the Escalation documentation
+E - Added "Execute On" information to the object tables of Active Links and Filters
+E - It is now possible to use NTFS file compression to save disk space
+E - 2 new keys in the settings configuration file
+
+2006-12-27
+[Version 1.08.6]
+E - Added WindowLocation property to ActiveLink WindowOpen action
+E - Updated datatype enumeration
+
+2006-12-11
+[Version 1.08.5]
+E - Added analyzer informations for index fields
+
+2006-12-11
+[Version 1.08.4]
+E - Updated html layout in schema details
+
+2006-12-10
+[Version 1.08.3]
+E - Added documentation about deleted fields and affected workflow
+
+2006-12-06
+[Version 1.08.2]
+D - SetFields in Filters and ActiveLinks now show correct the CURRENT_SCREEN and CURRENT_TRANSACTION information
+
+2006-12-05
+[Version 1.08.0]
+D - Fixed some bugs in the application, webservice and packinglist documentation
+
+2006-12-03
+[Version 1.07.5]
+E - Added some object property informations to AL, Filter, Escalation, Container and Schema
+E - Updated quailification enumeration (RunIf, Table, JoinForm)
+
+2006-12-01
+[1.04.9]
+E - External added to qualification documentation
+E - Added execution order of active links and filters to fields workflow references
+
+2006-12-01
+[Version 1.04.8]
+E - Added Webservice Documentation
+E - ChangeField Visible Flag added to documentation
+E - Added some details to the workflow references
+
+2006-11-25
+[Version 1.04.7]
+E - Added ActiveLink, Filter and Escalation status (Enabled, Disabled) to the reference informations
+
+2006-11-22
+[Version 1.03.9]
+E - Updated field id 1 in join forms to display RequestId(primary Form) | RequestId (secondary Form)
+E - Added notify field reference for message text fields
+
+D - Fixed a bug in Set- and Push-Field assignement
+
+2006-11-17
+[Version 1.03.1]
+E - Changed the load field functions from ARGetField to ARGetMultipleFields to improve the speed
+
+D - Updated LastChanged html link to the correct user information
+
+2006-11-13
+[Version 1.02.8]
+E - Some minor changes to improve the globalField enumeration
+
+D - Fixed a bug in the message enumeration
+
+2006-11-09
+[1.02.0]
+- Initial Public release
