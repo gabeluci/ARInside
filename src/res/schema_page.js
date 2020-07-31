@@ -180,7 +180,7 @@ $('document').ready(function() {
 					if (hasRealFieldColumn)
 						row.append($("<td>").append(schemaFieldManager.renderRealField(i)));
 
-					row.append($("<td>").text(schemaFieldList[i][3]))
+					row.append($("<td" + (schemaFieldList[i][3] == 0 ? " class=\"fieldInNoView\">" : ">")).text(schemaFieldList[i][3]))
 						.append($("<td>").text(schemaFieldList[i][4]))
 						.append($("<td>").text(schemaFieldList[i][5]));
 
