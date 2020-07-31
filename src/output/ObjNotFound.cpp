@@ -20,7 +20,7 @@
 ObjNotFound::ObjNotFound(std::ostream &stream)
 : strm(stream) 
 { 
-	strm << "<span class=\"fieldNotFound\">"; 
+	strm << "<span class=\"fieldNotFound\" title=\"Field doesn't exist\">"; 
 }
 
 void ObjNotFound::End()
