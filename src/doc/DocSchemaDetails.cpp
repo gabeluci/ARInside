@@ -140,12 +140,12 @@ string CDocSchemaDetails::AllFields()
 			CTableCell cellFieldId(field.GetFieldId(), "");
 			CTableCell cellDataType(CAREnum::DataType(field.GetDataType()), "");
 
-			stringstream strmTmp;
+			string classTmp;
 			if(field.GetDisplayInstances().numItems == 0 && field.GetFieldId() != 15)				
-				strmTmp << "<span class=\"fieldInNoView\">" << field.GetDisplayInstances().numItems << "</span>" << endl;
+				classTmp = "fieldInNoView";
 			else
-				strmTmp << field.GetDisplayInstances().numItems;			
-			CTableCell cellNumViews(strmTmp.str(), "");			
+				classTmp = "";
+			CTableCell cellNumViews(field.GetDisplayInstances().numItems, classTmp);
 
 			CTableCell cellTimestamp(CUtil::DateTimeToHTMLString(field.GetTimestamp()), "");
 			CTableCell cellLastChanged(this->pInside->LinkToUser(field.GetLastChanged(), rootLevel), "");
@@ -446,16 +446,16 @@ string CDocSchemaDetails::AllFieldsSpecial()
 			CTableCell cellName(URLLink(field, rootLevel), "");
 			CTableCell cellFieldId(field.GetFieldId(), "");
 
-			stringstream strmTmp;
+			string classTmp;
 			if(field.GetDisplayInstances().numItems == 0 && field.GetFieldId() != 15)				
-				strmTmp << "<span class=\"fieldInNoView\">" << field.GetDisplayInstances().numItems << "</span" << endl;
+				classTmp = "fieldInNoView";
 			else
-				strmTmp << field.GetDisplayInstances().numItems;			
-			
-			CTableCell cellNumViews(strmTmp.str(), "");	
+				classTmp = "";
+
+			CTableCell cellNumViews(field.GetDisplayInstances().numItems, classTmp);
 			CTableCell cellDataType(CAREnum::DataType(field.GetDataType()), "");
 
-			strmTmp.str("");			
+			stringstream strmTmp;
 			switch (field.GetMapping().fieldType)
 			{
 			case AR_FIELD_JOIN:
@@ -602,7 +602,7 @@ string CDocSchemaDetails::GenerateFieldTableDescription(CTable &tbl)
 {
 	stringstream outputStrm;
 	AllFieldsJson(outputStrm);
-	outputStrm << "<div><span class='clearable'><input type=\"text\" class='data_field' id=\"fieldNameFilter\" placeholder=\"search by name or id\"/></span><button id=\"execFieldFilter\">Filter</button></div>" << endl;
+	outputStrm << "<div><label for=\"fieldNameFilter\">Filter: </label><span class='clearable'><input type=\"text\" class='data_field' id=\"fieldNameFilter\" placeholder=\"search by name or id\"/></span><button id=\"execFieldFilter\">Filter</button></div>" << endl;
 	outputStrm << ImageTag(ImageTag::Document, rootLevel) << "<span id='fieldListFilterResultCount'></span>" << tbl.NumRows() << " fields (" << URLLink("data", CPageParams(PAGE_SCHEMA_FIELDS_CSV, &this->schema), rootLevel) << ")" << endl;
 	outputStrm << "<div id=\"result\"></div>";
 	return outputStrm.str();
@@ -1709,7 +1709,7 @@ void CDocSchemaDetails::ShowEntryPointProperties(std::ostream &strm, CARProplist
 				entryPointSearchOrder = propVal->u.intVal;
 
 
-		tmpStrm << CWebUtil::ChkBoxInput("" ,(entryPointNewOrder >= 0)) << "Enable Entry Point" << "<br/>";
+		tmpStrm << "<label>" << CWebUtil::ChkBoxInput("" ,(entryPointNewOrder >= 0)) << "Enable Entry Point</label>" << "<br/>";
 		tmpStrm << "Application List Display Order: "; if (entryPointNewOrder >=0) tmpStrm << entryPointNewOrder; tmpStrm << "<br/>" << "<br/>";
 
 		CTableRow row;
@@ -1718,7 +1718,7 @@ void CDocSchemaDetails::ShowEntryPointProperties(std::ostream &strm, CARProplist
 		tbl.AddRow(row);
 		
 		tmpStrm.str("");
-		tmpStrm << CWebUtil::ChkBoxInput("", (entryPointSearchOrder >= 0)) << "Enable Entry Point" << "<br/>";
+		tmpStrm << "<label>" << CWebUtil::ChkBoxInput("", (entryPointSearchOrder >= 0)) << "Enable Entry Point</label>" << "<br/>";
 		tmpStrm << "Application List Display Order: "; if (entryPointSearchOrder >= 0) tmpStrm << entryPointSearchOrder; tmpStrm << endl;
 
 		row.ClearCells();

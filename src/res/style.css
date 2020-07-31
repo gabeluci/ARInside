@@ -323,8 +323,9 @@ iframe.tabContent {
   height: 190px;
 }
 
-.objStatusDisabled{
-  color: #ff0000;
+.objStatusDisabled {
+  color: black;
+  background-color: #FF9999;
 }
 
 .preWsInfo{
@@ -333,14 +334,16 @@ iframe.tabContent {
   font-size: 11px;
 }
 
-.fieldNotFound{
-	color: #ff0000;
-	font-size: 12px;
+.fieldNotFound {
+  color: black;
+  background-color: #FF9999;
+  font-size: 12px;
 }
 
-.fieldInNoView{
-	color: #ff0000;
-	font-size: 12px;
+.fieldInNoView {
+  color: black;
+  background-color: #FF9999;
+  font-size: 12px;
 }
 
 #tblDocSummary{
@@ -365,7 +368,7 @@ p.last
 
 td.disabledLetter 
 {
-    color: Silver;
+    color: black;
 }
 
 #ovlNote

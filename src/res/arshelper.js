@@ -161,7 +161,7 @@ function getIcon(rootLevel, type, subtype, overlay) {
 		src = RootPath(rootLevel) + "img/" + ovlIcon;
 	}
 	
-	var image = $("<img>").attr("width", width).attr("height", height)/*.attr("alt", alt)*/.attr("src", src);
+	var image = $("<img>").attr("width", width).attr("height", height).attr("alt", alt).attr("src", src);
 	if (style)
 		image.attr('style',style);
     return image;
