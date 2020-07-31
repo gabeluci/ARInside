@@ -4,6 +4,11 @@ N - Note
 E - Enhancement
 D - Defect fixed
 
+2020
+[no version yet]
+E - styling changes to meet accessibility standards WCAG 2.0 Level AA
+E - built against AR API 8.1.2 (from 8.1.0)
+
 2014-10-01
 [3.1.2]
 E - added some more details for fields and vuis in verbose logging
