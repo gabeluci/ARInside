@@ -136,6 +136,7 @@ table.TblObjectList th {
  border: solid 1px #c0c0c0;
  background-color: #efefef;
  color: #000000;
+ padding: 2px;
 }
 
 table.TblObjectList td {
@@ -143,6 +144,7 @@ table.TblObjectList td {
  border-style: solid;
  border-color: #c0c0c0;
  vertical-align: top;
+ padding: 2px;
 }
 
 /* Table without border */
@@ -159,11 +161,13 @@ table.TblNoBorder th {
  border-width: 0px;
  background-color: #efefef;
  color: #000000;
+ padding: 2px 0;
 }
 
 table.TblNoBorder td {
  border-width: 0px;
  vertical-align: top;
+ padding: 2px 0;
 }
 
 /* Table Object List Hidden*/
@@ -180,6 +184,7 @@ table.TblHidden td {
  border-style: solid;
  border-color: #c0c0c0;
  vertical-align: top;
+ padding: 2px 0;
 }
 
 /* Table Action List */
