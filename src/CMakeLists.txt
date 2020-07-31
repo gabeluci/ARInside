@@ -265,6 +265,8 @@ ADD_CUSTOM_TARGET(resource_directory ALL
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jquery/images/ui-bg_glass_75_dadada_1x400.png ${CMAKE_BINARY_DIR}/img/images
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png ${CMAKE_BINARY_DIR}/img/images
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jquery/images/ui-bg_glass_65_ffffff_1x400.png ${CMAKE_BINARY_DIR}/img/images
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jquery/images/ui-icons_454545_256x240.png ${CMAKE_BINARY_DIR}/img/images
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jquery/images/ui-icons_888888_256x240.png ${CMAKE_BINARY_DIR}/img/images
 )
 
 ADD_CUSTOM_TARGET(${RES_PROJECT_NAME} ALL 

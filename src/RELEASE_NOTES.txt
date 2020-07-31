@@ -11,7 +11,7 @@ E - built against AR API 8.1.2 (from 8.1.0)
 
 D - don't allow + in file names (IIS requires double escaping to be enabled, which is off by default)
 D - fixed typo in the "--rpc" parameter (it was "--rcp")
-D - the image file ui-bg_glass_75_dadada_1x400.png was missing from arires.tgz, but it is used in the site
+D - a few of the jQuery images were missing from arires.tgz, but are used in the site
 D - on a form page, the warning that a field is not in any views was being lost when filtering the list
 
 2014-10-01
