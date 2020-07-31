@@ -9,6 +9,8 @@ D - Defect fixed
 E - styling changes to meet accessibility standards WCAG 2.0 Level AA
 E - built against AR API 8.1.2 (from 8.1.0)
 
+D - don't allow + in file names (IIS requires double escaping to be enabled, which is off by default)
+
 2014-10-01
 [3.1.2]
 E - added some more details for fields and vuis in verbose logging

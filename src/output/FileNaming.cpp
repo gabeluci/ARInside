@@ -1503,7 +1503,7 @@ string GetFileNameOfObjectName(const string &objName, bool isOverlaid)
 	for (size_t pos = 0; pos < len; ++pos) 
 	{
 		char c = objName[pos];
-		if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c == '-' || c == '.' || c == ',' || c == ' ' || c == '_' || c == '+')
+		if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c == '-' || c == '.' || c == ',' || c == ' ' || c == '_')
 		{
 			strmTmp << c;
 		}
