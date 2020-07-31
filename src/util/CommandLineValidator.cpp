@@ -16,8 +16,8 @@ CommandLineValidator::CommandLineValidator(int argc, char* argv[])
 	serverArg    ("s","server","ARSystem server",false,"","string"),
 	loginArg     ("l", "login", "Login name", false, "", "string"),
 	pwdArg       ("p", "pwd", "Password", false, "", "string"),
-	tcpArg       ("t", "tcp", "Tcp port", false, 0, "int"),
-	rpcArg       ("r", "rcp", "Rcp port", false, 0, "int"),
+	tcpArg       ("t", "tcp", "TCP port", false, 0, "int"),
+	rpcArg       ("r", "rpc", "RPC port", false, 0, "int"),
 	outputFolder ("o", "output", "Output folder", false, "", "string"),
 	slowArg      ("", "slow", "Uses slow object loading", false),
 	verboseArg   ("v","verbose","Verbose Output",false)
