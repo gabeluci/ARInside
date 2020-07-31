@@ -107,7 +107,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
+      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
+copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
 copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -135,7 +136,8 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
+      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
+copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
 copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -161,7 +163,8 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
+      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
+copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
 copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -190,7 +193,8 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
+      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
+copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
 copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
