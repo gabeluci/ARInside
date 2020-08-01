@@ -14,5 +14,5 @@ TEST(ObjNotFoundTests, BasicCreation)
 
 	string result = strm.str();
 
-	ASSERT_STREQ("Object: <span class=\"fieldNotFound\">TestObjName</span><br/>", result.c_str());
+	ASSERT_STREQ("Object: <span class=\"fieldNotFound\" title=\"Field doesn't exist\">TestObjName</span><br/>", result.c_str());
 }

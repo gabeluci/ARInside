@@ -38,3 +38,4 @@
 # Build folders
 /src/Win32
 /src/x64
+/src/out
