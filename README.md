@@ -148,21 +148,21 @@ ARInside uses the following ARSystem API calls to load objects from server / fil
 
 Online Mode
 
-> ARInitialzation
-> ARTermination
-> ARGetList(...)
-> ARGet(...)
-> FreeAR
+- ARInitialzation
+- ARTermination
+- ARGetList(...)
+- ARGet(...)
+- FreeAR
 
 File Mode
 
-> ARInitialzation
-> ARGet(...)FromXML
-> FreeAR
+- ARInitialzation
+- ARGet(...)FromXML
+- FreeAR
 
 Security Comments
 
-> ARInside doesn't use any of the ARSet(...) or ARExecuteProcess API calls.
+- ARInside doesn't use any of the ARSet(...) or ARExecuteProcess API calls.
 
 ## Known Errors
 
@@ -181,7 +181,7 @@ Initilization of ARAPI returned: 2 (Error)
 After the error message, the program crashes. From what is known this is an issue of ARAPI 7.5, if it finds another api file within the path. The workaround is to clear the PATH variable before you run ARInside.
 
 ```
-C:\> set PATH=
+set PATH=
 ```
 
 ### Page not rendered by Internet Explorer
