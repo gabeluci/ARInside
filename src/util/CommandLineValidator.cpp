@@ -7,7 +7,7 @@ using namespace TCLAP;
 extern const string AppVersion;
 
 CommandLineValidator::CommandLineValidator(int argc, char* argv[])
-: cmd("ARInside -- http://arinside.org\n"
+: cmd("ARInside -- https://github.com/gabeluci/ARInside\n"
     "Copyright (C) 2014 Stefan Nerlich, LJ Longwing, John Luthgers\n"
 		"This program comes with ABSOLUTELY NO WARRANTY, is free software, and you are welcome to "
 		"redistribute it under certain conditions; see COPYING file for more details.", 

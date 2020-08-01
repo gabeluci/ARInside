@@ -76,7 +76,6 @@ void CWebPage::PageHeader(ostream &strm)
 	strm << "<?xml version=\"1.0\" ?>" << newline;
 	strm << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">" << newline;
 	strm << "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">" << newline;
-	strm << "<!-- saved from url=(0025)http://arinside.org/ -->" << newline;
 	strm << "<head>" << newline;
 	strm << "<title>" << title << "</title>" << newline;
 	strm << "<meta http-equiv=\"content-language\" content=\"EN\" />" << newline;
@@ -117,7 +116,7 @@ void CWebPage::DynamicFooterText(ostream &strm)
 		strm << "<td>&nbsp;</td>";
 	else
 #endif
-		strm << "<td>Page created " << CurrentDateTime() << " by <a href=\"http://arinside.org\" target=\"_blank\">ARInside v" << AppVersion <<"</a> (" << GitRevision << ")</td>";
+		strm << "<td>Page created " << CurrentDateTime() << " by <a href=\"https://github.com/gabeluci/ARInside\" target=\"_blank\">ARInside v" << AppVersion <<"</a> (" << GitRevision << ")</td>";
 	strm << "</tr></table>" << newline;
 }
 
