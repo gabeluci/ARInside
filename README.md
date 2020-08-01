@@ -36,7 +36,7 @@ The following table describes all the available command line options.
 | -l <string> | optional | Login Name used to connect to the ARSystem server |
 | -p <string> | optional | Password |
 | -t <integer> | optional | The port number that the program will use to communicate with the AR System server. If you do not specify this parameter or provide 0 for the port number, your program will use the port number supplied by the portmapper. This parameter is overridden by the ARTCPPORT environment variable. |
-| -r <integer> | optional | The RPC program number of the server. Specify 390600 to use the admin server, a number from 390621 to 390634 or 390636 to 390669 or 390680-390694 to use a private server, or 0 (default) to use the fast or list server queue. This parameter is overridden by the ARRPC environment variable. |
+| -r <integer> | optional | The RPC port number of the server. Specify `390600` to use the admin server, a number from `390621` to `390634` or `390636` to `390669` or `390680` to `390694` to use a private server, or `0` (default) to use the fast or list server queue. This setting is overridden by the `ARRPC` environment variable. |
 | -o <string> | optional | The output directory of the documentation. |
 | --slow | optional | Disables fast object loading |
 | -v | optional | If specified it enables verbose program output. |
