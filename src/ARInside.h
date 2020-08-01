@@ -53,6 +53,7 @@
 #include "lists/ARServerInfoList.h"
 
 extern const string AppVersion;
+extern const string GitRevision;
 
 // forward declarations
 class Context;

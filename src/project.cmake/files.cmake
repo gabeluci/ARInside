@@ -349,7 +349,7 @@ SET(ARINSIDE_SRCS_H
  Main.h
  gzstream.h
  stdafx.h
- svnrev.h
+ gitrev.h
 )
 
 ### all source code files

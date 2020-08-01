@@ -117,7 +117,7 @@ void CWebPage::DynamicFooterText(ostream &strm)
 		strm << "<td>&nbsp;</td>";
 	else
 #endif
-		strm << "<td>(Page created " << CurrentDateTime() << " by <a href=\"http://arinside.org\" target=\"_blank\">ARInside v" << AppVersion <<"</a>)</td>";
+		strm << "<td>Page created " << CurrentDateTime() << " by <a href=\"http://arinside.org\" target=\"_blank\">ARInside v" << AppVersion <<"</a> (" << GitRevision << ")</td>";
 	strm << "</tr></table>" << newline;
 }
 

@@ -62,21 +62,22 @@
 #include "util/Context.h"
 
 /////////
-// the following file is generated via a pre-build step using "svnrev_template.h" as template. 
-// The $WCREV$ keyword of the template is replaced with the revision number.
-#include "svnrev.h"
+// the following file is generated via a pre-build step using "gitrev_template.h" as template. 
+// The $WCREV$ keyword of the template is replaced with the commit ID.
+#include "gitrev.h"
 
 /////////
 // version information block
-#define VERSION "3.1.2"
+#define VERSION "3.1.3"
 #if defined(_DEBUG)
-#define VERSION_STR VERSION "." SVN_REV_STR " Debug"
+#define VERSION_STR VERSION " Debug"
 #elif defined(_ARINSIDE_BETA)
-#define VERSION_STR VERSION "." SVN_REV_STR " Beta"
+#define VERSION_STR VERSION " Beta"
 #else
-#define VERSION_STR VERSION "." SVN_REV_STR
+#define VERSION_STR VERSION
 #endif
 const string AppVersion = VERSION_STR;
+const string GitRevision = GIT_REV;
 /////////
 
 

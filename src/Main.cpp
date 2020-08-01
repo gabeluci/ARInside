@@ -146,7 +146,7 @@ const char* CMain::GetPlatformString() const
 
 void CMain::OutputARInsideBanner()
 {
-	cout << "ARInside Version " << AppVersion << " " << GetPlatformString() << endl << endl;
+	cout << "ARInside Version " << AppVersion << " " << GetPlatformString() << " (" << GitRevision << ")" << endl << endl;
 }
 
 int CMain::StartServerMode(AppConfig &appConfig)
