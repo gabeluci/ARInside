@@ -45,3 +45,7 @@
 /src/gitrev.h
 /src/FileSystemUtilTest.h
 /src/CMakeCache.txt
+/src/FileSystemUtil.h
+
+# Don't show changes when compiling for Linux
+/src/thirdparty/arapi/*

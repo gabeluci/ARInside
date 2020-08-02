@@ -143,9 +143,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -172,9 +170,7 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -199,9 +195,7 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Beta|Win32'">
@@ -226,9 +220,7 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\arapi\bin\*" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -256,9 +248,7 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Beta|x64'">
@@ -286,9 +276,7 @@ copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"$(ProjectDir)CreateResourceArchive.bat" "$(ProjectDir)" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\arapi\bin64\*" "$(OutDir)"
-copy /y "$(ProjectDir)thirdparty\zlib\bin64\*" "$(OutDir)"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

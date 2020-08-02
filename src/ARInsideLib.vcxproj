@@ -117,7 +117,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>
-      <Command>IF EXIST $(ProjectDir)..\.git\ GitWCRev.exe "$(SolutionDir)\." "$(ProjectDir)gitrev_template.h" "$(ProjectDir)gitrev.h"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\pre-build.ps1" "$(ProjectDir)\" "$(OutDir)\"</Command>
     </PreBuildEvent>
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -136,7 +136,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PreBuildEvent>
-      <Command>IF EXIST $(ProjectDir)..\.git\ GitWCRev.exe "$(SolutionDir)\." "$(ProjectDir)gitrev_template.h" "$(ProjectDir)gitrev.h"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\pre-build.ps1" "$(ProjectDir)\" "$(OutDir)\"</Command>
     </PreBuildEvent>
     <Midl>
       <TargetEnvironment>X64</TargetEnvironment>
@@ -158,7 +158,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PreBuildEvent>
-      <Command>IF EXIST $(ProjectDir)..\.git\ GitWCRev.exe "$(SolutionDir)\." "$(ProjectDir)gitrev_template.h" "$(ProjectDir)gitrev.h"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\pre-build.ps1" "$(ProjectDir)\" "$(OutDir)\"</Command>
     </PreBuildEvent>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -172,7 +172,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Beta|Win32'">
     <PreBuildEvent>
-      <Command>IF EXIST $(ProjectDir)..\.git\ GitWCRev.exe "$(SolutionDir)\." "$(ProjectDir)gitrev_template.h" "$(ProjectDir)gitrev.h"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\pre-build.ps1" "$(ProjectDir)\" "$(OutDir)\"</Command>
     </PreBuildEvent>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -186,7 +186,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PreBuildEvent>
-      <Command>IF EXIST $(ProjectDir)..\.git\ GitWCRev.exe "$(SolutionDir)\." "$(ProjectDir)gitrev_template.h" "$(ProjectDir)gitrev.h"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\pre-build.ps1" "$(ProjectDir)\" "$(OutDir)\"</Command>
     </PreBuildEvent>
     <Midl>
       <TargetEnvironment>X64</TargetEnvironment>
@@ -203,7 +203,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Beta|x64'">
     <PreBuildEvent>
-      <Command>IF EXIST $(ProjectDir)..\.git\ GitWCRev.exe "$(SolutionDir)\." "$(ProjectDir)gitrev_template.h" "$(ProjectDir)gitrev.h"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\pre-build.ps1" "$(ProjectDir)\" "$(OutDir)\"</Command>
     </PreBuildEvent>
     <Midl>
       <TargetEnvironment>X64</TargetEnvironment>
