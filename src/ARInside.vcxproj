@@ -143,7 +143,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(PlatformArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -170,7 +170,7 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(PlatformArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -195,7 +195,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(PlatformArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Beta|Win32'">
@@ -220,7 +220,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(PlatformArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -248,7 +248,7 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(PlatformArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Beta|x64'">
@@ -276,7 +276,7 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(ProcessorArchitecture)</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)\post-build.ps1" "$(ProjectDir)\" "$(OutDir)\"  $(PlatformArchitecture)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

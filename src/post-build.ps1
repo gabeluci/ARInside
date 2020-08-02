@@ -49,15 +49,15 @@ Copy-Item -Path "$sourcedir\thirdparty\jquery\images\*" -Destination "$builddir\
 & "$Path7Zip\7z.exe" a -ttar "$builddir\arires.tar" "$builddir\img"
 & "$Path7Zip\7z.exe" a -tgzip "$builddir\arires.tgz" "$builddir\arires.tar"
 Remove-Item "$builddir\arires.tar"
-
+Remove-Item "$builddir\img" -Recurse
 
 # Move the DLLs to the build directory
 
-if ($arch -eq "x64") {
+if ($arch -eq "64") {
     $bin = "bin64"
 } else {
     $bin = "bin"
 }
 
-Copy-Item -Path "$sourcedir\thirdparty\arapi\$bin\*" -Destination "$builddir" -Force
-Copy-Item -Path "$sourcedir\thirdparty\zlib\$bin\*" -Destination "$builddir" -Force
+Copy-Item -Path "$sourcedir\thirdparty\arapi\$($bin)\*" -Destination "$builddir" -Force
+Copy-Item -Path "$sourcedir\thirdparty\zlib\$($bin)\*" -Destination "$builddir" -Force
