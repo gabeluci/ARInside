@@ -36,28 +36,31 @@ struct tar_header
 #define FIFOTYPE '6'            /* FIFO special */
 #define CONTTYPE '7'            /* reserved */
 
+#ifdef WIN32
+#define access _access
+#endif
+
 const int TAR_BLOCK_SIZE = 512;
+
+enum class IfFileExists
+{
+	FAIL,
+	REPLACE,
+	SKIP
+};
 
 class UntarStream
 {
 public:
-	enum IfFileExists
-	{
-		FAIL,
-		REPLACE,
-		SKIP
-	};
-
-public:
 	UntarStream(std::istream &stream);
 	~UntarStream();
 
-	void ExtractAllTo(const std::string path, IfFileExists onFileExists = FAIL);
+	void ExtractAllTo(const std::string path, IfFileExists onFileExists = IfFileExists::FAIL);
 private:
 	istream &input;
 	tar_header header;
 	std::string destPath;
-	IfFileExists ifFileExists;
+	IfFileExists ifFileExists = IfFileExists::FAIL;
 	
 private:
 	bool ReadHeader();
@@ -71,26 +74,26 @@ protected:
 };
 
 
+enum class untar_exception_source
+{
+	GENERIC,
+	READ,
+	WRITE,
+};
+
 class untar_exception : public exception
 {
 public:
-	enum error_source
-	{
-		GENERIC,
-		READ,
-		WRITE,
-	};
-
 	untar_exception();
-	untar_exception(error_source es);
-	untar_exception(error_source es, int error_no);
-	virtual ~untar_exception() throw() {} 
+	untar_exception(untar_exception_source es);
+	untar_exception(untar_exception_source es, int error_no);
+	virtual ~untar_exception() noexcept {}
 
 	const char* what() const throw() { return msg.c_str(); }
 
 private:
 	string msg;
-	error_source src;
+	untar_exception_source src = untar_exception_source::GENERIC;
 	int error_no;
 
 	void init();

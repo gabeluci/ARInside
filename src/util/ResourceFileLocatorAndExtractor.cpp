@@ -60,13 +60,13 @@ bool ResourceFileLocatorAndExtractor::ExtractTo(const std::string &targetDir)
 	string resourceFile = FileSystemUtil::CombinePath(directory, resFile);
 	if (!FileSystemUtil::FileExistsAndReadable(resourceFile))
 	{
-		throw untar_exception(untar_exception::READ);
+		throw untar_exception(untar_exception_source::READ);
 	}
 
 	// now extract the content
 	igzstream unzipStrm(resourceFile.c_str());
 	UntarStream untarStrm(unzipStrm);
-	untarStrm.ExtractAllTo(targetDir, UntarStream::REPLACE);
+	untarStrm.ExtractAllTo(targetDir, IfFileExists::REPLACE);
 
 	return true;
 }

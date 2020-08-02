@@ -34,7 +34,7 @@ void UntarStream::ExtractAllTo(const std::string path, IfFileExists onFileExists
 				string dirName = FileSystemUtil::CombinePath(destPath, header.name);
 				if (!this->CreateOutputDirectory(dirName.c_str()))
 				{
-					if (errno != EEXIST || (ifFileExists != SKIP && ifFileExists != REPLACE))
+					if (errno != EEXIST || (ifFileExists != IfFileExists::SKIP && ifFileExists != IfFileExists::REPLACE))
 					{
 						throw untar_exception();
 					}
@@ -57,7 +57,7 @@ bool UntarStream::ReadHeader()
 	
 	if (input.fail())
 	{
-		throw untar_exception(untar_exception::READ, 0);
+		throw untar_exception(untar_exception_source::READ, 0);
 		return false;
 	}
 
@@ -100,11 +100,11 @@ void UntarStream::ExtractFile()
 
 	if (FileExists(fileName.c_str()))
 	{
-		if (ifFileExists == FAIL)
+		if (ifFileExists == IfFileExists::FAIL)
 		{
-			throw untar_exception(untar_exception::WRITE, EEXIST);
+			throw untar_exception(untar_exception_source::WRITE, EEXIST);
 		}
-		if (ifFileExists == SKIP)
+		if (ifFileExists == IfFileExists::SKIP)
 		{
 			return;
 		}
@@ -113,7 +113,7 @@ void UntarStream::ExtractFile()
 	unique_ptr<ostream> output(CreateOutputStream(fileName.c_str()));
 	if (output->bad())
 	{
-		throw untar_exception(untar_exception::WRITE);
+		throw untar_exception(untar_exception_source::WRITE);
 		return;
 	}
 
@@ -127,14 +127,14 @@ void UntarStream::ExtractFile()
 		input.read(buffer, TAR_BLOCK_SIZE); // always read in 512 byte blocks. the end of a file is always padded to 512 byte using \0
 		if (input.fail())
 		{
-			throw untar_exception(untar_exception::READ);
+			throw untar_exception(untar_exception_source::READ);
 			return;
 		}
 		
 		output->write(buffer, (TAR_BLOCK_SIZE < rest ? TAR_BLOCK_SIZE : rest));
 		if (output->fail())
 		{
-			throw untar_exception(untar_exception::WRITE);
+			throw untar_exception(untar_exception_source::WRITE);
 			return;
 		}
 
@@ -154,19 +154,19 @@ void UntarStream::ExtractFile()
 
 untar_exception::untar_exception()
 {
- src = GENERIC; 
+ src = untar_exception_source::GENERIC;
  error_no = errno;
  init();
 }
 
-untar_exception::untar_exception(error_source es)
+untar_exception::untar_exception(untar_exception_source es)
 {
 	src = es; 
 	error_no = errno;
 	init();
 }
 
-untar_exception::untar_exception(error_source es, int error_num)
+untar_exception::untar_exception(untar_exception_source es, int error_num)
 {
 	src = es; 
 	error_no = error_num;
@@ -178,10 +178,10 @@ void untar_exception::init()
 	stringstream strm;
 	switch (src)
 	{
-	case READ:
+	case untar_exception_source::READ:
 		strm << "reading source file failed";
 		break;
-	case WRITE:
+	case untar_exception_source::WRITE:
 		strm << "writing destination file failed";
 		break;
 	default:

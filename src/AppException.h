@@ -39,7 +39,7 @@ public:
 	{ 
 	} 
 
-	virtual ~AppException() throw() 
+	virtual ~AppException() noexcept
 	{ 
 	}
 

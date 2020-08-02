@@ -87,14 +87,14 @@ int gzstreambuf::underflow() { // used for input buffer only
     int n_putback = static_cast<int>(gptr() - eback());
     if ( n_putback > 4)
         n_putback = 4;
-    memcpy( buffer + (4 - n_putback), gptr() - n_putback, n_putback);
+    memcpy( buffer + (4LL - n_putback), gptr() - n_putback, n_putback);
 
     int num = gzread( file, buffer+4, bufferSize-4);
     if (num <= 0) // ERROR or EOF
         return EOF;
 
     // reset buffer pointers
-    setg( buffer + (4 - n_putback),   // beginning of putback area
+    setg( buffer + (4LL - n_putback),   // beginning of putback area
           buffer + 4,                 // read position
           buffer + 4 + num);          // end of buffer
 
