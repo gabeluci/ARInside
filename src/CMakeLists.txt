@@ -257,7 +257,7 @@ ExternalProject_Get_Property(googletest source_dir)
 INCLUDE_DIRECTORIES(${source_dir}/googletest/include)
 ExternalProject_Get_Property(googletest binary_dir)
 SET(GTEST_BINARY_DIR ${binary_dir})
-ENABLE_TESTING()
+#ENABLE_TESTING()
 
 # Add compiler flag for MSVC 2012
 if(MSVC_VERSION EQUAL 1700)
