@@ -38,7 +38,7 @@ void AppConfigReader::LoadTo(AppConfig &appConfig)
 	if (!ConfigFileExistsAndIsReadable())
 		ThrowNotFoundException();
 
-	auto_ptr<ConfigFile> cfg(CreateConfigFileObject());
+	unique_ptr<ConfigFile> cfg(CreateConfigFileObject());
 
 	if (cfg.get() == NULL)
 		throw AppException("internal error, couldn't create ConfigFile object!", "CFG_OBJ_CREATE_FAILED", "configuration");

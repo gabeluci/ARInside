@@ -43,3 +43,4 @@
 
 # Autogeneratd
 /src/gitrev.h
+/src/FileSystemUtilTest.h

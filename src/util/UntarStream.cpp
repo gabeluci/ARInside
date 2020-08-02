@@ -110,7 +110,7 @@ void UntarStream::ExtractFile()
 		}
 	}
 
-	auto_ptr<ostream> output(CreateOutputStream(fileName.c_str()));
+	unique_ptr<ostream> output(CreateOutputStream(fileName.c_str()));
 	if (output->bad())
 	{
 		throw untar_exception(untar_exception::WRITE);

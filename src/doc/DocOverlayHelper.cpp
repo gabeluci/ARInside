@@ -58,7 +58,7 @@ string CDocOverlayHelper::PlaceOverlayLink()
 		return "";
 	}
 
-	auto_ptr<CARServerObject> target(GetNextObject(dir));
+	unique_ptr<CARServerObject> target(GetNextObject(dir));
 	
 	// if there is no target object found .. leave the function
 	if (target.get() == NULL)
@@ -108,7 +108,7 @@ string CDocOverlayHelper::PlaceOverlaidNotice()
 	if (!(pInside->overlayMode == 1 && m_OverlayType == AR_OVERLAID_OBJECT))
 		return "";
 
-	auto_ptr<CARServerObject> target(GetNextObject(UP));
+	unique_ptr<CARServerObject> target(GetNextObject(UP));
 
 	stringstream tmp;
 
