@@ -39,4 +39,7 @@
 /src/Win32
 /src/x64
 /src/out
+/src/build
+
+# Autogeneratd
 /src/gitrev.h

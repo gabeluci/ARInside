@@ -18,7 +18,7 @@
 #include "AppTimer.h"
 
 #if defined(_MSC_VER) || defined(_WINDOWS_)
-int gettimeofday(struct timeval* tv, struct timezone *tz) 
+int gettimeofday(struct timeval* tv, struct artimezone *tz) 
 {
 	static int tzInitializied;
 	union {

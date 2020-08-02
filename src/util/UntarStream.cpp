@@ -72,7 +72,7 @@ bool UntarStream::ReadHeader()
 
 bool UntarStream::FileExists(const char* fileName)
 {
-	return (_access(fileName, 0) != -1);
+	return (access(fileName, 0) != -1);
 }
 
 ostream* UntarStream::CreateOutputStream(const char* fileName)

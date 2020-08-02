@@ -19,7 +19,7 @@
 
 #if defined(_MSC_VER) || defined(_WINDOWS_)
 #include <windows.h>
-struct timezone
+struct artimezone
 {
 	int  tz_minuteswest;
 	int  tz_dsttime;
