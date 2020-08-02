@@ -13,6 +13,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
+		Release Beta|Win32 = Release Beta|Win32
+		Release Beta|x64 = Release Beta|x64
 		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 	EndGlobalSection
@@ -21,6 +23,10 @@ Global
 		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Debug|Win32.Build.0 = Debug|Win32
 		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Debug|x64.ActiveCfg = Debug|x64
 		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Debug|x64.Build.0 = Debug|x64
+		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release Beta|Win32.ActiveCfg = Release Beta|Win32
+		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release Beta|Win32.Build.0 = Release Beta|Win32
+		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release Beta|x64.ActiveCfg = Release Beta|x64
+		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release Beta|x64.Build.0 = Release Beta|x64
 		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release|Win32.ActiveCfg = Release|Win32
 		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release|Win32.Build.0 = Release|Win32
 		{C4A5B46D-42BD-4AAB-BA88-8FCC37AE7639}.Release|x64.ActiveCfg = Release|x64
@@ -29,12 +35,18 @@ Global
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Debug|Win32.Build.0 = Debug|Win32
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Debug|x64.ActiveCfg = Debug|x64
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Debug|x64.Build.0 = Debug|x64
+		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release Beta|Win32.ActiveCfg = Release Beta|Win32
+		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release Beta|Win32.Build.0 = Release Beta|Win32
+		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release Beta|x64.ActiveCfg = Release Beta|x64
+		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release Beta|x64.Build.0 = Release Beta|x64
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release|Win32.ActiveCfg = Release|Win32
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release|Win32.Build.0 = Release|Win32
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release|x64.ActiveCfg = Release|x64
 		{CC93BDAD-DDFA-4F9F-8E08-A2CAC06C5120}.Release|x64.Build.0 = Release|x64
 		{2CE7795F-1C22-4914-BC19-F498AC93CFDB}.Debug|Win32.ActiveCfg = Debug|Win32
 		{2CE7795F-1C22-4914-BC19-F498AC93CFDB}.Debug|x64.ActiveCfg = Debug|x64
+		{2CE7795F-1C22-4914-BC19-F498AC93CFDB}.Release Beta|Win32.ActiveCfg = Release Beta|Win32
+		{2CE7795F-1C22-4914-BC19-F498AC93CFDB}.Release Beta|x64.ActiveCfg = Release Beta|x64
 		{2CE7795F-1C22-4914-BC19-F498AC93CFDB}.Release|Win32.ActiveCfg = Release|Win32
 		{2CE7795F-1C22-4914-BC19-F498AC93CFDB}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
