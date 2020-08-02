@@ -25,7 +25,7 @@ function ts_makeSortable(table) {
     for (var i=0;i<firstRow.cells.length;i++) {
         var cell = firstRow.cells[i];
         var txt = ts_getInnerText(cell);
-        cell.innerHTML = '<a href="#" class="sortheader" onclick="ts_resortTable(this);return false;">'+txt+'<span class="sortarrow">&nbsp;&nbsp;&nbsp;</span></a>';
+        cell.innerHTML = '<a href="#" class="sortheader" onclick="ts_resortTable(this);return false;">'+txt+'</a><span class="sortarrow">&nbsp;&nbsp;&nbsp;</span>';
     }
 }
 
@@ -60,11 +60,7 @@ function ts_selectSortFunc(cellContent) {
 
 function ts_resortTable(lnk) {
     // get the span
-    var span;
-    for (var ci=0;ci<lnk.childNodes.length;ci++) {
-        if (lnk.childNodes[ci].tagName && lnk.childNodes[ci].tagName.toLowerCase() == 'span') span = lnk.childNodes[ci];
-    }
-    var spantext = ts_getInnerText(span);
+    var span = lnk.nextElementSibling;
     var td = lnk.parentNode;
     var column = td.cellIndex;
     var table = getParent(td,'TABLE');
