@@ -44,3 +44,4 @@
 # Autogeneratd
 /src/gitrev.h
 /src/FileSystemUtilTest.h
+/src/CMakeCache.txt

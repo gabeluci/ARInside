@@ -83,7 +83,7 @@ TEST(UntarStreamTests, ExtractFilesystem)
 
 	UntarStreamToMemory untar(input);
 	untar.theFilesAlreadyExist = true;
-	untar.ExtractAllTo(".", UntarStream::SKIP);
+	untar.ExtractAllTo(".", IfFileExists::SKIP);
 }
 
 TEST(UntarExceptionTests, ThrowRead)
@@ -91,7 +91,7 @@ TEST(UntarExceptionTests, ThrowRead)
 	try
 	{
 		errno = 2; // no such file or directory
-		throw untar_exception(untar_exception::READ);
+		throw untar_exception(untar_exception_source::READ);
 	}
 	catch (exception &ex)
 	{
@@ -104,7 +104,7 @@ TEST(UntarExceptionTests, ThrowRead_Without_errno)
 	try
 	{
 		errno = 0; // set to zero .. might be the default value
-		throw untar_exception(untar_exception::READ);
+		throw untar_exception(untar_exception_source::READ);
 	}
 	catch (exception &ex)
 	{
@@ -117,7 +117,7 @@ TEST(UntarExceptionTests, ThrowWrite)
 	try
 	{
 		errno = 13; // permission denied
-		throw untar_exception(untar_exception::WRITE);
+		throw untar_exception(untar_exception_source::WRITE);
 	}
 	catch (exception &ex)
 	{
@@ -130,7 +130,7 @@ TEST(UntarExceptionTests, ThrowWrite_Without_errno)
 	try
 	{
 		errno = 0; // set to zero .. might be the default value
-		throw untar_exception(untar_exception::WRITE);
+		throw untar_exception(untar_exception_source::WRITE);
 	}
 	catch (exception &ex)
 	{
