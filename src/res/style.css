@@ -90,6 +90,19 @@ table.TblMain .TdMainButtom {
  border: solid 1px #c0c0c0;
 }
 
+table.TblMain .TdMainButtom table {
+    width: 100%;
+}
+
+table.TblMain .TdMainButtom table td {
+    white-space: nowrap;
+}
+
+table.TblMain .TdMainButtom table td:last-of-type {
+    width: 100%;
+    text-align: right;
+}
+
 table.TblMain .TdMainMenu{
  padding: 1px;
  vertical-align: top;

@@ -61,6 +61,7 @@ namespace OUTPUT
 		case ImageTag::Visible: return "visible.gif";
 		case ImageTag::Edit: return "edit.gif";
 		case ImageTag::Next: return "next.gif";
+		case ImageTag::Prev: return "prev.gif";
 		case ImageTag::SortAsc: return "sort_asc.gif";
 		case ImageTag::SortDesc: return "sort_desc.gif";
 		case ImageTag::Up: return "up.gif";

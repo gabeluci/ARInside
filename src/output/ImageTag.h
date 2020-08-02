@@ -52,6 +52,7 @@ namespace OUTPUT
 			Visible,
 			Edit,
 			Next,
+			Prev,
 			SortAsc,
 			SortDesc,
 			Up,

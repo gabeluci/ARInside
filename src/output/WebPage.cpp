@@ -107,7 +107,7 @@ string CWebPage::CurrentDateTime()
 void CWebPage::DynamicFooterText(ostream &strm)
 {
 	strm << "<table><tr>" << newline;
-	strm << "<td>" << URLLink("Main", PAGE_MAINHOME, ImageTag::Next, rootLevel)<< "</td>" << newline;
+	strm << "<td>" << URLLink("Main", PAGE_MAINHOME, ImageTag::Prev, rootLevel)<< "</td>" << newline;
 	strm << "<td>&nbsp;</td>" << newline;
 	strm << "<td>" << DirectURLLink(DirectURLLink::LinkToTop, rootLevel) << "</td>" << newline;
 	strm << "<td>&nbsp;</td>" << newline;
