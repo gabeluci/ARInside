@@ -76,7 +76,7 @@ namespace OUTPUT
 	ImageDimensions DocumentImageDimensions = { 15, 10 };
 	ImageDimensions FolderImageDimensions = { 16, 13 };
 	ImageDimensions PermissionDimensions =  { 18, 18 };
-	ImageDimensions NextImageDimensions = { 10, 10 };
+	ImageDimensions PrevNextImageDimensions = { 10, 10 };
 	ImageDimensions UpDownDimensions = { 14, 10 };
 
 	// the following provides the image dimensions (width and height)
@@ -92,7 +92,8 @@ namespace OUTPUT
 		case ImageTag::Hidden:
 		case ImageTag::Visible:
 		case ImageTag::Edit: return PermissionDimensions;
-		case ImageTag::Next: return NextImageDimensions;
+		case ImageTag::Prev:
+		case ImageTag::Next: return PrevNextImageDimensions;
 		case ImageTag::Up: 
 		case ImageTag::Down: return UpDownDimensions;
 		}
