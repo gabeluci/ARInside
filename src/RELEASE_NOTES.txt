@@ -1,3 +1,6 @@
+ARInside
+https://github.com/gabeluci/ARInside
+
 Here are the Changes between versions and the legend
 
 N - Note
@@ -5,7 +8,7 @@ E - Enhancement
 D - Defect fixed
 
 2020-08-02
-[3.1.3 Beta]
+[3.1.3]
 E - styling changes to meet accessibility standards WCAG 2.0 Level AA
 E - built against AR API 8.1.2 (from 8.1.0)
 E - some cosmetic changes to the tables and page footer
