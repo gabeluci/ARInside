@@ -18,7 +18,7 @@ After that ARInside connects to your server and starts documenting all forms, fi
 
 ## Requirements
 
-On Windows, the [Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019](https://support.microsoft.com/en-ca/help/2977003/the-latest-supported-visual-c-downloads) must be installed.
+On Windows, the [Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017, 2019, and 2022](https://support.microsoft.com/en-ca/help/2977003/the-latest-supported-visual-c-downloads) must be installed.
 
 On all platforms, make sure the following requirements are fulfilled:
 
