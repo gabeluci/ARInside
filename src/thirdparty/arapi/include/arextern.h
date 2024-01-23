@@ -133,14 +133,14 @@ EXTERN_FUNCTION (int ARGetSchema, (ARControlStruct *, ARNameType,
                        ARCompoundSchema *, ARSchemaInheritanceList *,
                        ARPermissionList *, ARPermissionList *,
                        ARInternalIdList *, AREntryListFieldList *, ARSortList *,
-                       ARIndexList *, ARArchiveInfoStruct *, ARAuditInfoStruct *, ARNameType, char **,
+					   ARIndexList *, ARArchiveInfoStruct *, ARAuditInfoStruct *,ARAssociationsToFollowInfoStruct*, ARNameType, char **,
                        ARTimestamp *, ARAccessNameType, ARAccessNameType,
                        char **, ARPropList *, ARStatusList *));
 EXTERN_FUNCTION (int ARSetSchema, (ARControlStruct *, ARNameType, ARNameType,
                        ARCompoundSchema *, ARSchemaInheritanceList *,
                        ARPermissionList *, ARInternalIdList *,
                        AREntryListFieldList *, ARSortList *, ARIndexList *,
-                       ARArchiveInfoStruct *, ARAuditInfoStruct *, ARNameType, char *,
+                       ARArchiveInfoStruct *, ARAuditInfoStruct *, ARAssociationsToFollowInfoStruct*, ARNameType, char *,
                        ARAccessNameType, char *, ARPropList *, unsigned int,
                        char *,
                        ARStatusList *));
@@ -148,7 +148,7 @@ EXTERN_FUNCTION (int ARCreateSchema, (ARControlStruct *, ARNameType,
                        ARCompoundSchema *, ARSchemaInheritanceList *,
                        ARPermissionList *, ARInternalIdList *,
                        AREntryListFieldList *, ARSortList *,
-                       ARIndexList *, ARArchiveInfoStruct *, ARAuditInfoStruct *, ARNameType, char *,
+                       ARIndexList *, ARArchiveInfoStruct *, ARAuditInfoStruct *, ARAssociationsToFollowInfoStruct*, ARNameType, char *,
                        ARAccessNameType, char *, ARPropList *,
                        char *, ARStatusList *));
 EXTERN_FUNCTION (int ARDeleteSchema, (ARControlStruct *, ARNameType,
@@ -164,7 +164,7 @@ EXTERN_FUNCTION (int ARGetMultipleSchemas, (ARControlStruct *, ARTimestamp,
                        ARPermissionListList *,
                        ARInternalIdListList *,
                        AREntryListFieldListList *, ARSortListList *,
-                       ARIndexListList *, ARArchiveInfoList *, ARAuditInfoList *, ARNameList *,
+					   ARIndexListList *, ARArchiveInfoList *, ARAuditInfoList *, ARAssociationsToFollowInfoList *, ARNameList *,
                        ARTextStringList *, ARTimestampList *, ARAccessNameList *,
                        ARAccessNameList *, ARTextStringList *, ARPropListList *,
                        ARStatusList *));
@@ -848,4 +848,29 @@ EXTERN_FUNCTION (int ARCreateOverlay, (ARControlStruct *, AROverlaidStruct *, ch
 EXTERN_FUNCTION (int ARCreateOverlayFromObject, (ARControlStruct *, AROverlaidStruct *, AROverlaidStruct *, char *objectModificationLogLabel,  
                  ARNameType, ARInternalId *overlayId, ARStatusList *));
 
+// Association object related functions starts here.
+EXTERN_FUNCTION (int ARCreateAssociation, (ARControlStruct *, ARNameType, ARNameType, ARNameType, ARQualifierStruct *, ARQualifierStruct *,
+						ARInternalId, ARAssociationMappingInfoStruct *, ARBoolean, ARInternalId, ARInternalId, char *, char *, 
+						ARAccessNameType, char *, ARPropList *, char *, ARStatusList *));
+
+EXTERN_FUNCTION (int ARDeleteAssociation, (ARControlStruct *, ARNameType, unsigned int, char *, ARStatusList *));
+
+EXTERN_FUNCTION (int ARSetAssociation, (ARControlStruct *, ARNameType, ARNameType, ARNameType, ARNameType, ARQualifierStruct *, ARQualifierStruct *,
+						ARInternalId, ARAssociationMappingInfoStruct *, ARBoolean *, ARInternalId , ARInternalId, char *, char *, 
+						ARAccessNameType, char *, ARPropList *, char *, ARStatusList *));
+
+EXTERN_FUNCTION (int ARGetAssociation, (ARControlStruct *, ARNameType, ARNameType, ARNameType, ARQualifierStruct *, ARQualifierStruct *, 
+						ARAssociationMappingInfoStruct *, ARBoolean *, unsigned int *, unsigned int *, char **, char **, ARTimestamp *, ARAccessNameType,
+						ARAccessNameType, char **, ARPropList *, ARStatusList *));
+
+
+EXTERN_FUNCTION (int ARGetListAssociation, (ARControlStruct *, ARTimestamp, ARInternalId, ARNameType, ARPropList *, ARInternalId, ARInternalId, 
+						ARNameList *, ARStatusList *));
+
+EXTERN_FUNCTION (int ARGetMultipleAssociations, (ARControlStruct *, ARTimestamp, ARNameList *,
+						ARBooleanList *, ARNameList *, ARNameList *, ARNameList *, ARQualifierList *, ARQualifierList *, 
+						ARAssociationMappingInfoList *, ARBooleanList *, ARInternalIdList *, ARInternalIdList *, ARTextStringList *, 
+						ARTextStringList *, ARTimestampList *, ARAccessNameList *, ARAccessNameList *, ARTextStringList *,
+						ARPropListList *, ARStatusList *));
+// Association functions ends here.
 #endif

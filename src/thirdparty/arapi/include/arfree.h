@@ -223,7 +223,6 @@ EXTERN_FUNCTION(void FreeARStatisticsResultList, (ARStatisticsResultList *,
 EXTERN_FUNCTION(void FreeARStatusHistoryList, (ARStatusHistoryList *,
                                                ARBoolean));
 EXTERN_FUNCTION(void FreeARStatusList, (ARStatusList *, ARBoolean));
-EXTERN_FUNCTION(void FreeARStatusStruct, (ARStatusStruct *, ARBoolean));
 EXTERN_FUNCTION(void FreeARStructItemList, (ARStructItemList *, ARBoolean));
 EXTERN_FUNCTION(void FreeARStructItemStruct, (ARStructItemStruct *, ARBoolean));
 EXTERN_FUNCTION(void FreeARSupportFileInfoList, (ARSupportFileInfoList *,
@@ -258,6 +257,8 @@ EXTERN_FUNCTION(void FreeARReferenceListList, (ARReferenceListList *, ARBoolean)
 EXTERN_FUNCTION(void FreeARReferenceTypeList, (ARReferenceTypeList *, ARBoolean));
 EXTERN_FUNCTION(void FreeARRoleInfoList, (ARRoleInfoList *, ARBoolean));
 EXTERN_FUNCTION(void FreeARUserLicenseStruct, (ARUserLicenseStruct *, ARBoolean));
+EXTERN_FUNCTION(void FreeARAssociationsToFollowInfoStruct,(ARAssociationsToFollowInfoStruct *, ARBoolean));
+EXTERN_FUNCTION(void FreeARAssociationsToFollowInfoList,(ARAssociationsToFollowInfoList  *, ARBoolean));
 EXTERN_FUNCTION(void FreeARArchiveInfoStruct, (ARArchiveInfoStruct *, ARBoolean));
 EXTERN_FUNCTION(void FreeARArchiveInfoList, (ARArchiveInfoList *, ARBoolean));
 EXTERN_FUNCTION(void FreeARAuditInfoStruct, (ARAuditInfoStruct *, ARBoolean));
@@ -324,6 +325,13 @@ EXTERN_FUNCTION(void FreeARMultiSchemaFuncQualifierStruct, (ARMultiSchemaFuncQua
 EXTERN_FUNCTION(void FreeARMultiSchemaFuncArithOpStruct, (ARMultiSchemaFuncArithOpStruct *, ARBoolean));
 EXTERN_FUNCTION(void FreeARMultiSchemaFieldFuncValueOrArithStruct, (ARMultiSchemaFieldFuncValueOrArithStruct *, ARBoolean));
 EXTERN_FUNCTION(void FreeARMultiSchemaFuncRelOpStruct, (ARMultiSchemaFuncRelOpStruct *, ARBoolean));
+
+EXTERN_FUNCTION(void FreeARAssociationMappingStruct, (ARAssociationMappingInfoStruct *, ARBoolean));
+EXTERN_FUNCTION(void FreeARAssociationMappingList, (ARAssociationMappingInfoList *, ARBoolean));
+EXTERN_FUNCTION(void FreeARAssociationFormMappingInfo,(ARAssociationFormMappingInfoStruct *, ARBoolean));
+EXTERN_FUNCTION(void FreeARPKFKMappingInfoList,(ARPKFKMappingInfoList *, ARBoolean));
+
+
 
 #endif
 

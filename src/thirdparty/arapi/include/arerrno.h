@@ -58,12 +58,10 @@
 #define AR_ERROR_DEBUG_FILE_ERROR                  37
 #define AR_ERROR_FILTER_PROCESS_ERROR              38
 #define AR_ERROR_FILTER_PROCESS_TIME               39
-#define AR_NOTE_SIGNAL_RECEIVED_PLUGIN_SERVER      40
 #define AR_WARN_BAD_CMD_LINE_ARGUMENT              41
 #define AR_WARN_MULTI_NOT_LICENSED                 42
 #define AR_ERROR_BAD_MENU_MATCH                    43
 #define AR_ERROR_SCHEMA_LICENSE_LIMIT              44
-#define AR_NOTE_FATAL_EXIT_PLUGIN_SERVER           45
 #define AR_ERROR_ESCALATION_MESSAGE                46
 #define AR_WARN_EMAIL_NOTIFY_TIMEOUT               47
 
@@ -541,7 +539,7 @@
 /* Preference server errors */
 #define AR_ERROR_PREF_SRV_OPTION_INVALID          490
 
-/* flat-file database errors */                       
+/* flat-file database errors */
 #define AR_ERROR_DB_OPEN_FAILED                   500
 #define AR_ERROR_NOT_A_DB_FILE                    501
 #define AR_ERROR_FILE_DB_FORMAT                   502
@@ -596,12 +594,6 @@
 #define AR_NOTE_SQL_DB_STILL_UNAVAIL              591
 #define AR_NOTE_SQL_DB_AVAILABLE                  592
 
-/* messages for noting performance issues in the exception log */
-#define AR_NOTE_SQL_TIME_THRESHOLD_EXCEEDED       595
-#define AR_NOTE_API_TIME_THRESHOLD_EXCEEDED       596
-#define AR_NOTE_CLIENT_HAS_TIMED_OUT_API          597
-#define AR_NOTE_CLIENT_HAS_TIMED_OUT_API_SQL      598
-
 /* messages with user/group cache proc */
 #define AR_ERROR_DIRECTORY_FILE                   600
 #define AR_ERROR_BAD_CMD_LINE_OPTION              601
@@ -626,12 +618,12 @@
 #define AR_ERROR_TWO_OPEN_WRITE_TAG               620
 #define AR_ERROR_TAG_FILE_PROBLEM                 621
 #define AR_ERROR_TAG_LIC_PROBLEM                  622
-#define AR_ERROR_AUTHENTICATION_FAILED            623 
+#define AR_ERROR_AUTHENTICATION_FAILED            623
 #define AR_ERROR_ACCOUNT_MARKED_INVALID           624
 
 /* messages for business time */
 #define AR_WARN_HOLIDAY_DATE_BAD                  625
-#define AR_WARN_WORKDAY_TIME_BAD                  626 
+#define AR_WARN_WORKDAY_TIME_BAD                  626
 
 #define AR_ERROR_2_HOLIDAY_SCHEMA                 635
 #define AR_ERROR_NO_HOLIDAY_SCHEMA                636
@@ -723,7 +715,7 @@
 #define AR_ERROR_PIPE_OPEN                        850
 #define AR_ERROR_PIPE_READ                        851
 
-/* messages for FTS daemon */                                        
+/* messages for FTS daemon */
 #define AR_ERROR_FT_LOCKF_EXISTS                  855
 #define AR_ERROR_FT_LOCKF_NOT_EXISTS              856
 #define AR_ERROR_FT_PEND_FILE_OPEN_FAIL           857
@@ -748,8 +740,6 @@
 #define AR_ERROR_MFSEARCH_RELEVANCY_FIELD_UNINDEX 876
 #define AR_ERROR_MFSEARCH_RELEVANCY_FIELD_NON_PUBLIC 877
 #define AR_ERROR_MFSEARCH_RELEVANCY_FIELD_DELETE  878
-#define AR_ERROR_FULLTEXT_INDEX_BUSY              879
-#define AR_ERROR_FULLTEXT_FIELD_BUSY              880
 
 /* messages for server image objects */
 #define AR_ERROR_NOT_IMAGE_DEFN                   881
@@ -939,7 +929,7 @@
 #define ARAPP_NOTE_FATAL_EXIT                    4501
 #define ARAPP_NOTE_CANCELLED_ON_ERROR            4502
 #define ARAPP_NOTE_RELAUNCH                      4503
- 
+
 #define ARAPP_WARN_DUP_ROLE_FOUND                4510
 #define ARAPP_WARN_NO_ADMIN_SCHEMA               4511
 #define ARAPP_WARN_NO_NOTIFY_SCHEMA              4512
@@ -1051,13 +1041,13 @@
 /* end of messages for zero downtime install 4700-4799 */
 
 #define ARPR_WARN_DUP_CATEGORY_FOUND             4810
- 
+
 #define ARSUM_ERROR_MALLOC_FAILED                4820
 #define ARSUM_ERROR_GROUP_MISSING                4821
- 
+
 #define ARAPS_ERROR_TWO_MATCHING_SCHEMA          4830
 #define ARAPS_ERROR_NO_MATCHING_SCHEMA           4831
- 
+
 #define ARPR_ERROR_CMD_MISSING_DATA              4836
 #define ARPR_ERROR_CAT_NEEDS_PARTS               4837
 #define ARPR_ERROR_MALLOC_FAILED                 4838
@@ -1115,6 +1105,10 @@
 #define AR_WARN_INDEX_LEN_TOO_LONG               8037
 #define AR_WARN_MERGE_WORKFLOW_FIRING            8038
 #define AR_WARN_SQL_UNSUPPORT_DB_CONFIG          8039
+#define AR_WARN_MISSING_CONFIG_FILE              8040
+#define AR_WARN_MISSING_API_LISTING_FILE         8041
+#define AR_WARN_ASSOCIATION_FIRING               8042
+#define AR_WARN_REST_BAD_QUERY_PARAM             8043
 
 #define AR_WARN_MIN_2                            8031
 #define AR_WARN_MAX_2                            8200
@@ -1169,6 +1163,12 @@
 #define AR_ERROR_VERCNTL_TASK_RELATED_ESCALATION_RESERVED     8371
 #define AR_ERROR_VERCNTL_TASK_OWNER_CONTAINER_RESERVED        8372
 #define AR_ERROR_VERCNTL_TASK_OWNER_APP_RESERVED              8373
+#define AR_ERROR_VERCNTL_REPOSITORY_TYPE                      8374
+#define AR_ERROR_VERCNTL_RESERVATION_EXT_CREATE_DUP           8375
+#define AR_NOTE_VERCNTL_OBJECT_AUTO_RESERVED                  8376
+#define AR_ERROR_VERCNTL_OBJ_RESERVATION_FAILED               8377
+#define AR_ERROR_VERCNTL_RESERVATION_LABEL_CREATE_DUP         8378
+#define AR_ERROR_VERCNTL_DATA_RESERVED                        8379
 
 #define AR_ERROR_TASK_NOT_FOUND                  8400
 #define AR_ERROR_DUPLICATE_TASK                  8401
@@ -1179,9 +1179,20 @@
 #define AR_ERROR_CANNOT_DELETE_OPEN_TASK         8406
 #define AR_ERROR_NOT_TASK_OWNER                  8407
 
-/* Available for server errors 8408 - 8600 */
+/* Available for server errors 8408 - 8500 */
 #define AR_ERROR_JOIN_BASE_FIELD_MISMATCH        8408
 #define AR_ERROR_EXISTING_AND_NEW_FIELD_DATATYPE_MISMATCH   8409
+
+/* Existing method/server info settings that are deprecated */
+#define AR_ERROR_DEPRECATED_METHOD               8550
+#define AR_WARN_DEPRECATED_SVR_INFO              8551
+#define AR_ERROR_NO_CONFIGURATION_NAME           8552
+
+    
+/* Range 8650 - 8699 reserved for ARMigrate Plugin */
+#define AR_ERROR_ARMG_SERVICE_NOT_AVAIL 		8650;
+#define AR_ERROR_ARMG_TOO_FEW_ARGS    			8651;
+#define AR_ERROR_ARMG_INVALID_ACTION  			8652;
 
 /* more param validation errors */
 #define AR_ERROR_BAD_LOC_TYPE                    8700
@@ -1208,7 +1219,7 @@
 #define AR_ERROR_OPENDLG_EMPTY                   8720
 #define AR_ERROR_CALLGUIDE_EMPTY                 8721
 #define AR_ERROR_GUIDENAME_MISSING               8722
-#define AR_ERROR_GOTOLABEL_BAD                   8723 
+#define AR_ERROR_GOTOLABEL_BAD                   8723
 #define AR_ERROR_BAD_GOTOACTION_TAG              8724
 #define AR_ERROR_CONTTITLE_BAD                   8725
 #define AR_ERROR_GUIDE_CALL_ITSELF_DISALLOWED    8726
@@ -1273,7 +1284,7 @@
 #define AR_ERROR_STRING_ENCODING                 8789
 #define AR_PLUGIN_ERROR_UNKOWN                   8790
 #define AR_PLUGIN_STARTUP_MESSAGE                8791
-#define AR_PLUGIN_ERROR_NATIVE_LIBRARY_LOAD      8792 
+#define AR_PLUGIN_ERROR_NATIVE_LIBRARY_LOAD      8792
 #define AR_PLUGIN_ERROR_STARTUP                  8793
 #define AR_PLUGIN_ERROR_TERMINATE                8794
 #define AR_PLUGIN_ERROR_CREATEINSTANCE           8795
@@ -1368,14 +1379,14 @@
 #define AR_ERROR_DATA_OPERATIONS_DENIED_FOR_FULL_MODE          8887
 #define AR_ERROR_INVALID_OVERLAY_VUI_CHANGED_FIELDLIST         8888
 
+#define AR_ERROR_OVERLAY_OBJECT_DISABLED  8889
 #define AR_ERROR_INVALID_OVERLAY_MASK            8890
 #define AR_ERROR_INVALID_OVERLAY_APPEND_MASK     8891 /* to be removed */
 #define AR_ERROR_INVALID_OVERLAY_EXTEND_MASK     8891
 #define AR_ERROR_INVALID_OVERLAY_INHERIT_MASK    8892
-
-#define AR_ERROR_SHADOW_FORM_APP_OVERLAY_OVERWRITE_REQUIRED    8893
-
-#define AR_ERROR_GETLISTFIELDS_NOT_ALLOWED       8900 
+#define AR_ERROR_OVERLAY_NOT_ALLOWED_FOR_DIFFERENT_TYPE 8898
+#define AR_ERROR_OVERLAY_ALREADY_EXISTS          8899
+#define AR_ERROR_GETLISTFIELDS_NOT_ALLOWED       8900
 #define AR_WARN_GETLISTFIELDS_IGNORED            8901
 #define AR_ERROR_SORTLIST_NOT_ALLOWED            8902
 #define AR_WARN_SORTLIST_IGNORED                 8903
@@ -1501,7 +1512,10 @@
 #define AR_ERROR_ENCRYPT_FIPS_STRICT_MODE_FAIL   9019
 #define AR_ERROR_FIPS_INVALID_SECURITY_POLICY    9020
 
-
+#define AR_ERROR_ARCHIVED_DATA_MANAGEMENT_EXCECUTION_ERROR  9021
+#define AR_WARN_INVALID_AGE_FOR_ARCHIVE                     9022
+#define AR_WARN_ARCHIVE_MANY_TO_MANY_ASSOCIATION_IGNORED    9023
+#define AR_WARN_OVERLAY_MASK_FOR_FIELD_PERMISSION_IGNORED   9024
 
 /* messages for localization */
 #define AR_ERROR_NO_MESSAGE_CAT_SCHEMA           9050
@@ -1588,6 +1602,9 @@
 #define AR_ERROR_BULK_ENTRY_BAD_ACTION           9712
 #define AR_ERROR_BULK_ENTRY_CALL_FAILED          9713
 
+/* message for FTS error */
+#define AR_ERROR_FULLTEXT_INDEX_FAILURE   		 9718
+
 /* mergeEntry Error */
 #define AR_ERROR_MERGE_ENTRY_MULTI_MATCH_ERROR   9719
 
@@ -1602,8 +1619,8 @@
 /* messages for full text form scan */
 #define AR_ERROR_INVALID_FT_SCAN_INFO            9735
 
-/* messages for server statistics longest operations */
-#define AR_ERROR_LONGEST_OP_MODS_NOT_ALLOWED     9740
+/* Error on dup merge with id mismatch */
+#define AR_ERROR_MERGE_ENTRY_DUP_MERGE_ID_MISMATCH 9736
 
 /* messages for api extention sharedlibs */
 #define AR_ERROR_SHAREDLIB_LOAD                  9750

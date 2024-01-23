@@ -49,3 +49,4 @@
 
 # Don't show changes when compiling for Linux
 /src/thirdparty/arapi/*
+*.bak

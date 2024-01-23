@@ -156,6 +156,9 @@ bool CARSchemaList::LoadFromServer()
 		&indexes,
 		&archives,
 		&audits,
+#if AR_CURRENT_API_VERSION >= AR_API_VERSION_910
+		NULL, // assocToFollowInfoList
+#endif
 		&defaultVUIs,
 		&helpTexts,
 		&changedTimes,
@@ -303,6 +306,9 @@ bool CARSchemaList::LoadFromServer()
 					&indexes.indexListList[curListPos],
 					&archives.archiveInfoList[curListPos],
 					&audits.auditInfoList[curListPos],
+#if AR_CURRENT_API_VERSION >= AR_API_VERSION_910
+					AR_ASSOCIATION_SELECTION_TYPE_NONE,
+#endif
 					defaultVUIs.nameList[curListPos],
 					&helpTexts.stringList[curListPos],
 					&changedTimes.timestampList[curListPos],

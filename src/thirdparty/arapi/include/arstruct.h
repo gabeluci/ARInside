@@ -527,21 +527,6 @@
 #define AR_RESERV_APP_STATS_SERVER_TCP_PORT          975 
 #define AR_RESERV_APP_STATS_FLOATING_LIC_DENIED     1313 
 
-/* Reserved fields for API/SQL performance statistics form */
-#define AR_RESERV_STATS_APISQL_START         1400
-#define AR_RESERV_STATS_APISQL_ELAPSED       1401
-#define AR_RESERV_STATS_APISQL_USER          1402
-#define AR_RESERV_STATS_APISQL_API_NAME      1403
-#define AR_RESERV_STATS_APISQL_RPC_ID        1404
-#define AR_RESERV_STATS_APISQL_THREAD_ID     1405
-#define AR_RESERV_STATS_APISQL_CLIENT_TYPE   1406
-#define AR_RESERV_STATS_APISQL_API_DATA      1407
-#define AR_RESERV_STATS_APISQL_SQL_DATA      1408
-#define AR_RESERV_STATS_APISQL_RESULT        1409
-#define AR_RESERV_STATS_APISQL_DATA_SIZE     1000  /* Size of the short data field */
-#define AR_RESERV_STATS_APISQL_EXT_DATA      1410  /* Extended data (unlimited CLOB) only fill in if needed */
-#define AR_RESERV_STATS_APISQL_QUE_DELAY     1411  /* Extended data (unlimited CLOB) only fill in if needed */
-
 /* Reserved fields for form actions and results */
 #define AR_RESERV_FORM_ACTION_SUBMIT         1001 
 #define AR_RESERV_FORM_ACTION_QUERY          1002 
@@ -847,6 +832,27 @@
 /* Reserved fields for multi-form search implementation form - 3100 to 3199 */
 
 /* Reserved fields for form-based configuration - 3200 to 3299 */
+#define AR_RESERV_CONFIGURATION_COMPONENT_GUID                       179
+#define AR_RESERV_CONFIGURATION_COMPONENT_NAME                      3200
+#define AR_RESERV_CONFIGURATION_COMPONENT_TYPE                      3201
+#define AR_RESERV_CONFIGURATION_COMPONENT_DESCRIPTION               3202
+#define AR_RESERV_CONFIGURATION_SETTING_NAME                        3204
+#define AR_RESERV_CONFIGURATION_SETTING_VALUE                       3205
+#define AR_RESERV_CONFIGURATION_SETTING_GUID                        3206
+#define AR_RESERV_CONFIGURATION_COMPONENT_JOIN_GUID                 3207
+#define AR_RESERV_CONFIGURATION_COMPONENT_DESCRIMINATOR             3208
+#define AR_RESERV_CONFIGURATION_COMPONENT_LAST_UPDATE               3209
+#define AR_RESERV_CONFIGURATION_COMPONENT_EXPECTED_FILE_TIMESTAMP   3210
+#define AR_RESERV_CONFIGURATION_BACKUP_NAME                         3220
+#define AR_RESERV_CONFIGURATION_BACKUP_OPERATION                    3221
+#define AR_RESERV_CONFIGURATION_BACKUP_TEMP_SET_NAME                3222
+#define AR_RESERV_CONFIGURATION_BACKUP_DESCRIMINATOR                3223
+#define AR_RESERV_CONFIGURATION_GENERIC_UI_TABLE_FIELD              3230
+#define AR_RESERV_CONFIGURATION_GENERIC_UI_COL_REQ_ID               3231
+#define AR_RESERV_CONFIGURATION_GENERIC_UI_COL_SETTING_NAME         3232
+#define AR_RESERV_CONFIGURATION_GENERIC_UI_COL_SETTING_VALUE        3233
+#define AR_RESERV_CONFIGURATION_GENERIC_UI_BTN_ADD                  3234
+#define AR_RESERV_CONFIGURATION_GENERIC_UI_BTN_DELETE               3235
 
 /* Reserved fields for vendor forms from 4000 to 4099 */
 #define AR_RESERV_VENDOR_LDAP_BASEDN              4000 
@@ -2197,14 +2203,23 @@
 #define AR_DEFN_LABEL_POLLING           "   polling        : "
 #define AR_DEFN_LABEL_POLLING_INTERVAL  " polling-interval : "
 
-#define AR_DEFN_LABEL_ARCHIVEINFO       "   archive        : "
-#define AR_DEFN_LABEL_ARCHIVEINFO_TIME  "      arch-time   : "
-#define AR_DEFN_LABEL_ARCHIVEINFO_QRY   "      arch-query  : "
-#define AR_DEFN_LABEL_ARCHIVEINFO_FROM  "      arch-from   : "
+#define AR_DEFN_LABEL_ARCHIVEINFO       						"   archive        : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_TIME  						"      arch-time   : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_QRY   						"      arch-query  : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_FROM  						"      arch-from   : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_MODIFIEDTIME_QUALIFIER		"    age-qualifier : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_MODIFIEDTIME_QUALIFIER_FIELD	"   age-qual-field : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_APPEAR_IN_ARCHIVE_POLICY		" appr-arch-policy : "
+#define AR_DEFN_LABEL_ARCHIVEINFO_DESCRIPTION					"     description  : "
 
 #define AR_DEFN_LABEL_AUDITINFO         "   audit          : "
 #define AR_DEFN_LABEL_AUDITINFO_QRY     "      audt-query  : "
 #define AR_DEFN_LABEL_AUDITINFO_FORM    "      audt-form   : "
+
+/* Labels for Associations To Follow For Archive structure */
+#define AR_DEFN_LABEL_ASSN_TO_FOLLOW		"  assoc-to-follow : "
+#define AR_DEFN_LABEL_ASSN_SEL_TYPE			"   assoc-sel-type : "
+#define AR_DEFN_LABEL_ASSN_SPECIFIC_LIST	"     assoc-list   : "
 
 #define AR_DEFN_LABEL_ERRORHANDLER_OPTIONS "   errhandler-opt : "
 #define AR_DEFN_LABEL_ERRORHANDLER_NAME "   errhandler-name: "
@@ -2242,10 +2257,6 @@
 #define AR_DIR_LABEL_ALLOW_BACKQUOTE_IN_PROCESS "Allow-Backquote-In-Process-String:"
 #define AR_DIR_LABEL_UNQUAL_QUERIES          "Allow-Unqual-Queries:"
 #define AR_DIR_LABEL_API_LOG_FILE            "API-Log-File:"
-#define AR_DIR_LABEL_STATS_APISQL_CONTROL    "API-SQL-Stats-Control:"
-#define AR_DIR_LABEL_STATS_APISQL_MAX_SAVED  "API-SQL-Stats-Max-Saved-Long-Operations:"
-#define AR_DIR_LABEL_STATS_APISQL_INTERVAL   "API-SQL-Stats-Flush-To-DB-Interval:"
-#define AR_DIR_LABEL_STATS_APISQL_MIN_TIME   "API-SQL-Stats-Minimum-Elapsed-Time:"
 #define AR_DIR_LABEL_APPLICATION_AUDIT       "Application-Audit-Info:"
 #define AR_DIR_LABEL_APPLICATION_ENABLE      "Application-Enable:"
 #define AR_DIR_LABEL_APPLICATION_TAG         "Application-Tag:"
@@ -2379,11 +2390,9 @@
 #define AR_DIR_LABEL_FT_LICENSE_TIMEOUT      "Full-Text-License-Timeout:"
 #define AR_DIR_LABEL_FT_MATCH_OPTION         "Full-Text-Match-Option:"
 #define AR_DIR_LABEL_FT_MAX_FIELD_LENGTH     "Full-Text-Max-Field-Data-Length:"
-#define AR_DIR_LABEL_FT_LOCAL_MODE           "Full-Text-Mode:"
 #define AR_DIR_LABEL_FT_THRESHOLD_HIGH       "Full-Text-Search-Threshold-High:"
 #define AR_DIR_LABEL_FT_THRESHOLD_LOW        "Full-Text-Search-Threshold-Low:"
 #define AR_DIR_LABEL_FT_SEARCH_THRESHOLD     "Full-Text-Search-Threshold:"
-#define AR_DIR_LABEL_FT_2ARY_PLUGIN_PORT     "Full-Text-Secondary-Plugin-Port:"
 #define AR_DIR_LABEL_FT_SERVER_NAME          "Full-Text-Server-Name:"
 #define AR_DIR_LABEL_FT_SERVER_PORT          "Full-Text-Server-Port:"
 #define AR_DIR_LABEL_FT_TEMP_DIR             "Full-Text-Temp-Directory:"
@@ -2415,7 +2424,6 @@
 #define AR_DIR_LABEL_EMAIL_NOTIFY_DIR        "MailNotifyDir:"
 #define AR_DIR_LABEL_MAP_IP_ADDR             "Map-IP-Address:"
 #define AR_DIR_LABEL_MAX_AUDIT_LOG_FILE_SIZE "Max-Audit-Log-File-Size:"
-#define AR_DIR_LABEL_MAX_ENTRIES_SEARCH_MENU "Max-Entries-Per-Search-Menu:"
 #define AR_DIR_LABEL_MAX_ENTRIES             "Max-Entries-Per-Query:"
 #define AR_DIR_LABEL_MAX_F_DAEMONS           "Max-Fast-Daemons:"
 #define AR_DIR_LABEL_MAX_L_DAEMONS           "Max-List-Daemons:"
@@ -2501,6 +2509,7 @@
 #define AR_DIR_LABEL_SERVER_PLUGIN_ALIAS     "Server-Plugin-Alias:"
 #define AR_DIR_LABEL_SERVER_PLUGIN_PASSWD    "Server-Plugin-Target-Password:"
 #define AR_DIR_LABEL_SERVER_PLUGIN_TO        "Server-Plugin-Default-Timeout:"
+#define AR_DIR_LABEL_SERVER_READY_PORT       "Server-Port:"
 #define AR_DIR_LABEL_SVR_STATS_REC_MODE      "Server-Stats-Rec-Mode:"
 #define AR_DIR_LABEL_SVR_STATS_REC_INTERVAL  "Server-Stats-Rec-Interval:"
 #define AR_DIR_LABEL_SET_PROC_TIME           "Set-Process-Timeout:"
@@ -2519,7 +2528,6 @@
 #define AR_DIR_LABEL_SYSTEM_LOGGING_OPTIONS  "System-Logging-Options:"
 #define AR_DIR_LABEL_SYSTEM_MESSAGES_DISPLAYED "System-Messages-Displayed:"
 #define AR_DIR_LABEL_TS_SPEC_PORT            "TCD-Specific-Port:"
-#define AR_DIR_LABEL_TS_SPEC_IP              "TCD-Specific-Bind:"
 #define AR_DIR_LABEL_THREAD_LOG_FILE         "Thread-Log-File:"
 #define AR_DIR_LABEL_TRACK_ADMIN_OP_PROGRESS "Track-Admin-Op-Progress:"
 #define AR_DIR_LABEL_TWO_DIGIT_YEAR_CUTOFF   "Two-Digit-Year-Cutoff:"
@@ -2536,14 +2544,11 @@
 #define AR_DIR_LABEL_UPGRADE_ADMIN_USER      "Upgrade-Admin-User:"
 #define AR_DIR_LABEL_ATTACH_EXT_FILTER       "Attachment-Ext-Filter:" 
 #define AR_DIR_LABEL_ATTACH_EXT_LIST         "Attachment-Ext-List:" 
-#define AR_DIR_LABEL_ATTACH_EXCEPTION_LIST   "Attachment-Exception-List:" 
-#define AR_DIR_LABEL_ATTACH_SYSTEM_EXCEPTION_LIST   "Attachment-System-Exception-List:" 
+#define AR_DIR_LABEL_ATTACH_EXCEPTION_LIST   "Attachment-Exception-List:"
+#define AR_DIR_LABEL_ATTACH_SYSTEM_EXCEPTION_LIST   "Attachment-System-Exception-List:"
 #define AR_DIR_LABEL_ATTACH_DISPLAY_FILTER   "Display-Filter:" 
 #define AR_DIR_LABEL_ATTACH_DISPLAY_LIST     "Display-Ext-List:"
 #define AR_DIR_LABEL_ATTACH_VALIDATION_PLUGIN_NAME  "Attach-Validation-Plugin-Name:"
-#define AR_DIR_LABEL_SSO_CONFIRM_PASSWORD_PLUGIN_NAME  "SSO-Confirm-Password-Plugin-Name:"
-
-#define AR_DIR_LABEL_WORKFLOW_ENCRYPT_ALGO   "Workflow-Encryption-Algorithm:"
 
 #define ALT_DATA_FORM_SEPARATOR ";"          /* used to delineate list of data forms to be redirected */
                                              /* like so "Form1;Form2;Form3" */

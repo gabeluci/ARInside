@@ -3,7 +3,7 @@
 /*****************************************************************************/
 /*                                                                           */
 /*                                                                           */
-/*   ©Copyright  2009 – 2012 BMC Software, Inc.                              */
+/*   Copyright (c) 2009 - 2012 BMC Software, Inc.                              */
 /*   BMC, BMC Software, the BMC logos and other BMC marks are trademarks or  */
 /*   registered trademarks of BMC Software, Inc. in the U.S. and /or         */
 /*   certain other countries.                                                */
@@ -114,7 +114,6 @@
 #define AR_MAX_SCHEMAID_SIZE       5/* max size schemaid in flat file schema */
                                     /*   cache                               */
 #define AR_MAX_SERVER_SIZE        64/* max size of a server name */
-#define AR_MAX_LINE_LENGTH     2048/* max size of a server name */
 #define AR_MAX_SDESC_SIZE        254/* max size of a short description */
 #define AR_MAX_SUBJECT_SIZE      255/* max size of a notify subject line */
 #define AR_MAX_HOSTID_SIZE       100/* max size of a host id */
@@ -139,7 +138,6 @@
 #define AR_CUSTOM_OBJECT        4    /* object created through cusomt mode client */
                                  /* max number of chars allowed in overlaid objects */
 #define AR_MAX_CHAR_OVERLAID_OBJ_NAME  244
-
 /* Constants for relation overlay group in Object Relationship table */
 #define AR_OBJ_REL_OVERLAY_GROUP_BASE  "-1"
 #define AR_OBJ_REL_OVERLAY_GROUP_OVERLAID  "0"
@@ -156,7 +154,6 @@
 #define AR_OVERLAY_GROUP_TAG_NULL ((unsigned int) -2)
 #define AR_OVERLAY_GROUP_TAG_INVALID ((unsigned int) -1)
 #define AR_OVERLAY_GROUP_TAG_BASE 0U
-#define AR_OVERLAY_GROUP_TAG_OVERLAY 1U
 
 /* Following three set of flags are reserved for the future for the client managed */
 /* Transaction API */
@@ -213,7 +210,7 @@
 #define AR_DEFAULT_INTERVAL   300  /* default time interval for escalation */
 
 
-#define AR_CURRENT_API_VERSION       20  /* current api version */
+#define AR_CURRENT_API_VERSION       21  /* current api version */
 #define AR_MINIMUM_CMDB_API_VERSION   3  /* minimum cmdb api version supported by */
                                          /* current shared library implementation */
 #define AR_CURRENT_CMDB_API_VERSION   4  /* current cmdb api version */
@@ -1009,11 +1006,12 @@ typedef struct ARFieldFuncValueListList
 
 }  ARFieldFuncValueListList;      /* list of 0 or more ARFieldValueList */
 
-#define AR_MERGE_ENTRY_DUP_ERROR          1
-#define AR_MERGE_ENTRY_DUP_NEW_ID         2
-#define AR_MERGE_ENTRY_DUP_OVERWRITE      3
-#define AR_MERGE_ENTRY_DUP_MERGE          4
-#define AR_MERGE_ENTRY_GEN_NEW_ID         5
+#define AR_MERGE_ENTRY_DUP_ERROR                            1
+#define AR_MERGE_ENTRY_DUP_NEW_ID                           2
+#define AR_MERGE_ENTRY_DUP_OVERWRITE                        3
+#define AR_MERGE_ENTRY_DUP_MERGE                            4
+#define AR_MERGE_ENTRY_GEN_NEW_ID                           5
+#define AR_MERGE_ENTRY_DUP_MERGE_ERROR_ON_ID_MISMATCH       6
 
 #define AR_MERGE_NO_REQUIRED_INCREMENT 1024 /* code added to above to "ignore */
                                             /*  required" during merge        */
@@ -1021,6 +1019,8 @@ typedef struct ARFieldFuncValueListList
                                             /*  patterns" during merge        */
 #define AR_MERGE_NO_WORKFLOW_FIRED     4096 /* code added to above to "ignore */
                                             /* filter processing" during merge*/
+#define AR_MERGE_NO_ASSOCIATION_FIRED  8192 /* code added to above to "ignore */
+											/* association processing" during merge*/											
 /* multimatch option */
 #define AR_MERGE_ENTRY_MULT_MATCH_ERROR        0
 #define AR_MERGE_ENTRY_MULT_MATCH_USE_FIRST    1
@@ -1306,6 +1306,8 @@ typedef struct ARArchiveInfoStruct
 {
    unsigned int        enable;
    unsigned int        archiveType; /* form, file, delete */
+   unsigned int		   appearInArchiveInfo;
+   
    union
    {
       ARNameType       formName;
@@ -1314,6 +1316,9 @@ typedef struct ARArchiveInfoStruct
    ARDayStruct         archiveTime;
    ARQualifierStruct   query;
    ARNameType          archiveFrom;
+   unsigned int		   ageQualifierFieldId;
+   unsigned int		   ageQualifierInDays;
+   char*			   description;
 
 }  ARArchiveInfoStruct;
 
@@ -1332,6 +1337,35 @@ typedef struct ARArchiveInfoList
 #define AR_ARCHIVE_FILE_ARX        8   /* archive to file in ARX format */
 #define AR_ARCHIVE_NO_ATTACHMENTS 32   /* do not archive attachments */
 #define AR_ARCHIVE_NO_DIARY       64   /* do not archive diary fields */
+
+typedef struct ARAssociationsToFollowInfoStruct
+{
+   unsigned int		associationSelectionType;
+   ARNameList		associationNameList;
+
+}  ARAssociationsToFollowInfoStruct;
+
+typedef struct ARAssociationsToFollowInfoList
+{
+   unsigned int						 numItems;
+   ARAssociationsToFollowInfoStruct  *associationsToFollowInfoList;
+
+}  ARAssociationsToFollowInfoList;                  /* list of 0 or more associationsToFollow info's */
+
+#define AR_ASSOCIATION_TYPE_DIRECT						1
+#define AR_ASSOCIATION_TYPE_INDIRECT						2
+
+#define AR_ASSOCIATION_SELECTION_TYPE_NONE				0	/* Association Selection NONE*/
+#define AR_ASSOCIATION_SELECTION_TYPE_SPECIFIC_ONLY		1	/* Association Selection SPECIFIC_ONLY*/
+#define AR_ASSOCIATION_SELECTION_TYPE_ALL_ENFORCED		2	/* Association Selection ALL_ENFORCED*/
+#define AR_ASSOCIATION_SELECTION_TYPE_ALL				3	/* Association Selection ALL*/
+
+#define AR_ASSOCIATION_CARDINALITY_MANY_TO_MANY			3	/*Association cardinality many to many*/
+#define AR_ASSOCIATION_CARDINALITY_ONE_TO_MANY			2	/*Association cardinality one to many*/
+#define AR_ASSOCIATION_CARDINALITY_ONE_TO_ONE			1	/*Association cardinality one to one*/
+
+#define AR_ASSOCIATION_ENFORCE_YES						1	/*Association enforce yes value*/
+#define AR_ASSOCIATION_ENFORCE_NO						2	/*Association enforce No value*/
 
 typedef struct ARAuditInfoStruct
 {
@@ -2067,7 +2101,7 @@ typedef struct ARDisplayInstanceListPtrList
 /* splitter panel holder property */
 #define AR_DPROP_PANELHOLDER_SPLITTER                 304/* enum */
 #define AR_DVAL_SPLITTER_HIDE                           0   /* HIDE SPLITTER*/
-#define   AR_DVAL_SPLITTER_SHOW                       1   /* SHOW SPLITTER*/
+#define AR_DVAL_SPLITTER_SHOW                           1   /* SHOW SPLITTER*/
 #define AR_DVAL_SPLITTER_INVISIBLE                      2   /* Invisible splitter with resize capability */
 
 /* Panel Header Gradient Color */
@@ -2105,7 +2139,7 @@ typedef struct ARDisplayInstanceListPtrList
 #define AR_DPROP_LOCALIZE_VIEW          316  /* Enum */
 #define   AR_DVAL_LOCALIZE_VIEW_SKIP      0
 #define   AR_DVAL_LOCALIZE_VIEW_ALL       1
-/* Localize field’s labels */
+/* Localize field's labels */
 #define AR_DPROP_LOCALIZE_FIELD         317  /* Enum */
 #define   AR_DVAL_LOCALIZE_FIELD_SKIP     0
 #define   AR_DVAL_LOCALIZE_FIELD_ALL      1
@@ -2156,7 +2190,7 @@ typedef struct ARDisplayInstanceListPtrList
 #define   AR_DVAL_MOUSEOVER_EFFECT_HIGHLIGHT       2
 
 #define AR_DPROP_DVF_INLINE                      335 /* Boolean */
-#define AR_DPROP_EXTERNAL_LINK_BUTTON  336 /* Integer */
+#define AR_DPROP_EXTERNAL_LINK_BUTTON            336 /* Integer */
 
    /* ***Note numbering gap [337,899] */
 
@@ -2362,7 +2396,7 @@ typedef struct ARDisplayInstanceListPtrList
 
 /* disp prop version of AR_OPROP_LOCALIZE_FIELD_DATA property for backward compatibility */
 
-#define AR_DPROP_LOCALIZE_FIELD_DATA      5202 /* enum; Localize field’s data */
+#define AR_DPROP_LOCALIZE_FIELD_DATA      5202 /* enum; Localize field's data */
 
 #define AR_DPROP_FIELD_PROCESS_ENTRY_MODE      5203 /* enum; Field required or not while running process. */
 #define AR_DVAL_FIELD_PROCESS_NOT_REQUIRED        0 /* default - not required */
@@ -2589,14 +2623,14 @@ typedef struct ARDisplayInstanceListPtrList
 
 #define AR_OPROP_APP_INTEGRATION_WORKFLOW       60049 /* CHAR; value is fieldID pairs    */
 
-#define AR_OPROP_LOCALIZE_FORM_VIEWS            60050 /* enum; Localize field’s Views */
+#define AR_OPROP_LOCALIZE_FORM_VIEWS            60050 /* enum; Localize field's Views */
 #define AR_LOCALIZE_FORM_VIEWS_SKIP                 0
 #define AR_LOCALIZE_FORM_VIEWS_ALL                  1
 #define AR_LOCALIZE_FORM_VIEWS_ALIASES              2
-#define AR_OPROP_LOCALIZE_FORM_DATA             60051 /* enum; Localize form’s data */
+#define AR_OPROP_LOCALIZE_FORM_DATA             60051 /* enum; Localize form's data */
 #define AR_LOCALIZE_FORM_DATA_SKIP                  0
 #define AR_LOCALIZE_FORM_DATA_ALL                   1
-#define AR_OPROP_LOCALIZE_FIELD_DATA            60052 /* enum; Localize field’s data */
+#define AR_OPROP_LOCALIZE_FIELD_DATA            60052 /* enum; Localize field's data */
 #define AR_LOCALIZE_FIELD_DATA_SKIP                 0
 #define AR_LOCALIZE_FIELD_DATA_ALL                  1
 
@@ -2673,12 +2707,26 @@ typedef struct ARDisplayInstanceListPtrList
 
 #define AR_OPROP_OVERLAY_INHERIT_MASK           60070 /* bitmask */
 
+#define AR_OPROP_END_CLIENT_IP_ADDRESS          60071 /* CHAR - Client IP Address */
+
+#define AR_OPROP_FORM_RESULTSET_MAX_ENTRIES     60072 /* INT - Maximum number of entries to be returned for a form */
+
+#define AR_OPROP_SERVICE_STAT_MESSAGE                60073 /* CHAR - Service Statistics Message*/
+
+#define AR_OPROP_TENANT_ID                      60074   /* Property that indicates  Tenant Id. */
+                                                        /* This is meant to be used by SaaS admin only as SaaS admin work */
+                                                        /* in any tenancy. If any other user, sets this property then it */
+                                                        /* will be ignored as we will use user's tenantId which is stored */
+                                                        /* in users record.*/
+
+
 /* the following bits are defined for the AR_OPROP_OVERLAY_EXTEND_MASK and AR_OPROP_OVERLAY_INHERIT_MASK bit masks */
-#define AR_GRANULAR_UNSET            0
-#define AR_GRANULAR_PERMISSIONS      1
-#define AR_GRANULAR_FORM_LIST        2
-#define AR_GRANULAR_INDEX            4
-#define AR_GRANULAR_OTHER            8
+#define AR_GRANULAR_UNSET				0
+#define AR_GRANULAR_PERMISSIONS			1
+#define AR_GRANULAR_FORM_LIST			2
+#define AR_GRANULAR_INDEX				4
+#define AR_GRANULAR_OTHER				8
+#define AR_GRANULAR_ARCHIVE_ASSOC_LIST	16
 
 #define AR_GRANULAR_ACTLINK_SHELL    (AR_GRANULAR_PERMISSIONS | AR_GRANULAR_FORM_LIST | AR_GRANULAR_OTHER)
 #define AR_GRANULAR_FIELD_SHELL      (AR_GRANULAR_PERMISSIONS | AR_GRANULAR_OTHER)
@@ -3044,7 +3092,16 @@ typedef struct ARArithOpAssignStruct
 #define AR_FUNCTION_LISTSIZE   56  /* listsize(field)                         */
 #define AR_FUNCTION_STRIPHTML  57  /* char stripHtml(char)-strip HTML encoding */
 #define AR_FUNCTION_VISIBLEROWS  58  /* VisibleRows(int)                      */
-#define AR_MAX_FUNCTION_USED   58  /* set to code for "highest" function      */
+#define AR_FUNCTION_DB_COUNT   59
+#define AR_FUNCTION_DB_SUM     60
+#define AR_FUNCTION_DB_AVG     61
+#define AR_FUNCTION_DB_MIN     62
+#define AR_FUNCTION_DB_MAX     63
+#define AR_FUNCTION_QUARTER    64
+#define AR_FUNCTION_WEEK       65
+#define AR_FUNCTION_DB_SUBSTR  66
+#define AR_FUNCTION_DISTINCT   67
+#define AR_MAX_FUNCTION_USED   67  /* set to code for "highest" function      */
 
 typedef struct ARFunctionAssignStruct
 {
@@ -4204,6 +4261,7 @@ typedef struct ARCharMenuStructList {
 #define AR_STRUCT_ITEM_IMAGE             17
 #define AR_STRUCT_ITEM_LOCALE_VUI        18 /* export vui's based on locale */
 #define AR_STRUCT_ITEM_TASK              19
+#define AR_STRUCT_ITEM_ASSOCIATION       20
 
 #define AR_STRUCT_ITEM_SCHEMA_DATA       30
 #define AR_STRUCT_ITEM_LOCK_BLOCK        31 /* only for internal use in xml api */
@@ -4224,6 +4282,7 @@ typedef struct ARCharMenuStructList {
 #define AR_VERCNTL_OBJ_TYPE_FILTER                  50
 #define AR_VERCNTL_OBJ_TYPE_FORM                    60
 #define AR_VERCNTL_OBJ_TYPE_IMAGE                   70
+#define AR_VERCNTL_OBJ_TYPE_FORM_DATA              110
 
 /* Version Control Object Reservation selection object subtypes */
 #define AR_VERCNTL_OBJ_SUBTYPE_NONE                          0
@@ -4234,41 +4293,42 @@ typedef struct ARCharMenuStructList {
 #define AR_VERCNTL_OBJ_SUBTYPE_CONTAINER_WEBSERVICE          50
 
 /* VERCNTL_OBJ_RESERVATION_MODE defines */
-#define AR_VERCNTL_OBJ_RESERVATION_MODE_DISABLED     0
-#define AR_VERCNTL_OBJ_RESERVATION_MODE_ENFORCED    10
-#define AR_VERCNTL_OBJ_RESERVATION_MODE_DEFAULT     AR_VERCNTL_OBJ_RESERVATION_MODE_DISABLED
+#define AR_VERCNTL_OBJ_RESERVATION_MODE_DISABLED            0
+#define AR_VERCNTL_OBJ_RESERVATION_MODE_ENFORCED            10
+#define AR_VERCNTL_OBJ_RESERVATION_MODE_DEFAULT             AR_VERCNTL_OBJ_RESERVATION_MODE_DISABLED
 
 /* VERCNTL_OBJ_MOD_LOG_MODE defines */
-#define AR_VERCNTL_OBJ_MOD_LOG_MODE_DISABLED     0
-#define AR_VERCNTL_OBJ_MOD_LOG_MODE_ENABLED      10
-#define AR_VERCNTL_OBJ_MOD_LOG_MODE_DEFAULT     AR_VERCNTL_OBJ_MOD_LOG_MODE_DISABLED
+#define AR_VERCNTL_OBJ_MOD_LOG_MODE_DISABLED                0
+#define AR_VERCNTL_OBJ_MOD_LOG_MODE_ENABLED                 10
+#define AR_VERCNTL_OBJ_MOD_LOG_MODE_DEFAULT                 AR_VERCNTL_OBJ_MOD_LOG_MODE_DISABLED
 
 /* VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES defines */
-#define AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_SAVE            0
-#define AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_DONOT_SAVE      10
-#define AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_DEFAULT         AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_SAVE
+#define AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_SAVE        0
+#define AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_DONOT_SAVE  10
+#define AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_DEFAULT     AR_VERCNTL_OBJ_MOD_LOG_DEFINITION_FILES_SAVE
 
 /* definitions for XML */
 
-#define AR_STRUCT_ITEM_XML_NONE           0
-#define AR_STRUCT_ITEM_XML_SCHEMA         (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_SCHEMA)
-#define AR_STRUCT_ITEM_XML_FILTER         (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_FILTER)
-#define AR_STRUCT_ITEM_XML_ACTIVE_LINK    (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_ACTIVE_LINK)
-#define AR_STRUCT_ITEM_XML_CHAR_MENU      (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_CHAR_MENU)
-#define AR_STRUCT_ITEM_XML_ESCALATION     (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_ESCALATION)
-#define AR_STRUCT_ITEM_XML_DIST_MAP       (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_DIST_MAP)
-#define AR_STRUCT_ITEM_XML_CONTAINER      (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_CONTAINER)
-#define AR_STRUCT_ITEM_XML_DIST_POOL      (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_DIST_POOL)
-#define AR_STRUCT_ITEM_XML_VUI            (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_VUI)
-#define AR_STRUCT_ITEM_XML_FIELD          (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_FIELD)
-#define AR_STRUCT_ITEM_XML_APP            (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_APP)
-#define AR_STRUCT_ITEM_XML_SCHEMA_DATA    (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_SCHEMA_DATA)
-#define AR_STRUCT_ITEM_XML_LOCK_BLOCK     (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_LOCK_BLOCK)
-#define AR_STRUCT_ITEM_XML_IMAGE          (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_IMAGE)
-#define AR_STRUCT_ITEM_XML_LOCALE_VUI     (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_LOCALE_VUI)
-#define AR_STRUCT_ITEM_XML_TASK           (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_TASK)
+#define AR_STRUCT_ITEM_XML_NONE            0
+#define AR_STRUCT_ITEM_XML_SCHEMA          (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_SCHEMA)
+#define AR_STRUCT_ITEM_XML_FILTER          (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_FILTER)
+#define AR_STRUCT_ITEM_XML_ACTIVE_LINK     (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_ACTIVE_LINK)
+#define AR_STRUCT_ITEM_XML_CHAR_MENU       (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_CHAR_MENU)
+#define AR_STRUCT_ITEM_XML_ESCALATION      (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_ESCALATION)
+#define AR_STRUCT_ITEM_XML_DIST_MAP        (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_DIST_MAP)
+#define AR_STRUCT_ITEM_XML_CONTAINER       (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_CONTAINER)
+#define AR_STRUCT_ITEM_XML_DIST_POOL       (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_DIST_POOL)
+#define AR_STRUCT_ITEM_XML_VUI             (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_VUI)
+#define AR_STRUCT_ITEM_XML_FIELD           (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_FIELD)
+#define AR_STRUCT_ITEM_XML_APP             (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_APP)
+#define AR_STRUCT_ITEM_XML_SCHEMA_DATA     (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_SCHEMA_DATA)
+#define AR_STRUCT_ITEM_XML_LOCK_BLOCK      (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_LOCK_BLOCK)
+#define AR_STRUCT_ITEM_XML_IMAGE           (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_IMAGE)
+#define AR_STRUCT_ITEM_XML_LOCALE_VUI      (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_LOCALE_VUI)
+#define AR_STRUCT_ITEM_XML_TASK            (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_TASK)
 #define AR_STRUCT_ITEM_XML_LOCALE_VUI_DATA (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_LOCALE_VUI_DATA)
 #define AR_STRUCT_ITEM_XML_LOCALE_APP_DATA (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_LOCALE_APP_DATA)
+#define AR_STRUCT_ITEM_XML_ASSOCIATION     (AR_STRUCT_XML_OFFSET | AR_STRUCT_ITEM_ASSOCIATION)
 
 /* Cache Event Ids that we support as valid events for API ARGetCacheEvent */
 #define AR_CACHE_ADMINONLYCREATE_EVENT    1
@@ -4654,8 +4714,8 @@ typedef struct ARStructItemList
                                                /*    accepted as current svr  */
 #define AR_SERVER_INFO_DSO_CACHE_CHK_INTERVAL 170/* int- Interval (sec) for   */
                                                  /*  checking cache schema    */
-#define AR_SERVER_INFO_DSO_MARK_PENDING_RETRY 171/* int- Indicates to mark the*/
-                                                 /*  pending items for retry  */
+#define AR_SERVER_INFO_DSO_MARK_PENDING_RETRY 171/* int - Indicates to mark the */
+                                                 /*  pending items for retry    */
 #define AR_SERVER_INFO_DSO_RPCPROG_NUM       172 /* int - RPC number for the   */
                                                  /*   local ARServer for DSO   */
 #define AR_SERVER_INFO_DELAY_RECACHE_TIME    173 /* int -  seconds before      */
@@ -4764,7 +4824,7 @@ typedef struct ARStructItemList
                                                  /* should provide progress info */
                                                  /*     0 - No (default)        */
                                                  /*     1 - Yes                 */
-#define AR_SERVER_INFO_ADMIN_OP_PROGRESS     222 /* char - admin op (such as import)*/
+#define AR_SERVER_INFO_ADMIN_OP_PROGRESS     222 /* char - admin op (such as import) */
                                                  /* progress indicator string   */
                                                  /* Non-empty value when import */
                                                  /* operation is in progress;   */
@@ -4773,10 +4833,10 @@ typedef struct ARStructItemList
                                                   /* plugin server              */
 #define AR_SERVER_INFO_EA_IGNORE_EXCESS_GROUPS 224 /* int - Ignore Excess Groups  */
                                                    /* for external authentication */
-                                                 /*     0 - No (default)        */
-                                                 /*     1 - Yes                 */
+                                                   /*     0 - No (default)        */
+                                                   /*     1 - Yes                 */
 #define AR_SERVER_INFO_EA_GROUP_MAPPING      225 /*   char - ExtAuth            */
-                                                 /* ldapGroupName/ARGroupName pairs*/
+                                                 /* ldapGroupName/ARGroupName pairs */
 #define AR_SERVER_INFO_PLUGIN_LOG_LEVEL      226 /* int - default 1000          */
                                                  /* values between 100 - 1000   */
 #define AR_SERVER_INFO_FT_THRESHOLD_LOW      227 /* int  - full text search     */
@@ -4897,7 +4957,7 @@ typedef struct ARStructItemList
 #define AR_SERVER_INFO_FIPS_MODE_INDEX       277 /* int - FIPS Server Mode index value */ 
 #define AR_SERVER_INFO_FIPS_DUAL_MODE_INDEX  278 /* int - FIPS Dual Mode index value */
 #define AR_SERVER_INFO_ENC_LEVEL_INDEX       279 /* int - Encryption Level index value */
-#define AR_SERVER_INFO_DSO_MAIN_POLL_INTERVAL 280/* int - Interval(sec) for DSO main polling */
+#define AR_SERVER_INFO_DSO_MAIN_POLL_INTERVAL 280/* int - Interval (sec) for DSO main polling */
 #define AR_SERVER_INFO_RECORD_OBJECT_RELS    281 /* int 0 - do not record object        */
                                                  /*  relationships                      */
                                                  /* int 1 - record object relationships */
@@ -4974,7 +5034,7 @@ typedef struct ARStructItemList
 #define AR_SERVER_INFO_MFS_KEYWORDS_FIELD_WEIGHT      329
 #define AR_SERVER_INFO_COPY_CACHE_LOGGING        330  /* int; log copycache to thread log */
 #define AR_SERVER_INFO_DSO_SUPPRESS_NO_SUCH_ENTRY_FOR_DELETE  331 /* int - Suppresses no such entry */
-                                                                  /*  warning on DSO delete        */
+                                                                  /*  warning on DSO delete         */
 #define AR_SERVER_INFO_USE_FTS_IN_WORKFLOW       332 /* int 0 - do not use FTS in   */
                                                      /*  workflow                   */
                                                      /* int 1 - use FTS in workflow */
@@ -5017,25 +5077,24 @@ typedef struct ARStructItemList
 #define AR_SERVER_INFO_UPGRADE_ADMIN_USER        357 /* char - Secondary install admin user */
 #define AR_SERVER_INFO_UPGRADE_DUAL_DATA_FORMS   358 /* char - Upgrade Data Form list */
 
-
 /* Server Info Constants 358-379 have been defined in Boulder */
-#define AR_SERVER_INFO_API_MONITORING_UPDATE_INTERVAL    380      /* int - Update Interval for API Monitoring */
-#define  AR_SERVER_INFO_API_RECORDING_CLIENT_TYPE        381      /* String - API Recording on for specific Client Type */
-#define  AR_SERVER_INFO_API_RECORDING_ENABLE             382      /* int - Enable Flag would be set to T or F */
+#define AR_SERVER_INFO_MESSAGE_BROKER_URL         374 /* char - Message Broker URL */
+#define AR_SERVER_INFO_NUMBER_OF_SELECTOR_THREADS 375 /* int - Number of selector threads. */
+#define AR_SERVER_INFO_MESSAGE_BROKER_PORT        376 /* int - Messsaging(JMS) broker port. */
+#define AR_SERVER_INFO_JMX_PORT                   377 /* int - JMX Port */
+#define AR_SERVER_INFO_PEER_LISTENER_PORT         378 /* int - (Cache) Peer-listener-port */
+#define AR_SERVER_INFO_API_MONITORING_UPDATE_INTERVAL 379 /* int - Update Interval for API Monitoring */
+#define AR_SERVER_INFO_API_RECORDING_CLIENT_TYPE  380 /* char - API Recording on for specific Client Type */
+#define AR_SERVER_INFO_API_RECORDING_ENABLE       381 /* int - Enable Flag would be set to T or F */
 
 /* Server Info Constants for collab app defined in Boulder */
-#define AR_SERVER_INFO_OBJ_RESERVATION_REPOSITORY_TYPE 383 /* int Object reservation repository type - 0  ARS      */
-                                                           /*                                        - 10 External */
+#define AR_SERVER_INFO_OBJ_RESERVATION_REPOSITORY_TYPE 382 /* int - Object reservation repository type - 0  ARS      */
+                                                           /*                                          - 10 External */
+#define AR_SERVER_INFO_SERVICE_RECORDING_ENABLE   383 /* int - flag to enable the Service Monitoring */
 
-/* Server Info Constants for API and SQL timing statistics */
-#define AR_SERVER_INFO_STATS_APISQL_CONTROL      384 /* bitmask  Controls API and SQL recording */
-#define AR_SERVER_INFO_STATS_APISQL_MAX_SAVED    386 /* int  Capacity for saving longest operations in memory */
-#define AR_SERVER_INFO_STATS_APISQL_INTERVAL     387 /* int  Frequency of stats flush - in minutes (zero means no flush) */
-#define AR_SERVER_INFO_STATS_APISQL_MIN_TIME     388 /* int  Minimum elapsed time to qualify for recording (mSec) */
-#define AR_SERVER_INFO_STATS_GET_INCOMPLETE_API  389 /* char  Retrieves contents of incomplete API table */
-#define AR_SERVER_INFO_STATS_GET_LONGEST_API     390 /* char  Retrieves contents of longest API table */
-#define AR_SERVER_INFO_STATS_GET_INCOMPLETE_SQL  391 /* char  Retrieves contents of incomplete SQL table */
-#define AR_SERVER_INFO_STATS_GET_LONGEST_SQL     392 /* char  Retrieves contents of longest SQL table */
+#define AR_SERVER_INFO_STATS_APISQL_CONTROL   384 /* Bitmask for controlling API/SQL display to console, exception logging option, etc. */
+
+#define AR_SERVER_INFO_SERVERGROUP_FLASHBOARD_ADMIN_PORT   385 /* int - Server Group Flashboard Admin port */
 /* Server Info Constants for Attachment Security */
 #define AR_SERVER_INFO_ATTACH_EXT_FILTER         393 /* int  Attachment extension filter */
 #define AR_SERVER_INFO_ATTACH_EXT_LIST           394 /* char List of extensions for attachment filter defined in above */
@@ -5043,10 +5102,50 @@ typedef struct ARStructItemList
 #define AR_SERVER_INFO_ATTACH_DISPLAY_FILTER     396 /* int  Display filter */
 #define AR_SERVER_INFO_ATTACH_DISPLAY_LIST       397 /* char List of extensions for display filter defined in above */
 #define AR_SERVER_INFO_ATTACH_VALIDATION_PLUGIN_NAME 398 /* char Name of custom attachment validation plugin */
+#define AR_SERVER_INFO_FTS_FILTER_API_RPC_TIMEOUT 399 /* int Timeout associated with calls to the filter API */
+#define AR_SERVER_INFO_DEV_STUDIO_DEVELOPMENT_MODE 400 /* int Enables Best Practice Mode or Base Development Mode in Developer Studio */ 
 #define AR_SERVER_INFO_ATTACH_SYSTEM_EXCEPTION_LIST     401 /* char List of system form-field pairs for which attachment validation is exempt */
-#define AR_SERVER_INFO_SSO_CONFIRM_PASSWORD_PLUGIN_NAME 402 /* char name of filterapi plugin for SSO password confirmation */
 
-#define AR_MAX_SERVER_INFO_USED                  402 /* set "highest" server info */ 
+#define AR_SERVER_INFO_ENC_WORKFLOW_DATA_ENC_ALG      417 /* Workflow ENCRYPT function data encryption algorithm. */
+#define AR_SERVER_INFO_AUTH_TOKEN_SIGNATURE_SALT      418 /* AuthToken signature salt (internal use only). Only supports SSI to generate a new value. */
+#define AR_SERVER_INFO_DISABLE_ARCHIVE_GLOBAL         419 /* Disables archive globally. 0 = enabled, 1 = not enabled. */
+#define AR_SERVER_INFO_LARGE_RESULT_LOGGING_THRESHOLD 420 /* Large Result Logging Threshold */
+#define AR_SERVER_INFO_RPC_QUEUE_BY_CLIENT_TYPE       421 /* char - The RPC queue for a client type to use. */
+#define AR_SERVER_INFO_DISABLE_ESCALATIONS_GLOBAL     422 /* Disables escalations globally. 0 = enabled, 1 = not enabled. */
+#define AR_SERVER_INFO_DISABLE_ADMIN_OPERATIONS_GLOBAL 423 /* Disables admin operations globally. 0 = enabled, 1 = not enabled. */
+
+#define AR_SERVER_INFO_SERVICE_MONITORING_UPDATE_INTERVAL   424 /* int - Interval in minutes for 
+                                                                     Service Monitoring update to 
+                                                                     the database*/
+#define AR_SERVER_INFO_WS_FILTERAPI_WSSE_NO_MUSTUNDERSTAND_ENDPOINTS   425 /* Semicolon separated list of endpoints. */
+#define AR_SERVER_INFO_DEV_STUDIO_THREEWAY_RECON_PACKINGLIST   426 /* Packing list used by Dev Studio for recon */
+#define AR_SERVER_INFO_ORACLE_SERVICE  427 /*  The two-task environment setting for remote access to an Oracle database */
+#define AR_SERVER_INFO_FT_INDEX_COMMIT_INTERVAL 428 /* Lucene index commit interval used for commiting Lucene indexes 
+                                                                     as well as deleting ft_pending entries */
+#define AR_SERVER_INFO_FT_INDEX_SCHEDULER_INTERVAL 429 /* Interval for FST scheduler to wake up the controller for pending entries */
+#define AR_SERVER_INFO_MEMLOG_DUMP 430 /* Trigger to dump "Always on Logging" logs to a file */
+#define AR_SERVER_INFO_MEMLOG_MAX 431 /* Max buffer size for "Always on Logging". 
+                                     When set to 0, always on logging is disabled */
+#define AR_SERVER_INFO_MEMLOG_ERROR_NUMBERS 432 /*List of those errors that when happens, 
+                                                 always on logs will be flushed to disk*/
+#define AR_SERVER_INFO_MEMLOG_LOGFILE 433 /* Location for always on logifle */
+#define AR_SERVER_INFO_MEMLOG_HISTORY 434 /* Number of copies to keep for always on logfile */
+//#define AR_SERVER_INFO_CLIENT_TYPE_TO_RPC_QUEUE_MAPPING 435 /* Client type to RPC queue mapping */
+#define AR_SERVER_INFO_RPC_QUEUE_STATISTICS 436 /* RPC queue statistics - returns instantaneous values */
+#define AR_SERVER_INFO_HG_DISABLE 437 /* Disable the Hierarchical Groups feature */
+#define AR_SERVER_INFO_HG_INTERVAL 438 /*Ideal delay interval when hg_pending 
+                                       records will be processed to hgcontrol */
+
+#define AR_SERVER_INFO_HG_THREADPOOL_SIZE 439  /* Number of threads for processing hgcontrol table records */
+#define AR_SERVER_INFO_DISABLE_NEW_RLS_IMPL 440 /* Row Level Security new implementation with EXISTS clause */
+#define AR_SERVER_INFO_FT_INDEX_DELETE_POLICY_TIME  441 /* Interval for FTS indexer delete policy time to retain commit points from index */
+#define AR_SERVER_INFO_FT_INDEX_NUM_INDEXER_THREADS  442 /* Interval for FTS indexer number of indexer threads */
+#define AR_SERVER_INFO_RELOAD_LOG_CONFIG_FILE  443 /* Reload logging config file */
+
+#define AR_MAX_SERVER_INFO_USED                  443 /* set "highest" server info */ 
+
+#define AR_DEV_MODE_BASE_OK = 1; /* base development mode in developer studio */
+#define AR_DEV_MODE_OVERLAY_OK = (1<<1); /* best practice mode in developer studio */
 
 /* Values for license tracking var */
 #define TRACK_LICENSE_USAGE_DISABLED         0     /* Disabled */
@@ -5515,13 +5614,13 @@ typedef struct ARFieldMappingPtrList
 
 }  ARFieldMappingPtrList;
 
-#define AR_SCHEMA_NONE       0  /* null schema */
-#define AR_SCHEMA_REGULAR    1  /* regular schema */
-#define AR_SCHEMA_JOIN       2  /* join schema, has two member schemas */
-#define AR_SCHEMA_VIEW       3  /* view schema, has one base schema */
-#define AR_SCHEMA_DIALOG     4  /* dialog schema, only display-only fields */
-#define AR_SCHEMA_VENDOR     5  /* vendor schema */
-#define AR_SCHEMA_PLACEHOLDER    6  /* placeholder schema */
+#define AR_SCHEMA_NONE              0  /* null schema */
+#define AR_SCHEMA_REGULAR           1  /* regular schema */
+#define AR_SCHEMA_JOIN              2  /* join schema, has two member schemas */
+#define AR_SCHEMA_VIEW              3  /* view schema, has one base schema */
+#define AR_SCHEMA_DIALOG            4  /* dialog schema, only display-only fields */
+#define AR_SCHEMA_VENDOR            5  /* vendor schema */
+#define AR_SCHEMA_PLACEHOLDER       6  /* placeholder schema */
 #define AR_SCHEMA_MAX_SCHEMA_TYPE   6  /* list the max type of schema */
 
 #define AR_LIST_SCHEMA_ALL                  0  /* get list of all schemas */
@@ -5538,6 +5637,8 @@ typedef struct ARFieldMappingPtrList
 #define AR_LIST_SCHEMA_VENDOR               8  /* get list of all vendor schemas */
 #define AR_LIST_SCHEMA_ALLOWED_IN_MFSEARCH  9  /* get list of all schemas allowed */
                                                /*  in multi-form searches         */
+#define AR_LIST_SCHEMA_FTS_SCAN_TIME       10  /* get list of all forms that should */
+                                               /* have fts scan update            */
 
 #define AR_HIDDEN_INCREMENT   1024  /* code added to above to "include hidden */
                                     /*  schemas" in the list returned         */
@@ -5591,7 +5692,7 @@ typedef struct ARFieldMappingPtrList
 #define AR_LOCK_BLOCK_DELETE     4 /* delete the given object and all objects */
                                    /* that are locked with same key */
                                    /* only applicable for locked objects */
-#define AR_SCHEMA_SHADOW_DELETE 8  /* delete archive/audit form even if it is enabled */
+#define AR_SCHEMA_SHADOW_DELETE  8 /* delete archive/audit form even if it is enabled */
                                    /* or part of a lock object */
 
 
@@ -6097,8 +6198,7 @@ typedef struct ARContainerTypeList
 #define AR_SIGNAL_DYNAMIC_PERM_CHANGED    12  /* reload row level security info */
 #define AR_SIGNAL_FULL_TEXT_PENDING       13  /* full text indexing pending */
 #define AR_SIGNAL_INSTALL_SIGNAL          14  /* install signal - see sigArgument for details */
-#define AR_SIGNAL_SRVSTAT_SIGNAL          15  /* flush API/SQL statistics */
-#define AR_SIGNAL_FULL_TEXT_REINDEXING_SYNC 16  /* Sync FTS re-indexing tasks to FTS plugin */
+
 
 typedef struct ARSignalStruct
 {
@@ -6226,9 +6326,8 @@ typedef struct ARLocalizedRequestList
 #define AR_SVR_EVENT_CHG_LICENSES      16
 #define AR_SVR_EVENT_DYNAMIC_PERM      17
 #define AR_SVR_EVENT_CHG_IMAGE         18
-#define AR_SVR_EVENT_CLIENT_TIMEOUT    19
 
-#define AR_MAX_SVR_EVENT_USED          19
+#define AR_MAX_SVR_EVENT_USED          18
 
 /* Max length of one numeric event type string (with semi-colon). */
 #define AR_MAX_SVR_EVENT_TYPE_STR      4
@@ -6480,7 +6579,7 @@ typedef struct ARVuiInfoList
 #define AR_CLIENT_TYPE_ATRIUM_INTEGRATOR      57  /* Atrium Integrator */
 #define AR_CLIENT_TYPE_ADDM                   58  /* ADDM */
 #define AR_CLIENT_TYPE_BPPM                   59  /* BPPM */
-#define AR_CLIENT_TYPE_ODA                    60  /* ARODA */
+#define AR_CLIENT_TYPE_ODA                    60  /* ODA Client */
 #define AR_CLIENT_TYPE_MYIT                   61  /* MyIT */
 
 #define AR_CLIENT_TYPE_END_OF_PRODUCT       3999
@@ -6519,14 +6618,24 @@ typedef struct ARVuiInfoList
 
 #define AR_SESS_CONTROL_PROP_DESIGN_OVERLAYGROUP  12 /* This property is to be set if     */
                                                      /* caller wants to set overlay group */
-                                                         /* for design time operations  */
+                                                     /* for design time operations        */
 #define AR_SESS_CONTROL_PROP_API_OVERLAYGROUP     13 /* This property is to be set if     */
                                                      /* caller wants to set overlay group */
-                                                         /* for runtime(get) operations  */
+                                                     /* for runtime (get) operations      */
 
 #define AR_SESS_CONTROL_PROP_GRANULAR_OVERLAY_RETRIEVE_MODE  14 /* This property is to be set if caller ONLY  */
                                                                 /* wants to see extended/overwritten granular */
                                                                 /* overlay attributes at design time          */
+
+#define AR_SESS_CONTROL_PROP_ENDCLIENTIP        15       /* This property is to be set if caller wants to set the */
+                                                         /* EndClient IP Address                                  */
+
+#define AR_SESS_CONTROL_PROP_SERVICE_MSG        16       /* This property is to be set if caller wants to set the */
+                                                         /* Service Message. However after each API call this     */
+                                                         /* property is reset to null                             */
+
+#define AR_SESS_TENANT_ID             17 /* Object String for setting tenancy in context. */
+
 /* XML API Input/Output Document */
 #define AR_XML_DOC_CHAR_STR       1 /* character string */
 #define AR_XML_DOC_FILE_NAME      2 /* file name */
@@ -7027,7 +7136,7 @@ typedef struct ARWfdCurrentLocation
    AREntryIdList        Entrys;        /* list of entrys */
    char                 *Filter;       /* Name of the filter */
    unsigned int         Stage;         /* start, qual, phase1,1,3 etc. */
-   ARBoolean            ElsePath;        /* True if doing if actions, false if else */
+   ARBoolean            ElsePath;      /* True if doing if actions, false if else */
    unsigned int         ActionNo;      /* Action index */
    char                 *ActionStr;    /* Extra text associated with action */
    ARBoolean            ActionDeferred;   /* True if this action deferred to later phase */
@@ -7148,9 +7257,9 @@ typedef struct ARMultiSchemaFieldValueOrArithStruct {
       ARMultiSchemaFieldIdStruct                fieldId;
       ARValueStruct                             value;
       struct ARMultiSchemaArithOpStruct         *arithOp;
-      ARMultiSchemaFuncStatHistoryValue             statHistory;
+      ARMultiSchemaFuncStatHistoryValue         statHistory;
       ARValueList                               valueSet;
-      ARMultiSchemaFuncCurrencyPartStruct           *currencyField;
+      ARMultiSchemaFuncCurrencyPartStruct       *currencyField;
          /* now a ~Func~ since subqueries can include funcs: */
       struct ARMultiSchemaValueSetFuncQueryStruct *valueSetQuery;
    } u;
@@ -7162,14 +7271,14 @@ typedef struct ARMultiSchemaFieldValueOrArithStruct {
 typedef struct ARMultiSchemaFieldFuncValueOrArithStruct {
    unsigned int tag;
    union {
-      size_t                                    noval_;
-      ARMultiSchemaFieldFuncStruct              fieldFunc;
-      ARValueStruct                             value;
-      struct ARMultiSchemaFuncArithOpStruct     *arithOp;
-      ARMultiSchemaFuncStatHistoryValue             statHistory;
-      ARValueList                               valueSet;
-      ARMultiSchemaFuncCurrencyPartStruct           *currencyField;
-      struct ARMultiSchemaValueSetFuncQueryStruct   *valueSetQuery;
+      size_t                                       noval_;
+      ARMultiSchemaFieldFuncStruct                 fieldFunc;
+      ARValueStruct                                value;
+      struct ARMultiSchemaFuncArithOpStruct        *arithOp;
+      ARMultiSchemaFuncStatHistoryValue            statHistory;
+      ARValueList                                  valueSet;
+      ARMultiSchemaFuncCurrencyPartStruct          *currencyField;
+      struct ARMultiSchemaValueSetFuncQueryStruct  *valueSetQuery;
    } u;
 } ARMultiSchemaFieldFuncValueOrArithStruct;
 
@@ -7193,7 +7302,7 @@ typedef struct ARMultiSchemaArithOpStruct {
 } ARMultiSchemaArithOpStruct;
 
 typedef struct ARMultiSchemaFuncArithOpStruct {
-   unsigned int                           operation;
+   unsigned int                               operation;
    ARMultiSchemaFieldFuncValueOrArithStruct   operandLeft;
    ARMultiSchemaFieldFuncValueOrArithStruct   operandRight;
 } ARMultiSchemaFuncArithOpStruct;
@@ -7205,7 +7314,7 @@ typedef struct ARMultiSchemaRelOpStruct {
 } ARMultiSchemaRelOpStruct;
 
 typedef struct ARMultiSchemaFuncRelOpStruct {
-   unsigned int                           operation;
+   unsigned int                               operation;
    ARMultiSchemaFieldFuncValueOrArithStruct   operandLeft;
    ARMultiSchemaFieldFuncValueOrArithStruct   operandRight;
 } ARMultiSchemaFuncRelOpStruct;
@@ -7226,7 +7335,7 @@ typedef struct ARMultiSchemaFuncQualifierStruct {
      ARMultiSchemaFuncAndOrStruct             andor;
      struct ARMultiSchemaFuncQualifierStruct  *notQual;
      struct ARMultiSchemaFuncRelOpStruct      *relOp;
-     ARMultiSchemaFieldFuncStruct          fieldFunc;
+     ARMultiSchemaFieldFuncStruct             fieldFunc;
    } u;
 } ARMultiSchemaFuncQualifierStruct;
 
@@ -7254,9 +7363,9 @@ typedef struct ARMultiSchemaQueryFromStruct {  /* XXX obsolete */
 } ARMultiSchemaQueryFromStruct;
 
 typedef struct ARMultiSchemaFuncQueryFromStruct {
-   unsigned int                                 type;
+   unsigned int                                     type;
    union {
-      ARNameType                                schemaName;
+      ARNameType                                    schemaName;
       struct ARMultiSchemaNestedFuncQueryStruct     *nestedQuery;
       struct ARMultiSchemaRecursiveFuncQueryStruct  *recursiveQuery;      
    } u;
@@ -7272,7 +7381,7 @@ typedef struct ARMultiSchemaQueryFromList  {  /* XXX obsolete */
 } ARMultiSchemaQueryFromList;
 
 typedef struct ARMultiSchemaFuncQueryFromList  {
-   unsigned int                  numItems;
+   unsigned int                      numItems;
    ARMultiSchemaFuncQueryFromStruct  *listPtr;
 } ARMultiSchemaFuncQueryFromList;
 
@@ -7359,22 +7468,22 @@ typedef struct ARMultiSchemaFieldValueListList {
 
 typedef struct ARMultiSchemaFieldFuncValueStruct {
    ARMultiSchemaFieldFuncStruct fieldId;
-   ARValueStruct              value;
+   ARValueStruct                value;
 } ARMultiSchemaFieldFuncValueStruct;
 
 typedef struct ARMultiSchemaFieldFuncValueList {
-   unsigned int                   numItems;
+   unsigned int                       numItems;
    ARMultiSchemaFieldFuncValueStruct  *listPtr;
 } ARMultiSchemaFieldFuncValueList;          /* list of 0 or more multi schema field/value pairs */
 
 typedef struct ARMultiSchemaFieldFuncValueListList {
-   unsigned int                 numItems;
+   unsigned int                    numItems;
    ARMultiSchemaFieldFuncValueList *listPtr;
 } ARMultiSchemaFieldFuncValueListList;
 
 /* A set of defines for the version control task, used in task related structs */
 #define  AR_TASK_STATE_NONE             0x00000000
-#define  AR_TASK_STATE_OPEN             0x00000001  /* 0x00000002 reserved for current or default*/
+#define  AR_TASK_STATE_OPEN             0x00000001  /* 0x00000002 reserved for current or default */
 #define  AR_TASK_STATE_COMMIT           0x00000004
 #define  AR_TASK_STATE_ROllEDBACK       0x00000008
 #define  AR_TASK_STATE_OPEN_MASK        AR_TASK_STATE_OPEN
@@ -7407,10 +7516,10 @@ typedef struct ARTaskCheckpoint {
    ARInternalId         taskId;               /* task identifier, the foreign key for this checkpoint associates the task */
    ARInternalId         checkpointId;         /* checkpoint identifier */
    ARNameType           checkpointName;       /* name of the checkpoint */
-   ARTimestamp          timestamp;            /* last modified time any aspect of this task last changed  */
+   ARTimestamp          timestamp;            /* last modified time any aspect of this task last changed */
    ARTextString         description;          /* optional description a CLOB field */
    ARPropList           objPropList;          /* regular object properties */
-   ARTaskCheckpointObjList cpObjNodeList;    /* pointer to link cache entries for checkpoint's object node list */
+   ARTaskCheckpointObjList cpObjNodeList;     /* pointer to link cache entries for checkpoint's object node list */
 } ARTaskCheckpoint;
 
 typedef struct ARTaskCheckpointList
@@ -7425,8 +7534,8 @@ typedef struct ARTask {/* task this struct contains info about */
    ARTextString           description;        /* optional description a CLOB field */
    ARAccessNameType       owner;              /* owner of the task */
    ARAccessNameType       lastChanged;        /* user who last changed the task */
-   int                    state;              /* current state of the task, i.e. open, complete, etc.*/
-   ARTimestamp            timestamp;          /* last modified time any aspect of this task last changed  */
+   int                    state;              /* current state of the task, i.e. open, complete, etc. */
+   ARTimestamp            timestamp;          /* last modified time any aspect of this task last changed */
    ARPropList             objPropList;        /* regular object properties */
    ARTaskCheckpoint       baseline;           /* pointer to baseline, which has checkpointId=0, for objects this task all associated */
    ARTaskCheckpointList   checkpointList;     /* pointer to link cache entries for checkpoint list */
@@ -7457,8 +7566,8 @@ typedef struct ARTaskInfo {/* taskInfo this struct contains info about. It does 
    ARTextString           description;        /* optional description a CLOB field */
    ARAccessNameType       owner;              /* owner of the task */
    ARAccessNameType       lastChanged;        /* user who last changed the task */
-   int                    state;              /* current state of the task, i.e. open, complete, etc.*/
-   ARTimestamp            timestamp;          /* last modified time any aspect of this task last changed  */
+   int                    state;              /* current state of the task, i.e. open, complete, etc. */
+   ARTimestamp            timestamp;          /* last modified time any aspect of this task last changed */
    ARPropList             objPropList;        /* regular object properties */
 } ARTaskInfo;
 
@@ -7468,6 +7577,44 @@ typedef struct ARTaskInfoList
    ARTaskInfo    *listPtr;
 
 }  ARTaskInfoList;                           /* list of 0 or more objects */
+
+// Association object related structures.
+typedef struct ARPKFKMappingInfoStruct {/*This structures contains information about field mapping used in association object.*/
+	ARInternalId	primaryKeyFieldID;	/*Field id from primary form*/
+	ARInternalId	foreignKeyFieldId;	/*Field id from foreign form*/
+} ARPKFKMappingInfoStruct;
+
+typedef struct ARPKFKMappingInfoList { /*This structures contains list of field mapping information.*/
+	unsigned int			numItems;				/*Total number of mapping information in this struct.*/
+	ARPKFKMappingInfoStruct	*arPKFKMappingInfoList;	/*Pointer to mapping info list.*/
+} ARPKFKMappingInfoList;
+
+typedef struct ARAssociationFormMappingInfoStruct { /*This structure contains info about field mapping used in Indirect association.*/
+	ARNameType				associationFormName;					/*Holds association form name.*/
+	ARPKFKMappingInfoList	primaryToAssociationFormKeyMapping;		/*Holds field mapping between primary and association form.*/
+	ARPKFKMappingInfoList	secondaryToAssociationFormKeyMapping;	/*Holds field mapping between secodary and association form.*/
+	ARQualifierStruct		associationFormQual;					/*Qualification information for association form.*/
+} ARAssociationFormMappingInfoStruct;
+
+typedef struct ARAssociationFormMappingInfoList {
+	unsigned int						numItems;
+	ARAssociationFormMappingInfoStruct	*associationFormMappingInfoList;
+} ARAssociationFormMappingInfoList;
+
+typedef struct ARAssociationMappingInfoStruct {
+	unsigned int							associationType;		/*Association object type. [Direct/Indirect.]*/
+	union {
+		ARPKFKMappingInfoList				pkFkMappingInfoList;	/*PKFK field mapping info in case of Direct association.*/
+		ARAssociationFormMappingInfoStruct	associationFormMapping;	/*Field Mapping info in case of Indirect association.*/
+	} u;
+} ARAssociationMappingInfoStruct;
+
+typedef struct ARAssociationMappingInfoList {	/*This structure contains list of association mapping info.*/
+	unsigned int						numItems;	/*Number of elements in association mapping list.*/
+	ARAssociationMappingInfoStruct		*associationMappingInfoList; /*Association Mapping list.*/
+} ARAssociationMappingInfoList;
+
+// Association object related structures ends here.
 
 #ifdef __cplusplus
 /* This closes the 'extern "C" {' statement started at the top of this      */
