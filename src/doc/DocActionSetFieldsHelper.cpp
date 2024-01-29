@@ -311,7 +311,7 @@ void CDocActionSetFieldsHelper::GenerateDefaultMappingTable(ostream &writer, str
 
 	// set field mapping
 	writer << "Field Mapping:";
-	if (setFieldsStruct.fieldList.fieldAssignList[0].fieldId == AR_LIKE_ID)
+	if (setFieldsStruct.fieldList.fieldAssignList && setFieldsStruct.fieldList.fieldAssignList[0].fieldId == AR_LIKE_ID)
 	{
 		writer << " All Matching Ids<br/>";
 		CDocAllMatchingIdsTable allMatchingFieldsTable(attachedSchemaName, schemaNameActionIsReadingFrom, obj, CDocAllMatchingIdsTable::AMM_SETFIELDS, nAction, ifElse, rootLevel);
