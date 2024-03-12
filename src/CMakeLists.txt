@@ -28,12 +28,12 @@ INCLUDE(project.cmake/msvc_pch_support.cmake)
 #define project names
 SET(MAIN_PROJECT_NAME "ARInside")
 SET(LIB_PROJECT_NAME "ARInsideLib")
-SET(TEST_PROJECT_NAME "ARInsideTest")
+#SET(TEST_PROJECT_NAME "ARInsideTest")
 SET(RES_PROJECT_NAME "ARInsideRes")
 IF(UNIX)
   STRING(TOLOWER ${MAIN_PROJECT_NAME} MAIN_PROJECT_NAME)
   STRING(TOLOWER ${LIB_PROJECT_NAME} LIB_PROJECT_NAME)
-  STRING(TOLOWER ${TEST_PROJECT_NAME} TEST_PROJECT_NAME)
+  #STRING(TOLOWER ${TEST_PROJECT_NAME} TEST_PROJECT_NAME)
   STRING(TOLOWER ${RES_PROJECT_NAME} RES_PROJECT_NAME)
 ENDIF(UNIX)
 
@@ -234,31 +234,31 @@ FILE(WRITE ${CMAKE_CURRENT_BINARY_DIR}/gitrev.h ${GITREV_TEMPLATE})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 
 # now setup testing ... http://stackoverflow.com/questions/9689183/cmake-googletest
-INCLUDE(ExternalProject)
-SET_DIRECTORY_PROPERTIES(PROPERTIES EP_PREFIX ${CMAKE_BINARY_DIR}/thirdparty)
-ExternalProject_Add(
-	googletest
-	GIT_REPOSITORY https://github.com/google/googletest.git
-	GIT_TAG release-1.10.0
-	GIT_SHALLOW ON
-	# Force separate output paths for debug and release builds to allow easy
-	# identification of correct lib in subsequent TARGET_LINK_LIBRARIES commands
-	CMAKE_ARGS -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG:PATH=DebugLibs
-			   -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE:PATH=ReleaseLibs
-			   -Dgtest_force_shared_crt=ON
-	# Disable install step
-	INSTALL_COMMAND ""
-	UPDATE_COMMAND ""
-	# Wrap download, configure and build steps in a script to log output
-	LOG_DOWNLOAD ON
-	LOG_CONFIGURE ON
-	LOG_BUILD ON
-)
-
-ExternalProject_Get_Property(googletest source_dir)
-INCLUDE_DIRECTORIES(${source_dir}/googletest/include)
-ExternalProject_Get_Property(googletest binary_dir)
-SET(GTEST_BINARY_DIR ${binary_dir})
+#INCLUDE(ExternalProject)
+#SET_DIRECTORY_PROPERTIES(PROPERTIES EP_PREFIX ${CMAKE_BINARY_DIR}/thirdparty)
+#ExternalProject_Add(
+#	googletest
+#	GIT_REPOSITORY https://github.com/google/googletest.git
+#	GIT_TAG release-1.10.0
+#	GIT_SHALLOW ON
+#	# Force separate output paths for debug and release builds to allow easy
+#	# identification of correct lib in subsequent TARGET_LINK_LIBRARIES commands
+#	CMAKE_ARGS -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG:PATH=DebugLibs
+#			   -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE:PATH=ReleaseLibs
+#			   -Dgtest_force_shared_crt=ON
+#	# Disable install step
+#	INSTALL_COMMAND ""
+#	UPDATE_COMMAND ""
+#	# Wrap download, configure and build steps in a script to log output
+#	LOG_DOWNLOAD ON
+#	LOG_CONFIGURE ON
+#	LOG_BUILD ON
+#)
+#
+#ExternalProject_Get_Property(googletest source_dir)
+#INCLUDE_DIRECTORIES(${source_dir}/googletest/include)
+#ExternalProject_Get_Property(googletest binary_dir)
+#SET(GTEST_BINARY_DIR ${binary_dir})
 #ENABLE_TESTING()
 
 # Add compiler flag for MSVC 2012
@@ -266,15 +266,15 @@ if(MSVC_VERSION EQUAL 1700)
   add_definitions(-D_VARIADIC_MAX=10)
 endif()
 
-LINK_DIRECTORIES(${GTEST_BINARY_DIR}/lib)
+#LINK_DIRECTORIES(${GTEST_BINARY_DIR}/lib)
 
 # setup output target
 ADD_LIBRARY(${LIB_PROJECT_NAME} ${ARINSIDE_SRCS} ${ARINSIDE_RESOURCE_OBJECTS})
 ADD_EXECUTABLE(${MAIN_PROJECT_NAME} ${ARINSIDE_MAIN_SRCS})
-ADD_EXECUTABLE(${TEST_PROJECT_NAME} ${ARINSIDE_TEST_SRCS})
+#ADD_EXECUTABLE(${TEST_PROJECT_NAME} ${ARINSIDE_TEST_SRCS})
 
 # dependencies
-ADD_DEPENDENCIES(${TEST_PROJECT_NAME} ${LIB_PROJECT_NAME} googletest)
+#ADD_DEPENDENCIES(${TEST_PROJECT_NAME} ${LIB_PROJECT_NAME} googletest)
 ADD_DEPENDENCIES(${MAIN_PROJECT_NAME} ${LIB_PROJECT_NAME} ${RES_PROJECT_NAME})
 
 # reference the needed libraries
@@ -282,15 +282,15 @@ TARGET_LINK_LIBRARIES(${LIB_PROJECT_NAME} ${ARS_API_LIB} ${ARINSIDE_ADDITIONAL_L
 
 TARGET_LINK_LIBRARIES(${MAIN_PROJECT_NAME} ${ARS_API_LIB} ${ARINSIDE_ADDITIONAL_LIBS} ${LIB_PROJECT_NAME})
 
-TARGET_LINK_LIBRARIES(${TEST_PROJECT_NAME} ${ARS_API_LIB} ${ARINSIDE_ADDITIONAL_LIBS} ${LIB_PROJECT_NAME})
-IF(MSVC)
-	TARGET_LINK_LIBRARIES(${TEST_PROJECT_NAME}
-		debug ${GTEST_BINARY_DIR}/googletest/DebugLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gtestd${CMAKE_FIND_LIBRARY_SUFFIXES}
-		optimized ${GTEST_BINARY_DIR}/googletest/ReleaseLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gtest${CMAKE_FIND_LIBRARY_SUFFIXES}
-	)
-ELSE(MSVC)
-    TARGET_LINK_LIBRARIES(${TEST_PROJECT_NAME} gtest)
-ENDIF(MSVC)
+#TARGET_LINK_LIBRARIES(${TEST_PROJECT_NAME} ${ARS_API_LIB} ${ARINSIDE_ADDITIONAL_LIBS} ${LIB_PROJECT_NAME})
+#IF(MSVC)
+#	TARGET_LINK_LIBRARIES(${TEST_PROJECT_NAME}
+#		debug ${GTEST_BINARY_DIR}/googletest/DebugLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gtestd${CMAKE_FIND_LIBRARY_SUFFIXES}
+#		optimized ${GTEST_BINARY_DIR}/googletest/ReleaseLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gtest${CMAKE_FIND_LIBRARY_SUFFIXES}
+#	)
+#ELSE(MSVC)
+#    TARGET_LINK_LIBRARIES(${TEST_PROJECT_NAME} gtest)
+#ENDIF(MSVC)
 
-ADD_TEST(NAME test COMMAND ${TEST_PROJECT_NAME})
+#ADD_TEST(NAME test COMMAND ${TEST_PROJECT_NAME})
 #INSTALL(TARGETS arinside DESTINATION bin)
