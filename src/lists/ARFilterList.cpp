@@ -129,7 +129,7 @@ bool CARFilterList::LoadFromServer()
 	}
 
 	// ok, now retrieve all informations of the filters we need
-	if (!arIn->appConfig.slowObjectLoading && ARGetMultipleFilters(&arIn->arControl,
+	if (arIn->vMajor < 21 && !arIn->appConfig.slowObjectLoading && ARGetMultipleFilters(&arIn->arControl,
 		0,
 		objectsToLoad,
 		&fltExists,
@@ -163,8 +163,10 @@ bool CARFilterList::LoadFromServer()
 
 		// ok, fallback to slow data retrieval
 		// this could be necessaray if there is a corrupt object that keeps us from getting all at once
-		if (!arIn->appConfig.slowObjectLoading)
+		if (arIn->vMajor < 21 && !arIn->appConfig.slowObjectLoading)
 			cout << "WARN: switching to slow filter loading!" << endl;
+		else if (arIn->vMajor >= 21 && !arIn->appConfig.slowObjectLoading)
+			cout << "INFO: switching to slow filter loading because of server version 21+" << endl;
 
 		// first check if object names are already loaded
 		if (objectsToLoad == NULL)
@@ -222,8 +224,8 @@ bool CARFilterList::LoadFromServer()
 					curListPos++;
 
 					FreeARStatusList(&status, false);
-				}	
-				else
+				}
+				else if (arIn->vMajor < 21 || (status.statusList && status.statusList[0].appendedText && strcmp(status.statusList[0].appendedText, "RPC: Can't decode result") != 0))
 					cerr << "Failed to load '" << names.nameList[curListPos] << "' : " << BuildMessageAndFreeStatus(status);
 			}
 

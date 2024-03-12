@@ -120,7 +120,7 @@ bool CAREscalationList::LoadFromServer()
 	}
 
 	// ok, now retrieve all informations of the escalations we need
-	if (!arIn->appConfig.slowObjectLoading && ARGetMultipleEscalations(&arIn->arControl,
+	if (arIn->vMajor < 21 && !arIn->appConfig.slowObjectLoading && ARGetMultipleEscalations(&arIn->arControl,
 		0,
 		objectsToLoad,
 		&escExists,
@@ -148,8 +148,10 @@ bool CAREscalationList::LoadFromServer()
 		cerr << BuildMessageAndFreeStatus(status);
 
 		// ok, fallback to slow data retrieval
-		if (!arIn->appConfig.slowObjectLoading)
+		if (arIn->vMajor < 21 && !arIn->appConfig.slowObjectLoading)
 			cout << "WARN: switching to slow escalation loading!" << endl;
+		else if (arIn->vMajor >= 21 && !arIn->appConfig.slowObjectLoading)
+			cout << "INFO: switching to slow escalation loading because of server version 21+" << endl;
 
 		// first check if container names are already loaded
 		if (objectsToLoad == NULL)
@@ -206,7 +208,7 @@ bool CAREscalationList::LoadFromServer()
 
 					FreeARStatusList(&status, false);
 				}
-				else
+				else if (arIn->vMajor < 21 || (status.statusList && status.statusList[0].appendedText && strcmp(status.statusList[0].appendedText, "RPC: Can't decode result") != 0))
 					cerr << "Failed to load '" << names.nameList[curListPos] << "' : " << BuildMessageAndFreeStatus(status);
 
 				// now update list counts

@@ -7,6 +7,17 @@ N - Note
 E - Enhancement
 D - Defect fixed
 
+2024-03-12
+[3.1.4]
+E - built against AR API 9.1.0 (the last available version of the C API)
+E - when the server version is 21+ use "slow loading" for filters and escalations since ARGetMultipleFilters
+    and ARGetMultipleEscalations always fail due to the API version mismatch
+E - when the server version is 21+, ignore "Can't decode result" errors when reading filters and escalations
+    since these are Innovation Studio objects and we don't want them anyway.
+
+D - fixed a null reference when building the documentation if some objects failed to be pulled from the
+    server (this may happen if the server is version 21+)
+
 2020-08-02
 [3.1.3]
 E - styling changes to meet accessibility standards WCAG 2.0 Level AA
