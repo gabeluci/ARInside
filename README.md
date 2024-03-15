@@ -209,3 +209,24 @@ arinside.exe [...] –v >arinside.log 2>&1
 ```
 
 The `[...]` is just a placeholder for other options (like `–i`) you want to specify on the command line. In this example the output is redirected to the file `arinside.log`.
+
+## Compiling
+
+On Windows, use the Visual Studio solution. It contains profiles for 32-bit and 62-bit.
+
+On Linux, from the `src` directory, run these commands to compile:
+
+```
+mkdir build
+cmake . -B ./build
+cd build
+make
+```
+
+To install it:
+
+```
+sudo cp ../thirdparty/arapi/lib/*.so /usr/lib
+sudo ldconfig
+sudo cp arinside /usr/bin
+```
