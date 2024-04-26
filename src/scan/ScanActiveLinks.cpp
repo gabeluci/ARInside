@@ -111,7 +111,8 @@ void CScanActiveLinks::ScanActions(CARActiveLink& al, const ARActiveLinkActionLi
 				{
 					// we simply use the first schema here, thats enough, because we are mainly 
 					// interested in setfields loading data from different (not current) form
-					CARSchema schema(wfConnList.u.schemaList->nameList[0]);
+					ARNameList* schemaList = wfConnList.u.schemaList;
+					CARSchema schema = schemaList->numItems > 0 ? CARSchema(schemaList->nameList[0]) : CARSchema();
 					if (schema.Exists())
 					{
 						CARSetFieldHelper sfh(*CARInside::GetInstance(), schema, setFieldAction, ifElse, actionIndex);

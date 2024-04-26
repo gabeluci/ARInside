@@ -133,7 +133,8 @@ void CScanFilters::ScanActions(const ARFilterActionList &actions, IfElseState if
 				if (wfConnList.type == AR_WORKFLOW_CONN_SCHEMA_LIST && wfConnList.u.schemaList->numItems > 0)
 				{
 					// we simply use the first schema here, thats enough
-					CARSchema schema(wfConnList.u.schemaList->nameList[0]);
+					ARNameList* schemaList = wfConnList.u.schemaList;
+					CARSchema schema = schemaList->numItems > 0 ? CARSchema(schemaList->nameList[0]) : CARSchema();
 					if (schema.Exists())
 					{
 						CARSetFieldHelper sfh(*CARInside::GetInstance(), schema, setFieldAction, ifElse, actionIndex);

@@ -1371,7 +1371,8 @@ void CDocMain::MessageList()
 				continue;
 #endif
 
-			CARSchema schema(al.GetSchemaList().u.schemaList[0].nameList[0]);
+			ARNameList* schemaList = al.GetSchemaList().u.schemaList;
+			CARSchema schema = schemaList->numItems > 0 ? CARSchema(schemaList->nameList[0]) : CARSchema();
 
 			for (unsigned int ifElse = 0; ifElse < 2; ++ifElse)
 			{
@@ -1412,7 +1413,8 @@ void CDocMain::MessageList()
 				continue;
 #endif
 
-			CARSchema schema(flt.GetSchemaList().u.schemaList[0].nameList[0]);
+			ARNameList* schemaList = flt.GetSchemaList().u.schemaList;
+			CARSchema schema = schemaList->numItems > 0 ? CARSchema(schemaList->nameList[0]) : CARSchema();
 
 			for (unsigned int ifElse = 0; ifElse < 2; ++ifElse)
 			{
@@ -1513,38 +1515,39 @@ void CDocMain::NotificationList()
 				continue;
 #endif
 
-			CARSchema schema(flt.GetSchemaList().u.schemaList[0].nameList[0]);
+			ARNameList* schemaList = flt.GetSchemaList().u.schemaList;
+			CARSchema schema = schemaList->numItems > 0 ? CARSchema(schemaList->nameList[0]) : CARSchema();
 
-			for (unsigned int ifElse = 0; ifElse < 2; ++ifElse)
+			if (schema.Exists())
 			{
-				const ARFilterActionList &actions = (ifElse == 0 ? flt.GetIfActions() : flt.GetElseActions());
-
-				//actionList
-				for(unsigned int nAction=0; nAction < actions.numItems; ++nAction)
+				for (unsigned int ifElse = 0; ifElse < 2; ++ifElse)
 				{
-					if(actions.actionList[nAction].action == AR_FILTER_ACTION_NOTIFY)
+					const ARFilterActionList& actions = (ifElse == 0 ? flt.GetIfActions() : flt.GetElseActions());
+
+					//actionList
+					for (unsigned int nAction = 0; nAction < actions.numItems; ++nAction)
 					{
-						if (!schema.Exists()) 
-							continue;
+						if (actions.actionList[nAction].action == AR_FILTER_ACTION_NOTIFY)
+						{
+							const ARFilterActionNotify& notifyAction = actions.actionList[nAction].u.notify;
 
-						const ARFilterActionNotify& notifyAction = actions.actionList[nAction].u.notify;
+							stringstream strm;
+							strm << (ifElse == 0 ? "If" : "Else") << "-Action " << nAction;
 
-						stringstream strm;
-						strm << (ifElse == 0 ? "If" : "Else") << "-Action " << nAction;
+							stringstream text;
+							if (notifyAction.subjectText != NULL && notifyAction.subjectText[0] != 0)
+								text << pInside->TextFindFields(notifyAction.subjectText, "$", schema.GetInsideId(), rootLevel, true, NULL) << "<BR/>";
+							if (notifyAction.notifyText != NULL)
+								text << pInside->TextFindFields(notifyAction.notifyText, "$", schema.GetInsideId(), rootLevel, true, NULL);
 
-						stringstream text;
-						if (notifyAction.subjectText != NULL && notifyAction.subjectText[0] != 0)
-							text << pInside->TextFindFields(notifyAction.subjectText, "$", schema.GetInsideId(), rootLevel, true, NULL) << "<BR/>";
-						if (notifyAction.notifyText != NULL)
-							text << pInside->TextFindFields(notifyAction.notifyText, "$", schema.GetInsideId(), rootLevel, true, NULL);
+							CTableRow row("");
+							row.AddCell(URLLink(flt, rootLevel));
+							row.AddCell(strm.str());
+							row.AddCell(CAREnum::NotifyMechanism(notifyAction.notifyMechanism)); // Type of Notifcation
+							row.AddCell(text.str());
 
-						CTableRow row("");
-						row.AddCell(URLLink(flt, rootLevel));
-						row.AddCell(strm.str());
-						row.AddCell(CAREnum::NotifyMechanism(notifyAction.notifyMechanism)); // Type of Notifcation
-						row.AddCell(text.str());
-
-						tbl.AddRow(row);
+							tbl.AddRow(row);
+						}
 					}
 				}
 			}
@@ -1562,38 +1565,39 @@ void CDocMain::NotificationList()
 				continue;
 #endif
 
-			CARSchema schema(esc.GetSchemaList().u.schemaList[0].nameList[0]);
+			ARNameList* schemaList = esc.GetSchemaList().u.schemaList;
+			CARSchema schema = schemaList->numItems > 0 ? CARSchema(schemaList->nameList[0]) : CARSchema();
 
-			for (unsigned int ifElse = 0; ifElse < 2; ++ifElse)
+			if (schema.Exists())
 			{
-				const ARFilterActionList &actions = (ifElse == 0 ? esc.GetIfActions() : esc.GetElseActions());
-
-				//actionList
-				for(unsigned int nAction=0; nAction < actions.numItems; ++nAction)
+				for (unsigned int ifElse = 0; ifElse < 2; ++ifElse)
 				{
-					if(actions.actionList[nAction].action == AR_FILTER_ACTION_NOTIFY)
+					const ARFilterActionList& actions = (ifElse == 0 ? esc.GetIfActions() : esc.GetElseActions());
+
+					//actionList
+					for (unsigned int nAction = 0; nAction < actions.numItems; ++nAction)
 					{
-						if (!schema.Exists()) 
-							continue;
+						if (actions.actionList[nAction].action == AR_FILTER_ACTION_NOTIFY)
+						{
+							const ARFilterActionNotify& notifyAction = actions.actionList[nAction].u.notify;
 
-						const ARFilterActionNotify& notifyAction = actions.actionList[nAction].u.notify;
+							stringstream strm;
+							strm << (ifElse == 0 ? "If" : "Else") << "-Action " << nAction;
 
-						stringstream strm;
-						strm << (ifElse == 0 ? "If" : "Else") << "-Action " << nAction;
+							stringstream text;
+							if (notifyAction.subjectText != NULL && notifyAction.subjectText[0] != 0)
+								text << pInside->TextFindFields(notifyAction.subjectText, "$", schema.GetInsideId(), rootLevel, true, NULL) << "<BR/>";
+							if (notifyAction.notifyText != NULL)
+								text << pInside->TextFindFields(notifyAction.notifyText, "$", schema.GetInsideId(), rootLevel, true, NULL);
 
-						stringstream text;
-						if (notifyAction.subjectText != NULL && notifyAction.subjectText[0] != 0)
-							text << pInside->TextFindFields(notifyAction.subjectText, "$", schema.GetInsideId(), rootLevel, true, NULL) << "<BR/>";
-						if (notifyAction.notifyText != NULL)
-							text << pInside->TextFindFields(notifyAction.notifyText, "$", schema.GetInsideId(), rootLevel, true, NULL);
+							CTableRow row("");
+							row.AddCell(URLLink(esc, rootLevel));
+							row.AddCell(strm.str());
+							row.AddCell(CAREnum::NotifyMechanism(notifyAction.notifyMechanism)); // Type of Notifcation
+							row.AddCell(text.str());
 
-						CTableRow row("");
-						row.AddCell(URLLink(esc, rootLevel));
-						row.AddCell(strm.str());
-						row.AddCell(CAREnum::NotifyMechanism(notifyAction.notifyMechanism)); // Type of Notifcation
-						row.AddCell(text.str());
-
-						tbl.AddRow(row);
+							tbl.AddRow(row);
+						}
 					}
 				}
 			}
