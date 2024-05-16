@@ -7,6 +7,10 @@ N - Note
 E - Enhancement
 D - Defect fixed
 
+2024-05-16
+[3.1.5]
+D - fixed a potential crash caused by using an array without checking if it's empty
+
 2024-03-12
 [3.1.4]
 E - built against AR API 9.1.0 (the last available version of the C API)

@@ -68,7 +68,7 @@
 
 /////////
 // version information block
-#define VERSION "3.1.4"
+#define VERSION "3.1.5"
 #if defined(_DEBUG)
 #define VERSION_STR VERSION " Debug"
 #elif defined(_ARINSIDE_BETA)
